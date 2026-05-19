@@ -350,7 +350,7 @@ footer img.footer-mederi { height: 48px; border-radius: 4px; }
         <div class="footer-hours-row"><span>Zaterdag</span><span>08:00 – 14:00</span></div>
         <div class="footer-hours-row"><span>Urgentie</span><span style="color:var(--gold)">24/7</span></div>
       </div>
-      <div style="margin-top:20px;font-size:13px;color:rgba(248,244,236,0.45)">RIZIV-erkenningsnummer: 000000-00-00</div>
+      <div style="margin-top:20px;font-size:13px;color:rgba(248,244,236,0.45)">RIZIV-erkenningsnummer: op aanvraag</div>
     </div>
   </div>
   <div class="footer-bottom">
@@ -382,5 +382,10 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   document.getElementById('form-success').style.display = 'block';
 });
 </script>
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#1E3D2F;color:#F8F4EC;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-family:'DM Sans',sans-serif;font-size:0.85rem;z-index:9999;border-top:2px solid #C8A45A;">
+  <span>Wij gebruiken cookies om uw bezoek te verbeteren. Geen tracking van derden. <a href="privacy.html" style="color:#C8A45A;text-decoration:underline;">Meer info</a></span>
+  <button onclick="this.parentElement.style.display='none';localStorage.setItem('ck','1')" style="background:#C8A45A;color:#1E3D2F;border:none;padding:0.5rem 1.2rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;white-space:nowrap;">Begrepen</button>
+</div>
+<script>if(localStorage.getItem('ck'))document.getElementById('cookie-banner').style.display='none';</script>
 </body>
 </html>

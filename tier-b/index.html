@@ -1745,7 +1745,7 @@
         </div>
         <h2 style="color:var(--forest)">Wat onze patiënten zeggen</h2>
         <div style="color:var(--gold);font-size:20px;letter-spacing:3px;margin-bottom:4px">★★★★★</div>
-        <p style="font-size:14px">5.0 / 5 op Google</p>
+        <p style="font-size:14px">4.8 / 5 op Google</p>
       </div>
       <div class="reviews-grid">
         <div class="review-card reveal">
@@ -1763,9 +1763,8 @@
           <div class="review-city">Beerse</div>
         </div>
         <div class="review-card reveal">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-quote">"Professioneel, warm en betrouwbaar. De wondzorg voor mijn man verloopt perfect. Ik
-            kan CuraKempen aan iedereen in de regio aanbevelen!"</p>
+          <div class="review-stars">★★★★☆</div>
+          <p class="review-quote">"Professioneel, warm en betrouwbaar. Soms wat moeilijk om op korte termijn een afspraak te krijgen, maar de zorg zelf is uitstekend. Ik kan CuraKempen zeker aanbevelen."</p>
           <div class="review-author">Marie B.</div>
           <div class="review-city">Kasterlee</div>
         </div>
@@ -1865,6 +1864,14 @@
   <div class="urgentie-strip">
     Dringende zorg? Bel ons 24/7: <a href="tel:+32479921888">+32 479 92 18 88</a>
   </div>
+
+  <!-- TIER COMPARISON NUDGE -->
+  <section style="background:#F8F4EC;padding:3rem 2rem;text-align:center;border-top:1px solid #C8A45A40;">
+    <p style="font-family:'DM Sans',sans-serif;font-size:0.9rem;color:#1E3D2F99;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem;">Meer groeipotentieel nodig?</p>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:#1E3D2F;margin-bottom:1rem;">Pakket 3 voegt online boeken toe</h3>
+    <p style="font-family:'DM Sans',sans-serif;font-size:1rem;color:#1E3D2F;max-width:560px;margin:0 auto 1.5rem;">Patiënten plannen zelf hun afspraken in — ook buiten kantooruren. Minder telefoonwerk, meer tijd voor de zorg.</p>
+    <a href="../../index.html#tier-c" style="display:inline-block;background:#1E3D2F;color:#F8F4EC;padding:0.75rem 2rem;font-family:'DM Sans',sans-serif;font-size:0.95rem;text-decoration:none;">Bekijk Pakket 3 →</a>
+  </section>
 
   <!-- FOOTER -->
   <footer>
@@ -2014,6 +2021,11 @@
       document.getElementById('form-success').style.display = 'block';
     });
   </script>
+  <div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#1E3D2F;color:#F8F4EC;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-family:'DM Sans',sans-serif;font-size:0.85rem;z-index:9999;border-top:2px solid #C8A45A;">
+    <span>Wij gebruiken cookies om uw bezoek te verbeteren. Geen tracking van derden. <a href="privacy.html" style="color:#C8A45A;text-decoration:underline;">Meer info</a></span>
+    <button onclick="this.parentElement.style.display='none';localStorage.setItem('ck','1')" style="background:#C8A45A;color:#1E3D2F;border:none;padding:0.5rem 1.2rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;white-space:nowrap;">Begrepen</button>
+  </div>
+  <script>if(localStorage.getItem('ck'))document.getElementById('cookie-banner').style.display='none';</script>
 </body>
 
 </html>

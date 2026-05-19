@@ -409,5 +409,10 @@
       }
     });
   </script>
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#1A1A18;color:#FAF8F4;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-family:'Nunito',sans-serif;font-size:0.85rem;z-index:9999;border-top:2px solid #5E8B63;">
+  <span>Wij gebruiken cookies om uw bezoek te verbeteren. Geen tracking van derden. <a href="privacy.html" style="color:#5E8B63;text-decoration:underline;">Meer info</a></span>
+  <button onclick="this.parentElement.style.display='none';localStorage.setItem('ck','1')" style="background:#5E8B63;color:#FAF8F4;border:none;padding:0.5rem 1.2rem;cursor:pointer;font-family:'Nunito',sans-serif;font-size:0.85rem;white-space:nowrap;">Begrepen</button>
+</div>
+<script>if(localStorage.getItem('ck'))document.getElementById('cookie-banner').style.display='none';</script>
 </body>
 </html>
