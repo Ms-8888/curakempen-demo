@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blerta Fiqi — CuraKempen Thuisverpleging</title>
+<meta name="description" content="Blerta Fiqi, zorgkundige+ bij CuraKempen. Gespecialiseerd in hygiënische verzorging, persoonlijke zorg en huidverzorging aan huis in de Kempen.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FAFAF7;
+  --slate:#0D1B2A;
+  --slate-mid:#1A3045;
+  --teal:#0BA888;
+  --teal-dim:#087A63;
+  --teal-light:#E6F7F4;
+  --ink:#0D1B2A;
+  --ink-soft:#5A6A76;
+  --rule:#D8E4E0;
+  --warm-gray:#F2F0EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--ink);font-size:17px;line-height:1.65}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:'Fraunces',serif}
+
+.section-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;display:block}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(32px,4vw,48px);font-weight:700;color:var(--ink);line-height:1.1;margin-bottom:16px}
+
+.btn-primary{display:inline-block;background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:13px 28px;border-radius:6px;border:none;cursor:pointer;transition:transform 0.15s ease,box-shadow 0.15s ease;text-align:center}
+.btn-primary:hover{transform:scale(1.01);box-shadow:0 4px 20px rgba(11,168,136,0.35)}
+.btn-secondary{display:inline-block;border:1.5px solid var(--teal);color:var(--teal);font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 28px;border-radius:6px;background:transparent;cursor:pointer;transition:transform 0.15s ease;text-align:center}
+.btn-secondary:hover{transform:scale(1.01)}
+
+.breadcrumb{background:var(--warm-gray);padding:14px 24px;border-bottom:1px solid var(--rule)}
+.breadcrumb-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.breadcrumb a{font-size:13px;color:var(--teal);text-decoration:none;font-weight:500}
+.breadcrumb span{font-size:13px;color:var(--ink-soft)}
+
+.profile-section{padding:72px 24px 96px}
+.profile-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:80px;align-items:start}
+.profile-photo-col{position:sticky;top:90px}
+.profile-photo{width:100%;height:400px;object-fit:cover;object-position:top;border-radius:8px;border:2px solid var(--teal)}
+.availability-badge{display:inline-flex;align-items:center;gap:8px;background:var(--teal-light);color:var(--teal-dim);font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;padding:8px 16px;border-radius:100px;margin-top:20px}
+.availability-dot{width:8px;height:8px;background:var(--teal);border-radius:50%;flex-shrink:0}
+.profile-ctas{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px}
+.tag{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:500;padding:5px 14px;border-radius:100px}
+.tag-lang{background:var(--slate);color:#fff}
+.tag-spec{background:var(--teal-light);color:var(--teal-dim)}
+
+.step-item{display:flex;gap:16px;align-items:flex-start;margin-bottom:20px}
+.step-item:last-child{margin-bottom:0}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-text strong{font-weight:600;display:block;margin-bottom:2px}
+.step-text span{font-size:14px;color:var(--ink-soft)}
+
+.team-nav{border-top:1px solid var(--rule);padding-top:40px;margin-top:64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.team-nav a{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;color:var(--teal);text-decoration:none}
+.team-nav-photo{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--rule)}
+
+footer{background:var(--slate);color:rgba(255,255,255,0.55);padding:48px 24px 32px}
+.footer-inner{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px}
+.footer-logo img{height:34px;filter:brightness(0) invert(1);margin-bottom:12px}
+.footer-address{font-size:13px;line-height:1.8}
+.footer-badge{display:inline-flex;align-items:center;gap:8px;background:var(--slate-mid);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:10px 16px;font-size:13px;color:rgba(255,255,255,0.7);margin-top:16px}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:32px 0 20px}
+
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--slate-mid);border-top:1px solid rgba(255,255,255,0.1);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:200;flex-wrap:wrap}
+.cookie-text{font-size:13px;color:rgba(255,255,255,0.75);flex:1;min-width:200px}
+.cookie-text a{color:var(--teal);text-decoration:underline}
+.cookie-btn{background:var(--teal);color:#fff;border:none;border-radius:4px;padding:9px 22px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap}
+
+nav#main-nav{background:var(--slate);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav-logo img{filter:brightness(0) invert(1);height:38px;display:block}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:14.5px;color:rgba(255,255,255,0.65);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-ctas{display:flex;align-items:center;gap:10px}
+.btn-nav-primary{background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;padding:10px 22px;border-radius:4px;border:none;cursor:pointer;transition:background 0.2s;display:inline-block}
+.btn-nav-primary:hover{background:var(--teal-dim)}
+.nav-hamburger{display:none;background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.nav-mobile{display:none;background:var(--slate);padding:20px 24px;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;color:rgba(255,255,255,0.7);padding:10px 0;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.06);font-size:15px}
+@media(max-width:768px){.nav-links,.nav-ctas{display:none}.nav-hamburger{display:block}}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="../../images/logo.webp" alt="CuraKempen" style="height:38px;filter:brightness(0) invert(1)"></a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../over.html">Over ons</a>
+      <a href="../diensten.html">Diensten</a>
+      <a href="../team.html" class="active">Team</a>
+      <a href="../booking.html">Afspraak</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="../booking.html" class="btn-nav-primary">Afspraak maken</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-mob').classList.toggle('open')" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="nav-mob" class="nav-mobile">
+    <a href="../index.html">Home</a>
+    <a href="../over.html">Over ons</a>
+    <a href="../diensten.html">Diensten</a>
+    <a href="../team.html">Team</a>
+    <a href="../booking.html">Afspraak</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">Home</a>
+    <span>›</span>
+    <a href="../team.html">Team</a>
+    <span>›</span>
+    <span>Blerta Fiqi</span>
+  </div>
+</div>
+
+<section class="profile-section">
+  <div class="profile-inner">
+    <div class="profile-photo-col">
+      <img class="profile-photo" src="../../images/Blerta-Fiqi.jpg" alt="Blerta Fiqi">
+      <div class="availability-badge"><span class="availability-dot"></span> Beschikbaar</div>
+      <div class="profile-ctas">
+        <a href="../booking.html" class="btn-primary">Afspraak maken</a>
+        <a href="tel:+32479921888" class="btn-secondary">Bel +32 479 92 18 88</a>
+      </div>
+    </div>
+
+    <div class="profile-content">
+      <span class="section-label">Zorgkundige+</span>
+      <h1 class="section-title">Blerta Fiqi</h1>
+
+      <div class="tags">
+        <span class="tag tag-lang">NL</span>
+        <span class="tag tag-spec">Hygiënische verzorging</span>
+        <span class="tag tag-spec">Persoonlijke zorg</span>
+        <span class="tag tag-spec">Huidverzorging</span>
+      </div>
+
+      <p style="font-size:18px;line-height:1.8;color:var(--ink-soft);margin-bottom:40px;">Blerta is het warm hart van het team voor dagelijkse persoonlijke zorg. Als zorgkundige+ biedt ze professionele hulp bij wassen, aankleden en huidverzorging — altijd met onvoorwaardelijk respect voor de waardigheid van de patiënt. Haar zachte aanpak en grote geduld maken haar bijzonder geliefd bij oudere patiënten die dagelijks begeleiding nodig hebben.</p>
+
+      <div style="background:var(--warm-gray);border-radius:8px;padding:32px;margin-bottom:40px;">
+        <h3 style="font-family:'Fraunces',serif;font-size:22px;margin-bottom:24px;">Hoe werkt een afspraak met Blerta?</h3>
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Neem contact op</strong>
+            <span>Bel ons of maak online een afspraak. We bespreken uw zorgvraag en plannen een eerste bezoek in.</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Intake en zorgplan</strong>
+            <span>Blerta leert u kennen via een rustig kennismakingsgesprek en stemmt de dagelijkse verzorging volledig af op uw gewoontes en voorkeuren.</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Blerta komt aan huis</strong>
+            <span>Op de afgesproken tijden staat Blerta bij u aan de deur — vriendelijk, geduldig en volledig op uw ritme afgestemd.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-nav">
+        <a href="leen-van-gorp.html">← <img class="team-nav-photo" src="../../images/Leen-van-Gorp.png" alt="Leen van Gorp"> Leen van Gorp</a>
+        <a href="../team.html">Heel het team</a>
+        <a href="gabriela-chivu.html">Gabriela Chivu <img class="team-nav-photo" src="../../images/Gabriela-Chivu.png" alt="Gabriela Chivu"> →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="background:#B8401A;color:#fff;text-align:center;padding:16px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;">
+  Dringende zorg? Bel ons 24/7: <a href="tel:+32479921888" style="color:#fff;text-decoration:underline;">+32 479 92 18 88</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo"><img src="../../images/logo.webp" alt="CuraKempen"></div>
+      <div class="footer-address">
+        CuraKempen Thuisverpleging<br>
+        Turnhout &amp; de Kempen<br>
+        <a href="tel:+32479921888" style="color:rgba(255,255,255,0.55);">+32 479 92 18 88</a>
+      </div>
+      <div class="footer-badge"><i class="fas fa-shield-halved" style="color:var(--teal)"></i> RIZIV-erkend zorgverstrekker</div>
+    </div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.45);text-align:right">
+      <p>Ma–Vr: 07:00–20:00</p>
+      <p>Zaterdag: 08:00–14:00</p>
+      <p style="margin-top:8px">Urgentie: 24/7</p>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div style="max-width:1120px;margin:0 auto;font-size:12px;color:rgba(255,255,255,0.35)">
+    © 2026 CuraKempen Thuisverpleging. Alle rechten voorbehouden.
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-text">Wij gebruiken cookies om uw ervaring te verbeteren. Lees ons <a href="../privacy.html">privacybeleid</a>.</p>
+  <button class="cookie-btn" onclick="document.getElementById('cookieBanner').style.display='none'">Akkoord</button>
+</div>
+
+</body>
+</html>

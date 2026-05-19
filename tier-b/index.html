@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cura Kempen — Kwaliteitsvolle Thuisverpleging in de Kempen</title>
+  <meta name="description"
+    content="Professionele thuisverpleging in Turnhout en omgeving. Hygiënische zorgen, wondzorg, palliatieve zorg en meer. Bel +32 479 92 18 88.">
+  <link rel="icon" href="../images/logo.webp">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F8F4EC;
+      --cream-dark: #EEE8D8;
+      --forest: #1E3D2F;
+      --forest-mid: #2D5940;
+      --forest-light: #E8F0E9;
+      --gold: #C8A45A;
+      --gold-light: #FBF5E6;
+      --ink: #1A1A18;
+      --ink-soft: #4A4840;
+      --rule: #D0C8B8;
+      --white: #FFFFFF;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    section[id] {
+      scroll-margin-top: 72px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* REVEAL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* DEMO BANNER */
+    .demo-banner {
+      background: #1A1A18;
+      color: #C8A45A;
+      text-align: center;
+      padding: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--forest);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-cta {
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: white !important;
+      padding: 9px 20px;
+      font-weight: 500 !important;
+    }
+
+    .nav-cta:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .nav-mobile {
+      display: none;
+      background: var(--forest-mid);
+      padding: 16px 24px 20px;
+    }
+
+    .nav-mobile.open {
+      display: block;
+    }
+
+    .nav-mobile a {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-mobile a:last-child {
+      border-bottom: none;
+    }
+
+    .nav-mobile a:hover {
+      color: white;
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--forest);
+      padding: 90px 24px;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200, 164, 90, 0.4);
+      padding: 6px 14px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(248, 244, 236, 0.75);
+      margin-bottom: 36px;
+      max-width: 440px;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--forest-mid);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 13px 30px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #3a6f50;
+    }
+
+    .btn-secondary {
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 13px 30px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+      background: transparent;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 13px 30px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-gold:hover {
+      background: #b89040;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 6px;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gold-frame {
+      position: absolute;
+      inset: -8px;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      z-index: 0;
+    }
+
+    /* GOLD RULE DIVIDER */
+    .gold-rule-divider {
+      height: 60px;
+      background: var(--gold);
+    }
+
+    /* STATS */
+    .stats-section {
+      background: var(--cream);
+      padding: 70px 24px;
+    }
+
+    .stats-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 54px;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* OVER ONS */
+    .over-section {
+      background: var(--white);
+      padding: 90px 24px;
+    }
+
+    .over-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .over-img-wrap {
+      position: relative;
+    }
+
+    .over-img-wrap img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .over-pull-quote {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      background: var(--forest);
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      padding: 20px 24px;
+      max-width: 260px;
+      line-height: 1.5;
+      border-radius: 4px;
+    }
+
+    .over-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .over-text h2 {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .over-text p {
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+
+    .value-props {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 64px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .value-prop {
+      padding: 32px 28px 32px 0;
+      border-right: 1px solid var(--rule);
+    }
+
+    .value-prop:last-child {
+      border-right: none;
+      padding-right: 0;
+      padding-left: 28px;
+    }
+
+    .value-prop:nth-child(2) {
+      padding-left: 28px;
+    }
+
+    .value-prop h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 10px;
+    }
+
+    .value-prop p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    /* TERUGBETALING */
+    .terugbetaling-section {
+      background: var(--forest-light);
+      padding: 90px 24px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .section-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-header h2 {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 14px;
+    }
+
+    .section-header p {
+      font-size: 17px;
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .steps-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 16%;
+      right: 16%;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .step {
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: var(--forest);
+      opacity: 0.18;
+      line-height: 1;
+      margin-bottom: -16px;
+      display: block;
+    }
+
+    .step-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--forest);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    /* DIENSTEN */
+    .diensten-section {
+      background: var(--cream-dark);
+      padding: 90px 24px;
+    }
+
+    .diensten-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .dienst-card {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--gold);
+      padding: 22px 20px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      border-radius: 0;
+    }
+
+    .dienst-card:hover {
+      border-left-color: var(--forest);
+    }
+
+    .dienst-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dienst-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--forest);
+      flex: 1;
+    }
+
+    .dienst-toggle {
+      width: 26px;
+      height: 26px;
+      background: var(--forest-light);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--forest);
+      flex-shrink: 0;
+      transition: background 0.2s;
+      border-radius: 2px;
+    }
+
+    .dienst-toggle:hover {
+      background: var(--cream-dark);
+    }
+
+    .dienst-short {
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-top: 6px;
+    }
+
+    .dienst-full {
+      display: none;
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+      line-height: 1.65;
+    }
+
+    .dienst-card.open .dienst-full {
+      display: block;
+    }
+
+    .dienst-card.open .dienst-toggle {
+      background: var(--forest);
+      color: white;
+    }
+
+    /* TEAM */
+    .team-section {
+      background: var(--cream);
+      padding: 90px 24px;
+    }
+
+    .team-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+
+    .team-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .team-card:hover .team-img {
+      transform: scale(1.03);
+    }
+
+    .team-img-wrap {
+      overflow: hidden;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .team-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 6px;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 4px;
+    }
+
+    .team-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+
+    .team-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .team-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--forest);
+      background: var(--forest-light);
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+
+    .team-hint {
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin-top: 12px;
+    }
+
+    /* OPENING HOURS */
+    .hours-section {
+      background: var(--cream);
+      padding: 90px 24px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .hours-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .hours-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 24px;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hours-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .hours-table td {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--ink-soft);
+      padding: 10px 0;
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      font-weight: 500;
+      color: var(--forest);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    .status-open {
+      background: #d4edda;
+      color: #1a5c30;
+    }
+
+    .status-closed {
+      background: #fde8e8;
+      color: #8b1a1a;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .status-open .status-dot {
+      background: #2d8a50;
+    }
+
+    .status-closed .status-dot {
+      background: #c0392b;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 22px;
+    }
+
+    .contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .contact-line-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--forest);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .contact-line-text {
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+
+    .contact-line-text a {
+      color: var(--forest);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-line-text a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-line-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+
+    /* REVIEWS */
+    .reviews-section {
+      background: var(--cream-dark);
+      padding: 90px 24px;
+    }
+
+    .reviews-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      padding: 28px;
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .review-google-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .review-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .review-author {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    .review-city {
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    .reviews-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    /* INTAKE FORM */
+    .intake-section {
+      background: var(--forest);
+      padding: 90px 24px;
+    }
+
+    .intake-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .intake-section .section-header h2 {
+      color: var(--white);
+    }
+
+    .intake-section .section-header p {
+      color: rgba(248, 244, 236, 0.7);
+    }
+
+    .intake-section .section-eyebrow {
+      color: var(--gold);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(248, 244, 236, 0.8);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      padding: 11px 14px;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group select option {
+      background: var(--forest);
+      color: var(--white);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-submit-row {
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      padding: 16px 24px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* REGIO */
+    .regio-section {
+      background: var(--cream);
+      padding: 70px 24px;
+    }
+
+    .regio-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .regio-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      color: var(--forest);
+      margin-bottom: 12px;
+    }
+
+    .regio-inner p {
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
+
+    .regio-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .regio-pill {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--forest);
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 9px 20px;
+      border-radius: 30px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: rgba(248, 244, 236, 0.65);
+      padding: 72px 24px 32px;
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    footer img.footer-logo {
+      height: 36px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 14px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    footer img.footer-mederi {
+      height: 48px;
+      border-radius: 4px;
+    }
+
+    .footer-col h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(248, 244, 236, 0.35);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: rgba(248, 244, 236, 0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--cream);
+    }
+
+    .footer-hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .footer-hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .footer-hours-row span:last-child {
+      color: rgba(248, 244, 236, 0.85);
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: rgba(248, 244, 236, 0.35);
+    }
+
+    .footer-bottom a {
+      color: rgba(248, 244, 236, 0.35);
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      color: rgba(248, 244, 236, 0.65);
+    }
+
+    /* URGENTIE STRIP */
+    .urgentie-strip { background: #B8401A; color: #fff; text-align: center; padding: 14px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 15px; }
+    .urgentie-strip a { color: #fff; text-decoration: underline; }
+
+    /* WHATSAPP FAB */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
+      z-index: 200;
+      animation: pulse-whatsapp 2.5s infinite;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+    }
+
+    @keyframes pulse-whatsapp {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      }
+
+      50% {
+        box-shadow: 0 4px 24px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.1);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .over-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .over-pull-quote {
+        position: static;
+        margin-top: 16px;
+      }
+
+      .value-props {
+        grid-template-columns: 1fr;
+      }
+
+      .value-prop,
+      .value-prop:last-child,
+      .value-prop:nth-child(2) {
+        border-right: none;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid::before {
+        display: none;
+      }
+
+      .diensten-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hours-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: block;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .diensten-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- DEMO BANNER -->
+  <div class="demo-banner">DEMO — Pakket B: Modern &nbsp;·&nbsp; Scroll-animaties, reviews, WhatsApp &nbsp;·&nbsp;
+    €1.490</div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="../images/logo.webp" alt="CuraKempen"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu openen">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <a href="over.html">Over ons</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+      <a href="tel:+32479921888"><i class="fas fa-phone"></i> +32 479 92 18 88</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-badge"><i class="fas fa-medal" style="color:var(--gold);margin-right:6px"></i> Mederi erkend
+          kwaliteitslabel</span>
+        <h1>Warme zorg,<br>elke dag <em>aan huis</em></h1>
+        <p class="hero-sub">Cura Kempen is een hecht team van gediplomeerde verpleegkundigen met een groot hart voor de
+          zorg. Elke dag klaar voor mensen in de Kempen — met respect, warmte en vakkennis.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-gold">Thuiszorg aanvragen</a>
+          <a href="tel:+32479921888" class="btn-secondary"><i class="fas fa-phone" style="margin-right:8px"></i> +32 479
+            92 18 88</a>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="gold-frame"></div>
+        <img src="https://images.unsplash.com/photo-1543333995-a78aea2eee50?auto=format&fit=crop&w=1200&q=80" alt="Verpleegkundige helpt patiënt in rolstoel"
+          loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- GOLD RULE DIVIDER -->
+  <div class="gold-rule-divider"></div>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="reveal">
+        <div class="stat-num" data-count="7">0</div>
+        <div class="stat-label">Verpleegkundigen</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-num" data-count="11">0</div>
+        <div class="stat-label">Diensten</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-num"><span data-count="100">0</span>%</div>
+        <div class="stat-label">Vergoed</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-num" data-count="7">0</div>
+        <div class="stat-label">Gemeenten</div>
+      </div>
+    </div>
+  </section>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+  <!-- OVER ONS -->
+  <section id="over" class="over-section">
+    <div class="container">
+      <div class="over-grid">
+        <div class="over-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1765896387387-0538bc9f997e?auto=format&fit=crop&w=1200&q=80" alt="Verpleegkundige bij patiënt thuis" loading="lazy">
+          <div class="over-pull-quote">"Zorg die verder gaat dan handelingen — wij geloven in de kracht van menselijk
+            contact."</div>
+        </div>
+        <div class="over-text reveal">
+          <span class="over-eyebrow">Over CuraKempen</span>
+          <h2>Zorg op maat, dicht bij huis</h2>
+          <p>CuraKempen Thuisverpleging is een erkende verpleegkundige praktijk actief in de regio Kempen. Wij geloven
+            in een holistische benadering waarbij de patiënt als mens centraal staat — niet als dossier.</p>
+          <p>Ons team van gediplomeerde verpleegkundigen en zorgkundigen werkt nauw samen met uw huisarts, specialist en
+            mantelzorgers. Zo garanderen wij een veilige, warme en continue zorg bij u thuis.</p>
+          <a href="#contact" class="btn-primary" style="margin-top:12px">Kennismakingsgesprek aanvragen</a>
+        </div>
+      </div>
+      <div class="value-props">
+        <div class="value-prop reveal">
+          <h3>Holistische zorg</h3>
+          <p>Een warme babbel en een luisterend oor zijn voor ons even belangrijk als de verpleegkundige zorgen zelf.
+            Wij behandelen de hele mens.</p>
+        </div>
+        <div class="value-prop reveal">
+          <h3>Mederi erkend</h3>
+          <p>CuraKempen draagt het Mederi-kwaliteitslabel — een onafhankelijke erkenning die u zekerheid geeft over de
+            kwaliteit van onze zorg.</p>
+        </div>
+        <div class="value-prop reveal">
+          <h3>100% terugbetaald</h3>
+          <p>Onze diensten worden via het derdebetalerssysteem van uw mutualiteit volledig vergoed. Geen verborgen
+            kosten, geen gedoe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+  <!-- TERUGBETALING -->
+  <section id="terugbetaling" class="terugbetaling-section">
+    <div class="section-header container">
+      <span class="section-eyebrow">Eenvoudig en gratis</span>
+      <h2>Hoe werkt terugbetaling?</h2>
+      <p>Van voorschrift tot zorg aan huis — wij regelen alles voor u. U betaalt niets.</p>
+    </div>
+    <div class="steps-grid container">
+      <div class="step reveal">
+        <span class="step-num">1</span>
+        <div class="step-icon"><i class="fas fa-file-medical"></i></div>
+        <h3>Huisarts schrijft voor</h3>
+        <p>Uw huisarts of specialist schrijft een voorschrift voor thuisverpleging. Wij aanvaarden alle mutualiteiten.
+        </p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">2</span>
+        <div class="step-icon"><i class="fas fa-handshake"></i></div>
+        <h3>Wij regelen uw mutualiteit</h3>
+        <p>CuraKempen regelt de administratieve kant volledig: aanvraag, facturatie en opvolging bij uw ziekenfonds.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">3</span>
+        <div class="step-icon"><i class="fas fa-heart"></i></div>
+        <h3>U betaalt niets</h3>
+        <p>Dankzij het derdebetalerssysteem betaalt u niets. Onze verpleegkundige komt gewoon aan de deur.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+  <!-- DIENSTEN -->
+  <section id="diensten" class="diensten-section">
+    <div class="section-header container">
+      <span class="section-eyebrow">Wat wij doen</span>
+      <h2>Onze Diensten</h2>
+      <p>Van hygiënische zorgen tot palliatieve ondersteuning — bij ons bent u in goede handen. Klik op een dienst voor
+        meer informatie.</p>
+    </div>
+    <div class="diensten-grid container">
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Hygiënische zorgen</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Persoonlijke verzorging met respect en discretie.</p>
+        <div class="dienst-full">Dagelijkse persoonlijke verzorging: wassen, aankleden, mondverzorging en
+          huidverzorging. Onze verpleegkundigen bieden deze intieme zorgen met de grootst mogelijke respect voor uw
+          privacy en eigenwaarde.</div>
+      </div>
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Palliatieve zorgen</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Liefdevolle ondersteuning in de laatste levensfase.</p>
+        <div class="dienst-full">Liefdevolle begeleiding en pijnbestrijding in de laatste levensfase, voor patiënt én
+          familie. Wij bieden comfort, waardigheid en continue aanwezigheid wanneer dit het meest nodig is.</div>
+      </div>
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Wondzorg &amp; stomazorg</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Professionele wond- en stomazorg aan huis.</p>
+        <div class="dienst-full">Professionele verzorging van acute en chronische wonden, inclusief stomaverzorging. Wij
+          werken met de meest recente verbandmaterialen en protocollen voor optimale wondgenezing.</div>
+      </div>
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Inspuitingen &amp; infusie</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Veilige toediening van medicatie en infusen thuis.</p>
+        <div class="dienst-full">Subcutane, intramusculaire en intraveneuze inspuitingen en infusies thuis. Onze
+          verpleegkundigen zijn volledig opgeleid voor alle vormen van injectietechnieken in een veilige thuisomgeving.
+        </div>
+      </div>
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Diabetesopvolging</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Opvolging van bloedsuikerwaarden en insuline.</p>
+        <div class="dienst-full">Opvolging van bloedsuikerwaarden en insuline-inspuitingen in samenwerking met uw arts.
+          Wij voorzien ook educatie zodat u en uw omgeving zelfstandiger worden in het dagelijks beheer.</div>
+      </div>
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Medicatiebeheer</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Correcte opvolging en toediening van medicatie.</p>
+        <div class="dienst-full">Correcte toediening en opvolging van medicatie met een georganiseerd schema. Wij zorgen
+          ervoor dat u nooit een dosis mist en dat uw medicatieplan nauwkeurig gevolgd wordt.</div>
+      </div>
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Bloedafname thuis</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Bloedafname op locatie zonder verplaatsing.</p>
+        <div class="dienst-full">Bloedafname bij u thuis zonder dat u naar het labo of het ziekenhuis moet. Comfortabel,
+          snel en professioneel verwerkt via onze samenwerking met erkende labo-partners.</div>
+      </div>
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Compressietherapie</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Aanleggen van compressieverbanden en -kousen.</p>
+        <div class="dienst-full">Aanleggen van compressieverbanden en -kousen voor de behandeling van oedeem, spataders
+          en lymfoedeem. Een effectieve en comfortabele aanpak bij u thuis.</div>
+      </div>
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Poortkatherspoelen</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Onderhoud van poortkatheters bij kankerpatiënten.</p>
+        <div class="dienst-full">Professioneel onderhoud en spoelen van poortkatheters bij kankerpatiënten die
+          chemotherapie ondergaan. Wij zorgen voor een infectievrij en veilig gebruik van uw poortkatheter.</div>
+      </div>
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Sondevoeding</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Toediening via maag- of neussonde.</p>
+        <div class="dienst-full">Toediening van voeding via maag- of neussonde bij patiënten die niet zelfstandig kunnen
+          eten. Wij begeleiden ook de familie bij het dagelijks beheer van sondevoeding.</div>
+      </div>
+      <div class="dienst-card reveal" onclick="toggleDienst(this)">
+        <div class="dienst-card-header">
+          <h3>Blaas- &amp; maagsondes</h3>
+          <button class="dienst-toggle" aria-label="Uitklappen"><i class="fas fa-plus"></i></button>
+        </div>
+        <p class="dienst-short">Plaatsing en verzorging van blaas- en maagsondes.</p>
+        <div class="dienst-full">Plaatsing, opvolging en verzorging van blaas- en maagsondes bij patiënten die dit nodig
+          hebben. Onze verpleegkundigen handelen discreet, deskundig en met oog voor uw comfort.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+  <!-- TEAM -->
+  <section id="team" class="team-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Ons team</span>
+        <h2 style="color:var(--forest)">Zorg met een menselijk gezicht</h2>
+        <p>Gediplomeerde verpleegkundigen die elke dag klaarstaan voor u.</p>
+      </div>
+      <div class="team-grid">
+        <a href="team/evy-nuyts.html" class="team-card reveal">
+          <div class="team-img-wrap"><img src="../images/Evy-Nuyts.jpg" alt="Evy Nuyts" class="team-img" loading="lazy">
+          </div>
+          <div class="team-name">Evy Nuyts</div>
+          <div class="team-title">Verpleegkundige</div>
+          <div class="team-tags"><span class="team-tag">Wondzorg</span><span class="team-tag">Palliatief</span><span
+              class="team-tag">Diabetes</span></div>
+        </a>
+        <a href="team/hanane-oubali.html" class="team-card reveal">
+          <div class="team-img-wrap"><img src="../images/Hanane-Oubali.png" alt="Hanane Oubali" class="team-img"
+              loading="lazy"></div>
+          <div class="team-name">Hanane Oubali</div>
+          <div class="team-title">Verpleegkundige</div>
+          <div class="team-tags"><span class="team-tag">Hygiëne</span><span class="team-tag">Medicatie</span><span
+              class="team-tag">Meertalig</span></div>
+        </a>
+        <a href="team/martine-jacobs.html" class="team-card reveal">
+          <div class="team-img-wrap"><img src="../images/Martine-Jacobs.jpg" alt="Martine Jacobs" class="team-img"
+              loading="lazy"></div>
+          <div class="team-name">Martine Jacobs</div>
+          <div class="team-title">Verpleegkundige</div>
+          <div class="team-tags"><span class="team-tag">Palliatief</span><span class="team-tag">Oncologie</span><span
+              class="team-tag">Infusie</span></div>
+        </a>
+        <a href="team/leen-van-gorp.html" class="team-card reveal">
+          <div class="team-img-wrap"><img src="../images/Leen-van-Gorp.png" alt="Leen van Gorp" class="team-img"
+              loading="lazy"></div>
+          <div class="team-name">Leen van Gorp</div>
+          <div class="team-title">Verpleegkundige</div>
+          <div class="team-tags"><span class="team-tag">Compressie</span><span class="team-tag">Sondevoeding</span><span
+              class="team-tag">Wondzorg</span></div>
+        </a>
+        <a href="team/blerta-fiqi.html" class="team-card reveal">
+          <div class="team-img-wrap"><img src="../images/Blerta-Fiqi.jpg" alt="Blerta Fiqi" class="team-img"
+              loading="lazy"></div>
+          <div class="team-name">Blerta Fiqi</div>
+          <div class="team-title">Zorgkundige+</div>
+          <div class="team-tags"><span class="team-tag">Hygiëne</span><span class="team-tag">Dagelijkse zorg</span><span
+              class="team-tag">Mobiliteit</span></div>
+        </a>
+        <a href="team/gabriela-chivu.html" class="team-card reveal">
+          <div class="team-img-wrap"><img src="../images/Gabriela-Chivu.png" alt="Gabriela Chivu" class="team-img"
+              loading="lazy"></div>
+          <div class="team-name">Gabriela Chivu</div>
+          <div class="team-title">Verpleegkundige</div>
+          <div class="team-tags"><span class="team-tag">Injectie</span><span class="team-tag">Bloedafname</span><span
+              class="team-tag">Meertalig</span></div>
+        </a>
+        <a href="team/philippe-van-de-ven.html" class="team-card reveal">
+          <div class="team-img-wrap"><img src="../images/Philippe-van-de-ven.png" alt="Philippe van de Ven"
+              class="team-img" loading="lazy"></div>
+          <div class="team-name">Philippe van de Ven</div>
+          <div class="team-title">Verpleegkundige</div>
+          <div class="team-tags"><span class="team-tag">Wondpoort</span><span class="team-tag">Katheter</span><span
+              class="team-tag">Stomazorg</span></div>
+        </a>
+      </div>
+      <p class="team-hint">Klik op een teamlid voor meer info</p>
+    </div>
+  </section>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+  <!-- OPENING HOURS & CONTACT INFO -->
+  <section id="uren" class="hours-section">
+    <div class="hours-grid container">
+      <div>
+        <h2 class="hours-title">Openingsuren</h2>
+        <table class="hours-table">
+          <tr>
+            <td>Maandag – Vrijdag</td>
+            <td>07:00 – 20:00</td>
+          </tr>
+          <tr>
+            <td>Zaterdag</td>
+            <td>08:00 – 14:00</td>
+          </tr>
+          <tr>
+            <td>Zondag</td>
+            <td>Gesloten</td>
+          </tr>
+          <tr>
+            <td>Urgentie</td>
+            <td>24/7</td>
+          </tr>
+        </table>
+        <div class="status-badge" id="status-badge">
+          <span class="status-dot"></span>
+          <span id="status-text">Wordt geladen…</span>
+        </div>
+      </div>
+      <div class="contact-info">
+        <h3>Contactgegevens</h3>
+        <div class="contact-line">
+          <div class="contact-line-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="contact-line-label">Adres</div>
+            <div class="contact-line-text">Hendrik Consciencestraat 20<br>2300 Turnhout</div>
+          </div>
+        </div>
+        <div class="contact-line">
+          <div class="contact-line-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="contact-line-label">Telefoon</div>
+            <div class="contact-line-text">
+              <a href="tel:+32479921888">+32 479 92 18 88</a><br>
+              <a href="tel:+32488455417">+32 488 45 54 17</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-line">
+          <div class="contact-line-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-line-label">E-mail</div>
+            <div class="contact-line-text"><a
+                href="mailto:info@curakempenthuisverpleging.be">info@curakempenthuisverpleging.be</a></div>
+          </div>
+        </div>
+        <div class="contact-line">
+          <div class="contact-line-icon" style="background:#25D366"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <div class="contact-line-label">WhatsApp</div>
+            <div class="contact-line-text"><a href="https://wa.me/32479921888" target="_blank" rel="noopener">Stuur een
+                WhatsApp bericht</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="reviews-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="reviews-header-row">
+          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              fill="#4285F4" />
+            <path
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              fill="#34A853" />
+            <path
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              fill="#FBBC05" />
+            <path
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              fill="#EA4335" />
+          </svg>
+          <span class="section-eyebrow" style="margin-bottom:0">Google Reviews</span>
+        </div>
+        <h2 style="color:var(--forest)">Wat onze patiënten zeggen</h2>
+        <div style="color:var(--gold);font-size:20px;letter-spacing:3px;margin-bottom:4px">★★★★★</div>
+        <p style="font-size:14px">5.0 / 5 op Google</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Fantastische zorg voor mijn moeder. De verpleegkundigen zijn altijd vriendelijk en
+            professioneel. Ze nemen echt de tijd en behandelen haar met veel respect."</p>
+          <div class="review-author">Lieve V.</div>
+          <div class="review-city">Turnhout</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Zeer tevreden over de thuisverpleging. Stipt, deskundig en altijd met een glimlach.
+            Mijn vader voelt zich echt op zijn gemak bij het team van CuraKempen."</p>
+          <div class="review-author">Johan P.</div>
+          <div class="review-city">Beerse</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Professioneel, warm en betrouwbaar. De wondzorg voor mijn man verloopt perfect. Ik
+            kan CuraKempen aan iedereen in de regio aanbevelen!"</p>
+          <div class="review-author">Marie B.</div>
+          <div class="review-city">Kasterlee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+  <!-- INTAKE FORM -->
+  <section id="contact" class="intake-section">
+    <div class="intake-inner">
+      <div class="section-header">
+        <span class="section-eyebrow">Snel aanvragen</span>
+        <h2>Snel thuiszorg aanvragen</h2>
+        <p>Vul het formulier in en wij nemen binnen de dag contact met u op.</p>
+      </div>
+      <form id="intake-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="naam">Naam *</label>
+            <input type="text" id="naam" name="naam" placeholder="Uw volledige naam" required>
+          </div>
+          <div class="form-group">
+            <label for="telefoon">Telefoon *</label>
+            <input type="tel" id="telefoon" name="telefoon" placeholder="+32 …" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" placeholder="uw@email.be" required>
+        </div>
+        <div class="form-group">
+          <label for="adres">Adres (straat + gemeente)</label>
+          <input type="text" id="adres" name="adres" placeholder="Bv. Marktstraat 1, Turnhout">
+        </div>
+        <div class="form-group">
+          <label for="huisarts">Huisarts</label>
+          <input type="text" id="huisarts" name="huisarts" placeholder="Naam van uw huisarts">
+        </div>
+        <div class="form-group">
+          <label for="type-zorg">Type zorg nodig</label>
+          <select id="type-zorg" name="type-zorg">
+            <option value="" disabled selected>Selecteer een type zorg</option>
+            <option value="hygienische-zorgen">Hygiënische zorgen</option>
+            <option value="wondzorg">Wondzorg</option>
+            <option value="inspuitingen">Inspuitingen</option>
+            <option value="palliatieve-zorg">Palliatieve zorg</option>
+            <option value="anders">Anders</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="bericht">Bericht</label>
+          <textarea id="bericht" name="bericht"
+            placeholder="Vertel ons meer over de zorg die u nodig heeft…"></textarea>
+        </div>
+        <div class="form-submit-row">
+          <button type="submit" class="btn-gold" style="width:100%;padding:15px 30px;font-size:15px">
+            <i class="fas fa-paper-plane" style="margin-right:8px"></i> Aanvraag versturen
+          </button>
+        </div>
+        <div class="form-success" id="form-success">
+          <i class="fas fa-check-circle" style="margin-right:8px;color:var(--gold)"></i>
+          Bedankt! We nemen zo snel mogelijk contact met u op.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+  <!-- REGIO -->
+  <section id="regio" class="regio-section">
+    <div class="regio-inner">
+      <span class="section-eyebrow" style="color:var(--gold)">Onze werkingszone</span>
+      <h2>Actief in de Kempen</h2>
+      <p>Wij bieden thuisverpleging aan in de volgende gemeenten. Twijfel je of we ook bij u langskomen? Neem gerust
+        contact op.</p>
+      <div class="regio-pills">
+        <span class="regio-pill">Turnhout</span>
+        <span class="regio-pill">Oud-Turnhout</span>
+        <span class="regio-pill">Kasterlee</span>
+        <span class="regio-pill">Lichtaart</span>
+        <span class="regio-pill">Geel</span>
+        <span class="regio-pill">Beerse</span>
+        <span class="regio-pill">Vosselaar</span>
+      </div>
+      <a href="https://wa.me/32479921888" target="_blank" rel="noopener" class="btn-primary"
+        style="background:#25D366;display:inline-flex;align-items:center;gap:10px">
+        <i class="fab fa-whatsapp" style="font-size:18px"></i> Vraag via WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+  <div class="urgentie-strip">
+    Dringende zorg? Bel ons 24/7: <a href="tel:+32479921888">+32 479 92 18 88</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <img src="../images/logo.webp" alt="CuraKempen" class="footer-logo">
+        <p class="footer-tagline">Kwaliteitsvolle thuisverpleging in de Kempen — warme, professionele zorg bij u thuis.
+        </p>
+        <img src="../images/mederi.jpg" alt="Mederi kwaliteitslabel" class="footer-mederi" loading="lazy">
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-map-marker-alt" style="margin-right:8px;color:var(--gold)"></i> Hendrik Consciencestraat
+            20, 2300 Turnhout</li>
+          <li><a href="tel:+32479921888"><i class="fas fa-phone" style="margin-right:8px;color:var(--gold)"></i> +32 479
+              92 18 88</a></li>
+          <li><a href="tel:+32488455417"><i class="fas fa-phone" style="margin-right:8px;color:var(--gold)"></i> +32 488
+              45 54 17</a></li>
+          <li><a href="mailto:info@curakempenthuisverpleging.be"><i class="fas fa-envelope"
+                style="margin-right:8px;color:var(--gold)"></i> info@curakempenthuisverpleging.be</a></li>
+          <li><a href="https://wa.me/32479921888" target="_blank"><i class="fab fa-whatsapp"
+                style="margin-right:8px;color:#25D366"></i> WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <ul>
+          <li><a href="over.html">Over ons</a></li>
+          <li><a href="diensten.html">Diensten</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Afspraak maken</a></li>
+          <li><a href="privacy.html">Privacybeleid</a></li>
+        </ul>
+        <div style="margin-top:20px">
+          <h4>Openingsuren</h4>
+          <div class="footer-hours-row"><span>Ma – Vr</span><span>07:00 – 20:00</span></div>
+          <div class="footer-hours-row"><span>Zaterdag</span><span>08:00 – 14:00</span></div>
+          <div class="footer-hours-row"><span>Urgentie</span><span style="color:var(--gold)">24/7</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="footer-year"></span> Cura Kempen Thuisverpleging · Hendrik Consciencestraat 20, 2300
+        Turnhout</span>
+      <a href="privacy.html">Privacybeleid</a>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FAB -->
+  <a href="https://wa.me/32479921888" target="_blank" rel="noopener" class="whatsapp-fab" title="WhatsApp CuraKempen">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Footer year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // Hamburger menu
+    document.getElementById('nav-hamburger').addEventListener('click', function () {
+      const m = document.getElementById('nav-mobile');
+      m.classList.toggle('open');
+    });
+    document.querySelectorAll('#nav-mobile a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('nav-mobile').classList.remove('open'));
+    });
+
+    // Scroll reveal
+    const revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
+
+    // Count-up animation
+    function animateCount(el, target, duration) {
+      var start = 0;
+      var step = target / (duration / 16);
+      var timer = setInterval(function () {
+        start = Math.min(start + step, target);
+        el.textContent = Math.floor(start);
+        if (start >= target) clearInterval(timer);
+      }, 16);
+    }
+    var statsObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          document.querySelectorAll('[data-count]').forEach(function (el) {
+            animateCount(el, parseInt(el.dataset.count), 1400);
+          });
+          statsObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    var firstStat = document.querySelector('[data-count]');
+    if (firstStat) statsObserver.observe(firstStat.closest('section'));
+
+    // Expandable diensten
+    function toggleDienst(card) {
+      var isOpen = card.classList.contains('open');
+      document.querySelectorAll('.dienst-card.open').forEach(function (c) {
+        c.classList.remove('open');
+        c.querySelector('.dienst-toggle i').className = 'fas fa-plus';
+      });
+      if (!isOpen) {
+        card.classList.add('open');
+        card.querySelector('.dienst-toggle i').className = 'fas fa-minus';
+      }
+    }
+
+    // Opening hours live indicator
+    function checkOpenStatus() {
+      var now = new Date();
+      var day = now.getDay(); // 0=Sun, 1=Mon, 6=Sat
+      var h = now.getHours();
+      var m = now.getMinutes();
+      var mins = h * 60 + m;
+      var isOpen = false;
+      if (day >= 1 && day <= 5) { // Mon-Fri
+        isOpen = mins >= 7 * 60 && mins < 20 * 60;
+      } else if (day === 6) { // Sat
+        isOpen = mins >= 8 * 60 && mins < 14 * 60;
+      }
+      var badge = document.getElementById('status-badge');
+      var text = document.getElementById('status-text');
+      if (isOpen) {
+        badge.className = 'status-badge status-open';
+        text.textContent = 'Nu open';
+      } else {
+        badge.className = 'status-badge status-closed';
+        text.textContent = 'Nu gesloten';
+      }
+    }
+    checkOpenStatus();
+    setInterval(checkOpenStatus, 60000);
+
+    // Intake form submit
+    document.getElementById('intake-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      this.querySelectorAll('input, select, textarea, button').forEach(function (el) {
+        el.disabled = true;
+      });
+      document.getElementById('form-success').style.display = 'block';
+    });
+  </script>
+</body>
+
+</html>

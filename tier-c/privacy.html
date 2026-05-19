@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacybeleid — CuraKempen Thuisverpleging</title>
+<meta name="description" content="Privacybeleid en cookiebeleid van CuraKempen Thuisverpleging. GDPR-conform beheer van medische persoonsgegevens conform AVG Art. 9.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FAFAF7;
+  --slate:#0D1B2A;
+  --slate-mid:#1A3045;
+  --teal:#0BA888;
+  --teal-dim:#087A63;
+  --teal-light:#E6F7F4;
+  --ink:#0D1B2A;
+  --ink-soft:#5A6A76;
+  --rule:#D8E4E0;
+  --warm-gray:#F2F0EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--ink);font-size:17px;line-height:1.65}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:'Fraunces',serif}
+
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{background:var(--slate);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav-logo img{filter:brightness(0) invert(1);height:38px;display:block}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:14.5px;color:rgba(255,255,255,0.65);transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-ctas{display:flex;align-items:center;gap:10px}
+.btn-nav-primary{background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;padding:10px 22px;border-radius:4px;border:none;cursor:pointer;transition:background 0.2s;display:inline-block}
+.btn-nav-primary:hover{background:var(--teal-dim)}
+.nav-hamburger{display:none;background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.nav-mobile{display:none;background:var(--slate);padding:20px 24px;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;color:rgba(255,255,255,0.7);padding:10px 0;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.06);font-size:15px}
+
+/* PAGE HERO */
+.page-hero{background:var(--slate);padding:72px 24px}
+.page-hero-inner{max-width:1120px;margin:0 auto}
+.page-hero-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;display:block}
+.page-hero-title{font-family:'Fraunces',serif;font-size:clamp(32px,4vw,52px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:14px}
+.page-hero-sub{color:rgba(255,255,255,0.6);font-size:16px;line-height:1.65}
+
+/* CONTENT */
+.privacy-layout{max-width:1120px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:start}
+.toc{position:sticky;top:90px}
+.toc-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.toc-list a{font-size:14px;color:var(--ink-soft);padding:5px 10px;border-radius:4px;display:block;transition:color 0.2s,background 0.2s;border-left:2px solid transparent}
+.toc-list a:hover{color:var(--teal);background:var(--teal-light);border-left-color:var(--teal)}
+
+/* PRIVACY SECTIONS */
+.priv-section{margin-bottom:52px;scroll-margin-top:90px}
+.priv-marker{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.priv-marker-dot{width:10px;height:10px;background:var(--teal);border-radius:50%;flex-shrink:0}
+.priv-marker-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal)}
+.priv-section h2{font-family:'Fraunces',serif;font-size:clamp(22px,2.5vw,30px);font-weight:700;color:var(--ink);margin-bottom:16px;line-height:1.2}
+.priv-section p{color:var(--ink-soft);font-size:15.5px;line-height:1.8;margin-bottom:14px}
+.priv-section ul{color:var(--ink-soft);font-size:15.5px;line-height:1.8;margin-bottom:14px;padding-left:24px;display:flex;flex-direction:column;gap:6px}
+.priv-section ul li::marker{color:var(--teal)}
+.priv-section table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px}
+.priv-section table th{background:var(--teal-light);color:var(--ink);font-weight:600;padding:10px 14px;text-align:left;border:1px solid var(--rule)}
+.priv-section table td{padding:10px 14px;border:1px solid var(--rule);color:var(--ink-soft);vertical-align:top}
+.priv-section table tr:nth-child(even) td{background:var(--warm-gray)}
+.highlight-box{background:var(--teal-light);border-left:4px solid var(--teal);border-radius:0 6px 6px 0;padding:18px 22px;margin:20px 0;font-size:15px;color:var(--ink);line-height:1.7}
+.highlight-box strong{color:var(--teal-dim)}
+
+/* DIVIDER */
+.priv-divider{height:1px;background:var(--rule);margin-bottom:52px}
+
+/* FOOTER */
+footer{background:var(--slate);color:rgba(255,255,255,0.6);padding:64px 24px 32px}
+.footer-inner{max-width:1120px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo{margin-bottom:16px}
+.footer-logo img{filter:brightness(0) invert(1);height:38px}
+.footer-tagline{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:20px;line-height:1.65}
+.footer-heading{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px}
+.footer-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-list li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.5}
+.footer-list a{color:rgba(255,255,255,0.55);transition:color 0.2s}
+.footer-list a:hover{color:#fff}
+.footer-list i{color:var(--teal);margin-top:2px;width:14px;flex-shrink:0;font-size:13px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:rgba(255,255,255,0.3)}
+.footer-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s}
+
+/* COOKIE */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--slate);color:rgba(255,255,255,0.8);padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;font-size:14px;z-index:500;border-top:1px solid rgba(255,255,255,0.1)}
+.cookie-banner.hidden{display:none}
+.cookie-btn{padding:8px 20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;cursor:pointer;border:none}
+.cookie-accept{background:var(--teal);color:#fff}
+.cookie-info{background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);text-decoration:none;display:inline-block;padding:8px 20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px}
+
+@media(max-width:1024px){.privacy-layout{grid-template-columns:1fr}.toc{display:none}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}.footer-grid>div:last-child{grid-column:1/-1}}
+@media(max-width:768px){.nav-links,.nav-ctas{display:none}.nav-hamburger{display:block}.footer-grid{grid-template-columns:1fr;gap:32px}}
+</style>
+</head>
+<body>
+
+<div style="background:var(--slate);color:var(--teal);text-align:center;padding:8px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600">DEMO — Pakket C: Volledig Platform &nbsp;·&nbsp; Online booking, FAQ, intakeformulier &nbsp;·&nbsp; €3.490</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../images/logo.webp" alt="CuraKempen" style="height:38px;filter:brightness(0) invert(1)"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="over.html">Over ons</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="team.html">Team</a>
+      <a href="booking.html">Afspraak</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="booking.html" class="btn-nav-primary">Afspraak maken</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-mob').classList.toggle('open')" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="nav-mob" class="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="over.html">Over ons</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="team.html">Team</a>
+    <a href="booking.html">Afspraak</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-label">Juridisch</span>
+    <h1 class="page-hero-title">Privacybeleid &amp; Cookiebeleid</h1>
+    <p class="page-hero-sub">Laatste update: 18 mei 2026 &nbsp;·&nbsp; CuraKempen Thuisverpleging BV &nbsp;·&nbsp; GDPR/AVG-conform</p>
+  </div>
+</div>
+
+<div class="privacy-layout">
+  <!-- TABLE OF CONTENTS -->
+  <aside class="toc">
+    <div class="toc-title">Inhoudstafel</div>
+    <ul class="toc-list">
+      <li><a href="#verantwoordelijke">1. Verwerkingsverantwoordelijke</a></li>
+      <li><a href="#gegevens">2. Welke gegevens</a></li>
+      <li><a href="#doeleinden">3. Doeleinden</a></li>
+      <li><a href="#bewaartermijn">4. Bewaartermijn</a></li>
+      <li><a href="#bijzondere">5. Bijzondere gegevens (Art. 9)</a></li>
+      <li><a href="#rechten">6. Rechten betrokkenen</a></li>
+      <li><a href="#derden">7. Delen met derden</a></li>
+      <li><a href="#beveiliging">8. Beveiliging</a></li>
+      <li><a href="#gba">9. GBA contact</a></li>
+      <li><a href="#cookies">10. Cookiebeleid</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <main>
+
+    <div class="priv-section" id="verantwoordelijke">
+      <div class="priv-marker"><div class="priv-marker-dot"></div><div class="priv-marker-label">Sectie 01</div></div>
+      <h2>Verwerkingsverantwoordelijke</h2>
+      <p>CuraKempen Thuisverpleging BV (hierna: "CuraKempen", "wij", "ons") is verantwoordelijk voor de verwerking van uw persoonsgegevens zoals beschreven in dit privacybeleid.</p>
+      <table>
+        <tr><th>Gegeven</th><th>Detail</th></tr>
+        <tr><td>Handelsnaam</td><td>CuraKempen Thuisverpleging</td></tr>
+        <tr><td>Adres</td><td>Hendrik Consciencestraat 20, 2300 Turnhout, België</td></tr>
+        <tr><td>E-mail</td><td><a href="mailto:info@curakempenthuisverpleging.be" style="color:var(--teal)">info@curakempenthuisverpleging.be</a></td></tr>
+        <tr><td>Telefoon</td><td>+32 479 92 18 88</td></tr>
+        <tr><td>RIZIV-erkenning</td><td>000000-00-00</td></tr>
+      </table>
+      <p>Heeft u vragen over dit beleid of de verwerking van uw gegevens? Neem contact op via bovenstaand e-mailadres.</p>
+    </div>
+
+    <div class="priv-divider"></div>
+
+    <div class="priv-section" id="gegevens">
+      <div class="priv-marker"><div class="priv-marker-dot"></div><div class="priv-marker-label">Sectie 02</div></div>
+      <h2>Welke gegevens verzamelen wij?</h2>
+      <p>Wij verzamelen uitsluitend de gegevens die noodzakelijk zijn voor het leveren van thuisverpleegkundige diensten:</p>
+      <ul>
+        <li>Identificatiegegevens: naam, voornaam, geboortedatum, rijksregisternummer</li>
+        <li>Contactgegevens: adres, telefoonnummer, e-mailadres</li>
+        <li>Medische gegevens: diagnoses, medicatieschema's, behandelverslagen, zorgplannen</li>
+        <li>Administratieve gegevens: mutualiteitsgegevens, RIZIV-nummer behandelend arts, verzekeringsgegevens</li>
+        <li>Communicatiegegevens: inhoud van uw berichten via ons contactformulier of WhatsApp</li>
+        <li>Technische gegevens: IP-adres, browsertype, paginabezoeken (uitsluitend via geanonimiseerde statistieken)</li>
+      </ul>
+    </div>
+
+    <div class="priv-divider"></div>
+
+    <div class="priv-section" id="doeleinden">
+      <div class="priv-marker"><div class="priv-marker-dot"></div><div class="priv-marker-label">Sectie 03</div></div>
+      <h2>Doeleinden van verwerking</h2>
+      <table>
+        <tr><th>Doeleinde</th><th>Rechtsgrond</th></tr>
+        <tr><td>Verlenen van thuisverpleegkundige zorgen</td><td>Uitvoering overeenkomst (Art. 6.1.b AVG)</td></tr>
+        <tr><td>Facturatie aan mutualiteit (derdebetalerssysteem)</td><td>Wettelijke verplichting (Art. 6.1.c AVG)</td></tr>
+        <tr><td>Communicatie over uw zorgtraject</td><td>Legitiem belang (Art. 6.1.f AVG)</td></tr>
+        <tr><td>Verwerking medische gegevens voor zorg</td><td>Gezondheidsuitzondering (Art. 9.2.h AVG)</td></tr>
+        <tr><td>Nieuwsbrief (optioneel)</td><td>Toestemming (Art. 6.1.a AVG)</td></tr>
+        <tr><td>Verbetering van onze website</td><td>Legitiem belang + toestemming voor cookies</td></tr>
+      </table>
+    </div>
+
+    <div class="priv-divider"></div>
+
+    <div class="priv-section" id="bewaartermijn">
+      <div class="priv-marker"><div class="priv-marker-dot"></div><div class="priv-marker-label">Sectie 04</div></div>
+      <h2>Bewaartermijn</h2>
+      <p>Wij bewaren uw persoonsgegevens niet langer dan noodzakelijk voor de doeleinden waarvoor ze verzameld zijn, in overeenstemming met de Belgische regelgeving voor zorgverstrekkers:</p>
+      <table>
+        <tr><th>Type gegeven</th><th>Bewaartermijn</th></tr>
+        <tr><td>Medisch dossier / zorgverslagen</td><td>30 jaar na het einde van de behandelrelatie (KB 03/05/1999)</td></tr>
+        <tr><td>Facturatie- en mutualiteitsgegevens</td><td>7 jaar (boekhoudkundige verplichting)</td></tr>
+        <tr><td>Contactformulieren en e-mailcorrespondentie</td><td>2 jaar na laatste contact</td></tr>
+        <tr><td>Nieuwsbriefabonnementen</td><td>Tot uitschrijving + 1 jaar</td></tr>
+        <tr><td>Cookiegegevens (analytisch)</td><td>Maximaal 13 maanden</td></tr>
+      </table>
+    </div>
+
+    <div class="priv-divider"></div>
+
+    <div class="priv-section" id="bijzondere">
+      <div class="priv-marker"><div class="priv-marker-dot"></div><div class="priv-marker-label">Sectie 05</div></div>
+      <h2>Bijzondere categorieën persoonsgegevens (AVG Art. 9)</h2>
+      <div class="highlight-box">
+        <strong>Wettelijke basis voor verwerking van gezondheidsgegevens:</strong> In het kader van onze activiteiten als RIZIV-erkend thuisverpleegkundige verwerken wij gezondheidsgegevens op basis van <strong>Art. 9.2.h AVG</strong> — verwerking noodzakelijk voor preventieve geneeskunde of gezondheidszorg, en voor het beheer van gezondheidsstelsels en -diensten.
+      </div>
+      <p>Als gezondheidszorgverlener zijn wij gebonden aan het medisch beroepsgeheim (art. 458 Sw.) en de deontologische code voor verpleegkundigen. Alle teamleden zijn individueel gehouden aan strikte geheimhoudingsplicht.</p>
+      <p>Uw medische gegevens worden:</p>
+      <ul>
+        <li>Uitsluitend gedeeld met betrokken zorgverleners (uw huisarts, specialist) met uw toestemming</li>
+        <li>Nooit verkocht aan derden of gebruikt voor commerciële doeleinden</li>
+        <li>Opgeslagen op beveiligde, Belgische servers met volledige encryptie</li>
+        <li>Enkel geanonimiseerd gebruikt voor interne kwaliteitsverbetering</li>
+      </ul>
+    </div>
+
+    <div class="priv-divider"></div>
+
+    <div class="priv-section" id="rechten">
+      <div class="priv-marker"><div class="priv-marker-dot"></div><div class="priv-marker-label">Sectie 06</div></div>
+      <h2>Uw rechten als betrokkene</h2>
+      <p>Onder de AVG (GDPR) beschikt u over de volgende rechten. U kunt deze uitoefenen via <a href="mailto:info@curakempenthuisverpleging.be" style="color:var(--teal)">info@curakempenthuisverpleging.be</a>:</p>
+      <ul>
+        <li><strong>Recht op inzage (Art. 15 AVG):</strong> U kunt opvragen welke persoonsgegevens wij over u bewaren.</li>
+        <li><strong>Recht op rectificatie (Art. 16 AVG):</strong> Onjuiste of onvolledige gegevens kunt u laten corrigeren.</li>
+        <li><strong>Recht op verwijdering (Art. 17 AVG):</strong> U kunt vragen uw gegevens te verwijderen, tenzij wij een wettelijke bewaarplicht hebben.</li>
+        <li><strong>Recht op beperking van verwerking (Art. 18 AVG):</strong> U kunt de verwerking tijdelijk laten opschorten.</li>
+        <li><strong>Recht op gegevensoverdraagbaarheid (Art. 20 AVG):</strong> U kunt uw gegevens opvragen in een leesbaar formaat.</li>
+        <li><strong>Recht van bezwaar (Art. 21 AVG):</strong> U kunt bezwaar maken tegen verwerking op basis van legitiem belang.</li>
+        <li><strong>Recht op intrekking van toestemming:</strong> Wanneer verwerking op toestemming gebaseerd is, kunt u die te allen tijde intrekken.</li>
+      </ul>
+      <p>Wij beantwoorden uw verzoek binnen 30 dagen. In complexe gevallen kan dit verlengd worden met maximaal 60 dagen, waarover wij u tijdig informeren.</p>
+    </div>
+
+    <div class="priv-divider"></div>
+
+    <div class="priv-section" id="derden">
+      <div class="priv-marker"><div class="priv-marker-dot"></div><div class="priv-marker-label">Sectie 07</div></div>
+      <h2>Delen met derden</h2>
+      <p>Wij delen uw gegevens uitsluitend in de volgende gevallen:</p>
+      <ul>
+        <li><strong>Mutualiteiten en RIZIV:</strong> voor facturatie en erkenningsverplichtingen</li>
+        <li><strong>Uw behandelend arts en specialisten:</strong> enkel met uw expliciete toestemming</li>
+        <li><strong>Ziekenhuizen en spoedopnames:</strong> in geval van medische urgentie</li>
+        <li><strong>Verwerkersovereenkomsten:</strong> met IT-leveranciers die enkel handelen in onze opdracht en gebonden zijn door een verwerkersovereenkomst</li>
+        <li><strong>Overheidsdiensten:</strong> enkel bij wettelijke verplichting</li>
+      </ul>
+      <p>Wij geven uw gegevens nooit door aan landen buiten de EER zonder passende waarborgen.</p>
+    </div>
+
+    <div class="priv-divider"></div>
+
+    <div class="priv-section" id="beveiliging">
+      <div class="priv-marker"><div class="priv-marker-dot"></div><div class="priv-marker-label">Sectie 08</div></div>
+      <h2>Beveiliging van uw gegevens</h2>
+      <p>CuraKempen neemt passende technische en organisatorische maatregelen om uw persoonsgegevens te beschermen tegen ongeautoriseerde toegang, verlies, vernietiging of openbaarmaking:</p>
+      <ul>
+        <li>Versleutelde communicatie (TLS/HTTPS) op alle digitale kanalen</li>
+        <li>Toegangsbeveiliging met tweefactorauthenticatie voor medewerkers</li>
+        <li>Regelmatige back-ups op beveiligde Belgische servers</li>
+        <li>Jaarlijkse beveiligingsaudits en medewerkerstraining GDPR</li>
+        <li>Procedures voor meldplicht datalekken conform Art. 33-34 AVG (melding GBA binnen 72u bij inbreuk)</li>
+      </ul>
+    </div>
+
+    <div class="priv-divider"></div>
+
+    <div class="priv-section" id="gba">
+      <div class="priv-marker"><div class="priv-marker-dot"></div><div class="priv-marker-label">Sectie 09</div></div>
+      <h2>Gegevensbeschermingsautoriteit (GBA)</h2>
+      <p>Bent u niet tevreden met de manier waarop wij met uw persoonsgegevens omgaan, of met ons antwoord op uw verzoek? Dan heeft u het recht een klacht in te dienen bij de Belgische Gegevensbeschermingsautoriteit:</p>
+      <div class="highlight-box">
+        <strong>Gegevensbeschermingsautoriteit (GBA)</strong><br>
+        Drukpersstraat 35, 1000 Brussel<br>
+        <a href="https://www.gegevensbeschermingsautoriteit.be" target="_blank" rel="noopener" style="color:var(--teal)">www.gegevensbeschermingsautoriteit.be</a><br>
+        Tel: +32 2 274 48 00 &nbsp;·&nbsp; E-mail: contact@apd-gba.be
+      </div>
+    </div>
+
+    <div class="priv-divider"></div>
+
+    <div class="priv-section" id="cookies">
+      <div class="priv-marker"><div class="priv-marker-dot"></div><div class="priv-marker-label">Sectie 10</div></div>
+      <h2>Cookiebeleid</h2>
+      <p>Onze website maakt gebruik van cookies — kleine tekstbestanden die op uw apparaat worden opgeslagen wanneer u onze site bezoekt. Wij gebruiken uitsluitend de volgende categorieën:</p>
+      <table>
+        <tr><th>Cookie</th><th>Type</th><th>Doel</th><th>Bewaarduur</th></tr>
+        <tr><td><code>ck_consent</code></td><td>Functioneel</td><td>Opslaan van uw cookievoorkeur</td><td>12 maanden</td></tr>
+        <tr><td>Sessioncookie</td><td>Strikt noodzakelijk</td><td>Correct functioneren van de website</td><td>Sessie</td></tr>
+        <tr><td>Analytische cookies</td><td>Analytisch (optioneel)</td><td>Geanonimiseerde websitestatistieken</td><td>13 maanden</td></tr>
+      </table>
+      <p>Wij plaatsen <strong>geen</strong> advertentiecookies, trackingcookies van derden of social media cookies zonder uw uitdrukkelijke toestemming.</p>
+      <h3 style="font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink);margin:24px 0 12px">Hoe cookies weigeren of verwijderen?</h3>
+      <p>U kunt op elk moment uw cookievoorkeur aanpassen via de browserinstellingen. Let op: het uitschakelen van strikt noodzakelijke cookies kan de werking van de website beïnvloeden.</p>
+      <ul>
+        <li><strong>Chrome:</strong> Instellingen → Beveiliging en privacy → Cookies</li>
+        <li><strong>Firefox:</strong> Opties → Privacy &amp; Beveiliging → Cookies</li>
+        <li><strong>Edge:</strong> Instellingen → Cookies en sitemachtigingen</li>
+        <li><strong>Safari:</strong> Voorkeuren → Privacy → Cookies</li>
+      </ul>
+      <p style="margin-top:16px">Voor meer informatie over cookies en uw rechten: <a href="https://www.gegevensbeschermingsautoriteit.be" target="_blank" rel="noopener" style="color:var(--teal)">www.gegevensbeschermingsautoriteit.be</a></p>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><img src="../images/logo.webp" alt="CuraKempen"></div>
+        <div class="footer-tagline">Professionele thuisverpleging in de Kempen. RIZIV-erkend. 100% vergoed via uw mutualiteit.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:8px">RIZIV-erkenningsnummer: 000000-00-00</div>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-list">
+          <li><i class="fa-solid fa-location-dot"></i><span>Hendrik Consciencestraat 20<br>2300 Turnhout</span></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+32479921888">+32 479 92 18 88</a></li>
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@curakempenthuisverpleging.be" style="word-break:break-all">info@curakempenthuisverpleging.be</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Navigatie</div>
+        <ul class="footer-list" style="margin-bottom:24px">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="over.html">Over ons</a></li>
+          <li><a href="diensten.html">Diensten</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="footer-heading">Juridisch</div>
+        <ul class="footer-list">
+          <li><a href="privacy.html">Privacybeleid</a></li>
+          <li><a href="privacy.html#cookies">Cookiebeleid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="footer-year"></span> CuraKempen. Alle rechten voorbehouden.</span>
+      <span>RIZIV-erkend thuisverpleging</span>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookie-banner">
+  <span>Wij gebruiken cookies voor een optimale ervaring.</span>
+  <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accepteren</button>
+  <a href="#cookies" class="cookie-info">Meer info</a>
+</div>
+
+<script>
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+function acceptCookies() {
+  localStorage.setItem('ck_consent','1');
+  document.getElementById('cookie-banner').classList.add('hidden');
+}
+if (localStorage.getItem('ck_consent')) document.getElementById('cookie-banner').classList.add('hidden');
+</script>
+</body>
+</html>

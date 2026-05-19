@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacybeleid — CuraKempen Thuisverpleging</title>
+<meta name="description" content="Privacybeleid van CuraKempen Thuisverpleging conform de AVG/GDPR. Lees hoe wij uw persoonsgegevens en gezondheidsgegevens verwerken en beschermen.">
+<link rel="icon" href="../images/logo.webp">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F8F4EC;
+  --cream-dark: #EEE8D8;
+  --forest: #1E3D2F;
+  --forest-mid: #2D5940;
+  --forest-light: #E8F0E9;
+  --gold: #C8A45A;
+  --gold-light: #FBF5E6;
+  --ink: #1A1A18;
+  --ink-soft: #4A4840;
+  --rule: #D0C8B8;
+  --white: #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.65; }
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+/* DEMO BANNER */
+.demo-banner { background: #1A1A18; color: #C8A45A; text-align: center; padding: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; }
+
+/* NAV */
+nav { background: var(--forest); position: sticky; top: 0; z-index: 100; }
+.nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo img { height: 40px; filter: brightness(0) invert(1); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: #fff; }
+.nav-cta { border: 1px solid rgba(255,255,255,0.4); color: white !important; padding: 9px 20px; }
+.nav-cta:hover { background: rgba(255,255,255,0.1); }
+.nav-hamburger { display: none; background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
+.nav-mobile { display: none; background: var(--forest-mid); padding: 16px 24px 20px; }
+.nav-mobile.open { display: block; }
+.nav-mobile a { display: block; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.nav-mobile a:last-child { border-bottom: none; }
+.nav-mobile a:hover { color: white; }
+
+/* PAGE HERO */
+.page-hero { background: var(--forest); padding: 60px 24px 68px; }
+.page-hero-inner { max-width: 800px; margin: 0 auto; }
+.page-hero h1 { font-size: 44px; font-weight: 700; color: var(--white); line-height: 1.12; margin-bottom: 12px; }
+.page-hero-sub { font-size: 16px; color: rgba(248,244,236,0.7); line-height: 1.7; }
+.gold-rule-divider { height: 6px; background: var(--gold); }
+
+/* PRIVACY CONTENT */
+.privacy-section { background: var(--white); padding: 72px 24px; }
+.privacy-content { max-width: 800px; margin: 0 auto; }
+.privacy-content h2 { font-size: 26px; font-weight: 700; color: var(--forest); margin: 40px 0 14px; border-left: 4px solid var(--gold); padding-left: 16px; }
+.privacy-content h2:first-child { margin-top: 0; }
+.privacy-content h3 { font-size: 19px; font-weight: 600; color: var(--forest); margin: 24px 0 10px; }
+.privacy-content p { font-size: 15px; color: var(--ink-soft); margin-bottom: 14px; line-height: 1.75; }
+.privacy-content ul { margin: 0 0 14px 20px; }
+.privacy-content ul li { font-size: 15px; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.7; }
+.privacy-content a { color: var(--forest); font-weight: 500; }
+.privacy-content a:hover { text-decoration: underline; }
+.privacy-meta { font-size: 13px; color: var(--ink-soft); font-style: italic; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
+.special-data-box { background: var(--gold-light); border: 1px solid var(--gold); border-left: 4px solid var(--gold); padding: 20px 24px; margin: 20px 0 28px; border-radius: 2px; }
+.special-data-box p { margin-bottom: 0; font-size: 15px; color: var(--ink); }
+.special-data-box strong { color: var(--forest); }
+
+/* FOOTER */
+footer { background: var(--ink); color: rgba(248,244,236,0.65); padding: 72px 24px 32px; }
+.footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+footer img.footer-logo { height: 36px; filter: brightness(0) invert(1); margin-bottom: 14px; }
+.footer-tagline { font-size: 14px; line-height: 1.65; margin-bottom: 20px; }
+footer img.footer-mederi { height: 48px; border-radius: 4px; }
+.footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,244,236,0.35); margin-bottom: 16px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { font-size: 14px; margin-bottom: 10px; }
+.footer-col ul li a { color: rgba(248,244,236,0.65); text-decoration: none; transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--cream); }
+.footer-hours-row { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-hours-row:last-child { border-bottom: none; }
+.footer-hours-row span:last-child { color: rgba(248,244,236,0.85); }
+.footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: rgba(248,244,236,0.35); }
+.footer-bottom a { color: rgba(248,244,236,0.35); text-decoration: none; }
+.footer-bottom a:hover { color: rgba(248,244,236,0.65); }
+
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .page-hero h1 { font-size: 34px; }
+}
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+}
+</style>
+</head>
+<body>
+
+  <div class="demo-banner" style="background:var(--forest);color:var(--gold);text-align:center;padding:8px;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:600">DEMO — Pakket B: Professioneel &nbsp;·&nbsp; Aparte pagina's, team, intake &nbsp;·&nbsp; €1.490</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../images/logo.webp" alt="CuraKempen"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="over.html">Over ons</a></li>
+      <li><a href="diensten.html">Diensten</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu openen"><i class="fas fa-bars"></i></button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="over.html">Over ons</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <h1>Privacybeleid</h1>
+    <p class="page-hero-sub">CuraKempen Thuisverpleging respecteert uw privacy en verwerkt uw persoonsgegevens conform de Algemene Verordening Gegevensbescherming (AVG / GDPR).</p>
+  </div>
+</section>
+
+<div class="gold-rule-divider"></div>
+
+<section class="privacy-section">
+  <div class="privacy-content">
+    <p class="privacy-meta">Versie: mei 2025 &nbsp;·&nbsp; Laast bijgewerkt: 18 mei 2025</p>
+
+    <h2>1. Verwerkingsverantwoordelijke</h2>
+    <p>De verwerkingsverantwoordelijke voor uw persoonsgegevens is:</p>
+    <p><strong>CuraKempen Thuisverpleging</strong><br>
+    Hendrik Consciencestraat 20<br>
+    2300 Turnhout<br>
+    België</p>
+    <p>Telefoon: <a href="tel:+32479921888">+32 479 92 18 88</a><br>
+    E-mail: <a href="mailto:info@curakempenthuisverpleging.be">info@curakempenthuisverpleging.be</a><br>
+    RIZIV-erkenningsnummer: 000000-00-00</p>
+
+    <h2>2. Welke persoonsgegevens verwerken wij?</h2>
+    <p>Afhankelijk van de zorgrelatie en de manier waarop u contact met ons opneemt, verwerken wij de volgende categorieën van persoonsgegevens:</p>
+    <h3>2.1 Identificatie- en contactgegevens</h3>
+    <ul>
+      <li>Naam en voornaam</li>
+      <li>Adres (straat, nummer, postcode, gemeente)</li>
+      <li>Telefoonnummer(s)</li>
+      <li>E-mailadres</li>
+      <li>Geboortedatum en geslacht</li>
+      <li>Rijksregisternummer (indien vereist voor RIZIV-facturatie)</li>
+    </ul>
+    <h3>2.2 Zorginhoudelijke gegevens (bijzondere persoonsgegevens)</h3>
+    <ul>
+      <li>Medische diagnoses en aandoeningen</li>
+      <li>Zorgplannen, verpleegkundige verslagen en zorgnota's</li>
+      <li>Medicatieschema's en toegediende geneesmiddelen</li>
+      <li>Laboratoriumuitslagen (indien bloedafname aan huis)</li>
+      <li>Wondstatus, foto's van wonden (indien medisch noodzakelijk)</li>
+      <li>Informatie over huisarts en betrokken specialisten</li>
+    </ul>
+    <h3>2.3 Administratieve en financiële gegevens</h3>
+    <ul>
+      <li>Mutualiteitsgegevens en verzekeringsaansluiting</li>
+      <li>RIZIV-facturatiegegevens</li>
+      <li>Contactgegevens van mantelzorgers of wettelijke vertegenwoordigers</li>
+    </ul>
+
+    <div class="special-data-box">
+      <p><strong>Bijzondere persoonsgegevens — Artikel 9 AVG:</strong> Gezondheidsgegevens zijn bijzondere categorieën van persoonsgegevens in de zin van artikel 9 van de AVG. Wij verwerken deze gegevens uitsluitend op basis van uw expliciete toestemming en/of omdat de verwerking noodzakelijk is voor het verstrekken van preventieve gezondheidszorg, medische diagnoses, de verstrekking van gezondheidszorg of de behandeling door een zorgverlener die onder een wettelijk beroepsgeheim valt (artikel 9, lid 2, h AVG).</p>
+    </div>
+
+    <h2>3. Doeleinden van de verwerking</h2>
+    <p>Wij verwerken uw persoonsgegevens voor de volgende doeleinden:</p>
+    <ul>
+      <li>Het verlenen van thuisverpleegkundige zorg conform uw zorgplan</li>
+      <li>Communicatie met uw huisarts, specialist en andere zorgverleners</li>
+      <li>RIZIV-facturatie en administratieve afhandeling via uw mutualiteit</li>
+      <li>Opstellen en bijhouden van het verpleegkundig dossier</li>
+      <li>Kwaliteitsbewaking en interne evaluatie van de geleverde zorg</li>
+      <li>Beantwoorden van uw vragen via contactformulier, telefoon of e-mail</li>
+      <li>Naleving van onze wettelijke verplichtingen als zorgverstrekker</li>
+    </ul>
+
+    <h2>4. Rechtsgronden voor de verwerking</h2>
+    <p>Wij verwerken uw persoonsgegevens op basis van de volgende rechtsgronden uit de AVG:</p>
+    <ul>
+      <li><strong>Uitvoering van een overeenkomst</strong> (art. 6, lid 1, b): de zorgovereenkomst met de patiënt</li>
+      <li><strong>Wettelijke verplichting</strong> (art. 6, lid 1, c): RIZIV-regelgeving, patiëntenrechtenwet, beroepscode verpleegkunde</li>
+      <li><strong>Gerechtvaardigd belang</strong> (art. 6, lid 1, f): kwaliteitsopvolging, interne administratie</li>
+      <li><strong>Toestemming</strong> (art. 6, lid 1, a en art. 9, lid 2, a): voor bijzondere categorieën van gezondheidsgegevens, indien geen andere rechtsgrond van toepassing is</li>
+      <li><strong>Zorgverlening door een beroepsbeoefenaar in de gezondheidszorg</strong> (art. 9, lid 2, h): voor alle zorginhoudelijke gezondheidsgegevens</li>
+    </ul>
+
+    <h2>5. Bewaartermijnen</h2>
+    <p>Wij bewaren uw persoonsgegevens niet langer dan noodzakelijk voor de doeleinden waarvoor ze zijn verzameld, en in overeenstemming met de toepasselijke wettelijke bewaarverplichtingen:</p>
+    <ul>
+      <li><strong>Verpleegkundig dossier:</strong> minimaal 30 jaar na het laatste zorgcontact, conform de Belgische patiëntenrechtenwet</li>
+      <li><strong>RIZIV-facturatiegegevens:</strong> 7 jaar conform boekhoudwetgeving</li>
+      <li><strong>Contactgegevens (vragen, formulieren):</strong> maximaal 2 jaar na het laatste contact</li>
+      <li><strong>Sollicitaties:</strong> maximaal 6 maanden na afwijzing, tenzij expliciete toestemming voor langere bewaring</li>
+    </ul>
+
+    <h2>6. Ontvangers van uw gegevens</h2>
+    <p>Uw persoonsgegevens worden in beginsel niet aan derden verstrekt, tenzij:</p>
+    <ul>
+      <li>dit noodzakelijk is voor de uitvoering van uw zorgplan (huisarts, specialisten, labo, apotheker)</li>
+      <li>wij hiertoe wettelijk verplicht zijn (RIZIV, Gezondheidszorgberoepen)</li>
+      <li>u hiervoor expliciete toestemming heeft gegeven</li>
+    </ul>
+    <p>Wij maken geen gebruik van commerciële derden voor het verwerken van gezondheidsgegevens zonder verwerkersovereenkomst. Wij verkopen of verhuren uw gegevens nooit aan derden.</p>
+
+    <h2>7. Doorgifte buiten de EER</h2>
+    <p>Uw persoonsgegevens worden niet doorgegeven aan landen buiten de Europese Economische Ruimte (EER). Alle verwerking vindt plaats binnen de EU.</p>
+
+    <h2>8. Uw rechten als betrokkene</h2>
+    <p>Op grond van de AVG heeft u de volgende rechten met betrekking tot uw persoonsgegevens:</p>
+    <ul>
+      <li><strong>Recht op inzage</strong> (art. 15): u kunt opvragen welke gegevens wij over u verwerken</li>
+      <li><strong>Recht op rectificatie</strong> (art. 16): u kunt onjuiste gegevens laten verbeteren</li>
+      <li><strong>Recht op gegevenswissing</strong> (art. 17): in bepaalde gevallen kunt u verwijdering van uw gegevens vragen</li>
+      <li><strong>Recht op beperking van de verwerking</strong> (art. 18)</li>
+      <li><strong>Recht op gegevensoverdraagbaarheid</strong> (art. 20)</li>
+      <li><strong>Recht van bezwaar</strong> (art. 21): u kunt bezwaar maken tegen bepaalde verwerkingen op basis van gerechtvaardigd belang</li>
+      <li><strong>Recht om toestemming in te trekken</strong>: indien verwerking op toestemming is gebaseerd, kunt u deze altijd intrekken zonder dat dit afbreuk doet aan de rechtmatigheid van de eerdere verwerking</li>
+    </ul>
+    <p>Om uw rechten uit te oefenen, neemt u contact op via <a href="mailto:info@curakempenthuisverpleging.be">info@curakempenthuisverpleging.be</a> of schriftelijk op ons adres. Wij beantwoorden uw verzoek binnen één maand.</p>
+
+    <h2>9. Beveiliging van uw gegevens</h2>
+    <p>Wij nemen passende technische en organisatorische maatregelen om uw persoonsgegevens te beschermen tegen ongeoorloofde toegang, verlies, vernietiging of openbaarmaking. Onze medewerkers zijn gebonden aan een beroepsgeheim en zijn geïnstrueerd over de correcte omgang met vertrouwelijke gezondheidsgegevens.</p>
+
+    <h2>10. Cookies en website</h2>
+    <p>Onze website maakt geen gebruik van tracking cookies van derden. Enkel functionele cookies die strikt noodzakelijk zijn voor de werking van de website worden gebruikt. Er worden geen persoonsgegevens verzameld via analytische of marketingcookies zonder uw toestemming.</p>
+
+    <h2>11. Klachten</h2>
+    <p>Indien u van mening bent dat uw rechten niet worden gerespecteerd of dat wij uw persoonsgegevens op een onrechtmatige wijze verwerken, kunt u een klacht indienen bij de Belgische Gegevensbeschermingsautoriteit (GBA):</p>
+    <p><strong>Gegevensbeschermingsautoriteit (GBA)</strong><br>
+    Drukpersstraat 35, 1000 Brussel<br>
+    Telefoon: +32 2 274 48 00<br>
+    E-mail: <a href="mailto:contact@apd-gba.be">contact@apd-gba.be</a><br>
+    Website: <a href="https://www.gegevensbeschermingsautoriteit.be" target="_blank" rel="noopener">www.gegevensbeschermingsautoriteit.be</a></p>
+
+    <h2>12. Wijzigingen aan dit privacybeleid</h2>
+    <p>Wij behouden ons het recht voor dit privacybeleid te wijzigen. Bij wezenlijke wijzigingen zullen wij u hierover informeren via onze website of rechtstreeks. De meest actuele versie is steeds raadpleegbaar op deze pagina.</p>
+
+    <p style="margin-top:36px;padding-top:24px;border-top:1px solid var(--rule);font-size:14px;color:var(--ink-soft)">
+      <a href="contact.html"><i class="fas fa-arrow-left" style="margin-right:6px"></i> Terug naar Contact</a>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="../images/logo.webp" alt="CuraKempen" class="footer-logo">
+      <p class="footer-tagline">Kwaliteitsvolle thuisverpleging in de Kempen — warme, professionele zorg bij u thuis.</p>
+      <img src="../images/mederi.jpg" alt="Mederi kwaliteitslabel" class="footer-mederi" loading="lazy">
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><i class="fas fa-map-marker-alt" style="margin-right:8px;color:var(--gold)"></i> Hendrik Consciencestraat 20, 2300 Turnhout</li>
+        <li><a href="tel:+32479921888"><i class="fas fa-phone" style="margin-right:8px;color:var(--gold)"></i> +32 479 92 18 88</a></li>
+        <li><a href="tel:+32488455417"><i class="fas fa-phone" style="margin-right:8px;color:var(--gold)"></i> +32 488 45 54 17</a></li>
+        <li><a href="mailto:info@curakempenthuisverpleging.be"><i class="fas fa-envelope" style="margin-right:8px;color:var(--gold)"></i> info@curakempenthuisverpleging.be</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Navigatie</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div style="margin-top:20px;font-size:13px;color:rgba(248,244,236,0.45)">RIZIV-erkenningsnummer: 000000-00-00</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="footer-year"></span> Cura Kempen Thuisverpleging · Hendrik Consciencestraat 20, 2300 Turnhout</span>
+    <a href="privacy.html">Privacybeleid</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+document.getElementById('nav-hamburger').addEventListener('click', function() {
+  document.getElementById('nav-mobile').classList.toggle('open');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,2668 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CuraKempen — Thuisverpleging Kempen | Pakket C: Volledig Platform</title>
+  <meta name="description"
+    content="Professionele thuisverpleging in Turnhout en de Kempen. Online afspraak maken, 100% vergoed via mutualiteit. Bel +32 479 92 18 88.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --white: #FAFAF7;
+      --slate: #0D1B2A;
+      --slate-mid: #1A3045;
+      --teal: #0BA888;
+      --teal-dim: #087A63;
+      --teal-light: #E6F7F4;
+      --ink: #0D1B2A;
+      --ink-soft: #5A6A76;
+      --rule: #D8E4E0;
+      --warm-gray: #F2F0EB;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.65
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Fraunces', serif
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px
+    }
+
+    section {
+      padding: 96px 24px
+    }
+
+    /* NAV */
+    nav {
+      background: var(--slate);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06)
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px
+    }
+
+    .nav-logo img {
+      filter: brightness(0) invert(1);
+      height: 38px;
+      display: block
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px
+    }
+
+    .nav-links a {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.65);
+      transition: color 0.2s
+    }
+
+    .nav-links a:hover {
+      color: #fff
+    }
+
+    .nav-ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .btn-nav-primary {
+      background: var(--teal);
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-block
+    }
+
+    .btn-nav-primary:hover {
+      background: var(--teal-dim)
+    }
+
+    .btn-nav-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.8);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 4px;
+      background: transparent;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block
+    }
+
+    .btn-nav-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      color: #fff
+    }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer
+    }
+
+    .nav-mobile {
+      display: none;
+      background: var(--slate);
+      padding: 20px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08)
+    }
+
+    .nav-mobile.open {
+      display: block
+    }
+
+    .nav-mobile a {
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 10px 0;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 15px
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 28px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.01);
+      box-shadow: 0 4px 20px rgba(11, 168, 136, 0.35)
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 1.5px solid var(--teal);
+      color: var(--teal);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease
+    }
+
+    .btn-secondary:hover {
+      transform: scale(1.01)
+    }
+
+    .btn-white-outline {
+      display: inline-block;
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer;
+      transition: border-color 0.2s
+    }
+
+    .btn-white-outline:hover {
+      border-color: #fff
+    }
+
+    /* SECTION LABELS */
+    .section-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+      display: block
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 20px
+    }
+
+    .section-title em {
+      font-style: italic
+    }
+
+    .section-body {
+      color: var(--ink-soft);
+      font-size: 17px;
+      line-height: 1.75;
+      margin-bottom: 32px
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--slate);
+      padding: 80px 24px
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center
+    }
+
+    .hero-headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(44px, 5vw, 68px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 24px
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--teal)
+    }
+
+    .hero-sub {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px
+    }
+
+    .stats-grid {
+      background: var(--slate-mid);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px
+    }
+
+    .stat-item {
+      text-align: center
+    }
+
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-top: 4px;
+      font-weight: 500
+    }
+
+    .hero-photo {
+      border-radius: 8px;
+      border: 1px solid var(--teal);
+      height: 260px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center
+    }
+
+    /* TRUST STRIP */
+    .trust-strip {
+      background: var(--teal);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .trust-items {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center
+    }
+
+    .trust-item {
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    /* OVER ONS */
+    .over-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--teal-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--teal);
+      font-size: 18px
+    }
+
+    .feature-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--ink);
+      margin-bottom: 3px
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.55
+    }
+
+    .over-photo {
+      border-radius: 8px;
+      height: 340px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      border: 1px solid var(--rule)
+    }
+
+    /* TERUGBETALING */
+    .terugbetaling-inner {
+      max-width: 1120px;
+      margin: 0 auto
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 52px;
+      position: relative
+    }
+
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 44px;
+      left: calc(16.66% + 16px);
+      right: calc(16.66% + 16px);
+      height: 2px;
+      background: var(--rule);
+      z-index: 0
+    }
+
+    .step-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 32px 28px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 2px 16px rgba(13, 27, 42, 0.06)
+    }
+
+    .step-num {
+      font-family: 'Fraunces', serif;
+      font-size: 52px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 16px
+    }
+
+    .step-title {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px
+    }
+
+    .step-desc {
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      line-height: 1.65
+    }
+
+    /* DIENSTEN */
+    .diensten-inner {
+      max-width: 1120px;
+      margin: 0 auto
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 4px;
+      margin: 40px 0 32px;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .tab-btn {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 20px;
+      border: none;
+      background: none;
+      color: var(--ink-soft);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s
+    }
+
+    .tab-btn.active {
+      color: var(--teal);
+      border-bottom-color: var(--teal)
+    }
+
+    .tab-btn:hover {
+      color: var(--ink)
+    }
+
+    .diensten-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px
+    }
+
+    .dienst-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 16px rgba(13, 27, 42, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s
+    }
+
+    .dienst-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(13, 27, 42, 0.1)
+    }
+
+    .dienst-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--teal-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      color: var(--teal);
+      font-size: 20px
+    }
+
+    .dienst-title {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px
+    }
+
+    .dienst-desc {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.6
+    }
+
+    /* TEAM */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px
+    }
+
+    .team-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(13, 27, 42, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+      color: inherit
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(13, 27, 42, 0.12)
+    }
+
+    .team-photo-wrap {
+      overflow: hidden;
+      height: 200px
+    }
+
+    .team-photo-wrap img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.4s ease;
+      display: block
+    }
+
+    .team-card:hover .team-photo-wrap img {
+      transform: scale(1.04)
+    }
+
+    .team-card-body {
+      padding: 16px
+    }
+
+    .team-name {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 3px
+    }
+
+    .team-role {
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-bottom: 8px
+    }
+
+    .team-langs {
+      font-size: 12px;
+      color: var(--teal-dim);
+      font-weight: 500;
+      margin-bottom: 8px
+    }
+
+    .team-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px
+    }
+
+    .spec-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--teal-dim);
+      background: var(--teal-light);
+      padding: 3px 9px;
+      border-radius: 4px
+    }
+
+    .avail-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--ink-soft)
+    }
+
+    .avail-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--teal);
+      border-radius: 50%;
+      flex-shrink: 0
+    }
+
+    /* AFSPRAAK / BOOKING */
+    .afspraak-section {
+      background: var(--slate)
+    }
+
+    .afspraak-inner {
+      max-width: 760px;
+      margin: 0 auto
+    }
+
+    .afspraak-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      text-align: center
+    }
+
+    .afspraak-sub {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 16px;
+      margin-bottom: 48px;
+      text-align: center
+    }
+
+    .progress-bar {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 40px
+    }
+
+    .prog-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      position: relative
+    }
+
+    .prog-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.35);
+      background: transparent;
+      transition: all 0.3s;
+      z-index: 1;
+      position: relative
+    }
+
+    .prog-step.active .prog-circle,
+    .prog-step.done .prog-circle {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: #fff
+    }
+
+    .prog-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.3);
+      margin-top: 6px;
+      text-align: center;
+      transition: color 0.3s
+    }
+
+    .prog-step.active .prog-label,
+    .prog-step.done .prog-label {
+      color: rgba(255, 255, 255, 0.7)
+    }
+
+    .prog-connector {
+      flex: 1;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.12);
+      margin-top: 16px;
+      transition: background 0.3s
+    }
+
+    .prog-connector.done {
+      background: var(--teal)
+    }
+
+    .wizard-step {
+      display: none
+    }
+
+    .wizard-step.active {
+      display: block
+    }
+
+    .wizard-heading {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 24px
+    }
+
+    .service-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 28px
+    }
+
+    .service-option {
+      position: relative
+    }
+
+    .service-option input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0
+    }
+
+    .service-option label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--slate-mid);
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 16px 18px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500
+    }
+
+    .service-option label:hover {
+      border-color: rgba(11, 168, 136, 0.4)
+    }
+
+    .service-option input:checked+label {
+      border-color: var(--teal);
+      background: rgba(11, 168, 136, 0.08);
+      color: #fff
+    }
+
+    .service-option label i {
+      color: var(--teal);
+      font-size: 18px;
+      margin-top: 1px;
+      flex-shrink: 0
+    }
+
+    .calendar-wrap {
+      background: var(--slate-mid);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 20px
+    }
+
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px
+    }
+
+    .cal-title {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff
+    }
+
+    .cal-nav-btn {
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      transition: background 0.2s
+    }
+
+    .cal-nav-btn:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.08)
+    }
+
+    .cal-nav-btn:disabled {
+      opacity: 0.3;
+      cursor: default
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 3px
+    }
+
+    .cal-dow {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.3);
+      padding: 4px 0;
+      letter-spacing: 0.5px
+    }
+
+    .cal-day {
+      text-align: center;
+      padding: 8px 4px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      color: rgba(255, 255, 255, 0.7);
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .cal-day.selectable:hover {
+      background: rgba(11, 168, 136, 0.2);
+      color: #fff
+    }
+
+    .cal-day.selected {
+      background: var(--teal);
+      color: #fff
+    }
+
+    .cal-day.today {
+      outline: 1px solid rgba(11, 168, 136, 0.5)
+    }
+
+    .cal-day.disabled {
+      color: rgba(255, 255, 255, 0.18);
+      cursor: default
+    }
+
+    .cal-day.other-month {
+      color: rgba(255, 255, 255, 0.12)
+    }
+
+    .selected-date-info {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 14px;
+      margin-bottom: 20px;
+      min-height: 20px
+    }
+
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 28px
+    }
+
+    .time-slot {
+      background: var(--slate-mid);
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 14px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s
+    }
+
+    .time-slot:hover {
+      border-color: rgba(11, 168, 136, 0.4)
+    }
+
+    .time-slot.selected {
+      border-color: var(--teal);
+      background: rgba(11, 168, 136, 0.09)
+    }
+
+    .time-slot-time {
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff
+    }
+
+    .time-slot-avail {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.45);
+      margin-top: 3px
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 28px
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .form-field.full {
+      grid-column: 1/-1
+    }
+
+    .form-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6)
+    }
+
+    .form-input {
+      background: var(--slate-mid);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 11px 14px;
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      transition: border-color 0.2s;
+      outline: none;
+      width: 100%
+    }
+
+    .form-input:focus {
+      border-color: var(--teal)
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.25)
+    }
+
+    select.form-input option {
+      background: var(--slate);
+      color: #fff
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 80px
+    }
+
+    .wizard-nav {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      flex-wrap: wrap
+    }
+
+    .confirm-box {
+      background: var(--slate-mid);
+      border: 1px solid rgba(11, 168, 136, 0.4);
+      border-radius: 8px;
+      padding: 48px 40px;
+      text-align: center
+    }
+
+    .confirm-icon {
+      font-size: 52px;
+      color: var(--teal);
+      margin-bottom: 16px
+    }
+
+    .confirm-title {
+      font-family: 'Fraunces', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px
+    }
+
+    .confirm-msg {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 16px;
+      line-height: 1.7
+    }
+
+    /* REVIEWS */
+    .reviews-inner {
+      max-width: 1120px;
+      margin: 0 auto
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 48px
+    }
+
+    .rating-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 8px
+    }
+
+    .rating-big {
+      font-family: 'Fraunces', serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1
+    }
+
+    .rating-stars {
+      color: #F59E0B;
+      font-size: 22px;
+      display: flex;
+      gap: 3px;
+      margin-bottom: 6px
+    }
+
+    .rating-meta {
+      font-size: 14px;
+      color: var(--ink-soft)
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px
+    }
+
+    .review-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 2px 16px rgba(13, 27, 42, 0.06)
+    }
+
+    .review-stars {
+      color: #F59E0B;
+      font-size: 14px;
+      margin-bottom: 12px
+    }
+
+    .review-quote {
+      font-family: 'Fraunces', serif;
+      font-size: 15.5px;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 20px
+    }
+
+    .review-quote::before {
+      content: '\201C';
+      position: absolute;
+      left: 0;
+      top: -4px;
+      font-size: 32px;
+      color: var(--teal);
+      line-height: 1;
+      font-style: normal
+    }
+
+    .reviewer-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ink)
+    }
+
+    .reviewer-meta {
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-top: 2px
+    }
+
+    /* FAQ */
+    .faq-inner {
+      max-width: 760px;
+      margin: 0 auto
+    }
+
+    .faq-list {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15.5px;
+      color: var(--ink);
+      user-select: none;
+      transition: color 0.2s
+    }
+
+    .faq-q:hover {
+      color: var(--teal)
+    }
+
+    .faq-chevron {
+      color: var(--ink-soft);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 12px;
+      font-size: 13px
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      color: var(--teal)
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.7
+    }
+
+    .faq-a-inner {
+      padding: 0 24px 20px
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px
+    }
+
+    /* TALEN */
+    .talen-section {
+      background: var(--teal-light);
+      padding: 56px 24px
+    }
+
+    .talen-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      text-align: center
+    }
+
+    .talen-title {
+      font-family: 'Fraunces', serif;
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 20px
+    }
+
+    .talen-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px
+    }
+
+    .taal-pill {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--teal-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .talen-desc {
+      font-size: 15px;
+      color: var(--ink-soft);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7
+    }
+
+    /* URGENTIE STRIP */
+    .urgentie-strip {
+      background: #B8401A;
+      padding: 22px 24px
+    }
+
+    .urgentie-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    .urgentie-text {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .urgentie-phone {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .urgentie-btn {
+      background: #fff;
+      color: #B8401A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 11px 24px;
+      border-radius: 6px;
+      display: inline-block
+    }
+
+    /* CONTACT */
+    .contact-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start
+    }
+
+    .contact-info-block {
+      margin-bottom: 24px
+    }
+
+    .contact-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 6px
+    }
+
+    .contact-val {
+      font-size: 15.5px;
+      color: var(--ink);
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      line-height: 1.5;
+      margin-top: 4px
+    }
+
+    .contact-val a {
+      color: var(--teal)
+    }
+
+    .contact-val i {
+      color: var(--teal);
+      margin-top: 3px;
+      width: 16px;
+      flex-shrink: 0
+    }
+
+    .map-frame {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      margin-top: 24px
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      display: block
+    }
+
+    .intake-title {
+      font-family: 'Fraunces', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px
+    }
+
+    .intake-sub {
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+      line-height: 1.6
+    }
+
+    .intake-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px
+    }
+
+    .intake-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px
+    }
+
+    .intake-field.full {
+      grid-column: 1/-1
+    }
+
+    .intake-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-soft)
+    }
+
+    .intake-input {
+      border: 1.5px solid var(--rule);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%
+    }
+
+    .intake-input:focus {
+      border-color: var(--teal)
+    }
+
+    select.intake-input {
+      background: #fff
+    }
+
+    textarea.intake-input {
+      min-height: 80px;
+      resize: vertical
+    }
+
+    .intake-success {
+      background: var(--teal-light);
+      border: 1px solid var(--teal);
+      border-radius: 8px;
+      padding: 32px;
+      text-align: center;
+      display: none
+    }
+
+    .intake-success-icon {
+      font-size: 40px;
+      color: var(--teal);
+      margin-bottom: 12px
+    }
+
+    .intake-success-title {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px
+    }
+
+    .intake-success-msg {
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.6
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--slate);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 64px 24px 32px
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px
+    }
+
+    .footer-logo {
+      margin-bottom: 16px
+    }
+
+    .footer-logo img {
+      filter: brightness(0) invert(1);
+      height: 38px
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 20px;
+      line-height: 1.65
+    }
+
+    .footer-mederi img {
+      height: 40px;
+      filter: brightness(0) invert(0.55)
+    }
+
+    .footer-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 16px
+    }
+
+    .footer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.5
+    }
+
+    .footer-list a {
+      color: rgba(255, 255, 255, 0.55);
+      transition: color 0.2s
+    }
+
+    .footer-list a:hover {
+      color: #fff
+    }
+
+    .footer-list i {
+      color: var(--teal);
+      margin-top: 2px;
+      width: 14px;
+      flex-shrink: 0;
+      font-size: 13px
+    }
+
+    .hours-row {
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .hours-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0
+    }
+
+    .hours-dot.open {
+      background: #22C55E
+    }
+
+    .hours-dot.closed {
+      background: #EF4444
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.3)
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 0.3);
+      transition: color 0.2s
+    }
+
+    .footer-bottom a:hover {
+      color: rgba(255, 255, 255, 0.7)
+    }
+
+    /* WHATSAPP FAB */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 26px;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+      animation: pulse-wa 2.5s infinite;
+      transition: transform 0.2s
+    }
+
+    .whatsapp-fab:hover {
+      transform: scale(1.08)
+    }
+
+    @keyframes pulse-wa {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0.35)
+      }
+
+      60% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45), 0 0 0 10px rgba(37, 211, 102, 0)
+      }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px
+      }
+
+      .footer-grid>div:last-child {
+        grid-column: 1/-1
+      }
+    }
+
+    @media(max-width:768px) {
+      section {
+        padding: 64px 20px
+      }
+
+      .nav-links,
+      .nav-ctas {
+        display: none
+      }
+
+      .nav-hamburger {
+        display: block
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .hero-right {
+        order: -1
+      }
+
+      .over-inner,
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .steps-row {
+        grid-template-columns: 1fr
+      }
+
+      .steps-row::before {
+        display: none
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr
+      }
+
+      .service-options {
+        grid-template-columns: 1fr
+      }
+
+      .form-grid,
+      .intake-grid {
+        grid-template-columns: 1fr
+      }
+
+      .time-slots {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px
+      }
+
+      .urgentie-inner {
+        flex-direction: column;
+        text-align: center
+      }
+
+      .trust-items {
+        gap: 16px
+      }
+    }
+
+    @media(max-width:480px) {
+      .team-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .time-slots {
+        grid-template-columns: 1fr
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- DEMO BANNER -->
+  <div
+    style="background:var(--slate);color:var(--teal);text-align:center;padding:8px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600">
+    DEMO — Pakket C: Volledig Platform &nbsp;·&nbsp; Online booking, FAQ, intakeformulier &nbsp;·&nbsp; €3.490</div>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../images/logo.webp" alt="CuraKempen" style="height:38px;filter:brightness(0) invert(1)"></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="over.html">Over ons</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="team.html">Team</a>
+      <a href="booking.html">Afspraak</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="booking.html" class="btn-nav-primary">Afspraak maken</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-mob').classList.toggle('open')" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="nav-mob" class="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="over.html">Over ons</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="team.html">Team</a>
+    <a href="booking.html">Afspraak</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <p class="section-label">Mederi erkend · Kempen</p>
+        <h1 class="hero-headline">Professionele<br>zorg <em>aan huis</em>,<br>elke dag</h1>
+        <p class="hero-sub">CuraKempen is uw betrouwbare thuisverpleging in Turnhout en omgeving. Gediplomeerde
+          verpleegkundigen, 100% vergoed via uw mutualiteit. Maak vandaag een afspraak online.</p>
+        <div class="hero-ctas">
+          <a href="booking.html" class="btn-primary"><i class="fa-solid fa-calendar-check"
+              style="margin-right:8px"></i>Online afspraak maken</a>
+          <a href="tel:+32479921888" class="btn-white-outline"><i class="fa-solid fa-phone"
+              style="margin-right:7px"></i>Bel direct</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-num" data-count="7">0</div>
+            <div class="stat-label">Gemeenten bediend</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-count="11">0</div>
+            <div class="stat-label">Diensten aangeboden</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-count="7">0</div>
+            <div class="stat-label">Verpleegkundigen</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-count="100" data-suffix="%">0</div>
+            <div class="stat-label">Vergoed via mutualiteit</div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1543333995-a78aea2eee50?auto=format&fit=crop&w=1200&q=80" alt="CuraKempen verpleegkundige" class="hero-photo">
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-items">
+      <div class="trust-item"><i class="fa-solid fa-check"></i> Mederi erkend</div>
+      <div class="trust-item"><i class="fa-solid fa-check"></i> 100% vergoed</div>
+      <div class="trust-item"><i class="fa-solid fa-check"></i> 7 gemeenten</div>
+      <div class="trust-item"><i class="fa-solid fa-check"></i> Urgentie 24/7</div>
+    </div>
+  </div>
+
+  <!-- OVER ONS -->
+  <section id="over">
+    <div class="over-inner container">
+      <div class="over-text reveal">
+        <span class="section-label">Over CuraKempen</span>
+        <h2 class="section-title">Warme zorg met<br><em>vakkundige precisie</em></h2>
+        <p class="section-body">CuraKempen is een hecht team van gediplomeerde verpleegkundigen actief in Turnhout en de
+          ruimere Kempenregio. Wij combineren menselijke warmte met medische professionaliteit — elke dag, bij u thuis.
+        </p>
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+              <div class="feature-title">Mederi kwaliteitslabel</div>
+              <div class="feature-desc">Erkend en geauditeerd volgens de hoogste Belgische zorgstandaarden.</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div>
+              <div class="feature-title">Persoonlijke begeleiding</div>
+              <div class="feature-desc">Vaste verpleegkundige voor een vertrouwd en consistent zorgtraject.</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
+            <div>
+              <div class="feature-title">Meertalige zorg</div>
+              <div class="feature-desc">Ons team spreekt Nederlands, Arabisch, Roemeens en Engels.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1765896387387-0538bc9f997e?auto=format&fit=crop&w=1200&q=80" alt="Thuisverpleging CuraKempen" class="over-photo">
+      </div>
+    </div>
+  </section>
+
+  <!-- TERUGBETALING -->
+  <section style="background:var(--warm-gray)">
+    <div class="terugbetaling-inner container reveal">
+      <span class="section-label" style="text-align:center;display:block">Hoe werkt terugbetaling?</span>
+      <h2 class="section-title" style="text-align:center">Geen verborgen kosten</h2>
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-title">Voorschrift van huisarts</div>
+          <div class="step-desc">Uw huisarts schrijft een verpleegkundig voorschrift. Wij helpen u dit snel te regelen
+            indien nodig.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-title">Wij factureren aan ziekenfonds</div>
+          <div class="step-desc">Via het derdebetalerssysteem factureren wij rechtstreeks aan uw mutualiteit. U betaalt
+            niets bij.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-title">Zorg zonder financiële zorgen</div>
+          <div class="step-desc">U ontvangt de best mogelijke thuisverpleging, volledig gedekt door uw verplichte
+            ziekteverzekering.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIENSTEN MET TABS -->
+  <section id="diensten">
+    <div class="diensten-inner container">
+      <div class="reveal">
+        <span class="section-label">Wat wij aanbieden</span>
+        <h2 class="section-title">Onze <em>diensten</em></h2>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="filterDiensten('alle',this)">Alle</button>
+        <button class="tab-btn" onclick="filterDiensten('verzorging',this)">Verzorging</button>
+        <button class="tab-btn" onclick="filterDiensten('medisch',this)">Medisch</button>
+        <button class="tab-btn" onclick="filterDiensten('opvolging',this)">Opvolging</button>
+      </div>
+      <div class="diensten-grid">
+        <div class="dienst-card reveal" data-cat="verzorging">
+          <div class="dienst-icon"><i class="fa-solid fa-soap"></i></div>
+          <div class="dienst-title">Hygiënische zorgen</div>
+          <div class="dienst-desc">Dagelijkse wassing, lichaamsverzorging en persoonlijke hygiëne met respect voor de
+            patiënt.</div>
+        </div>
+        <div class="dienst-card reveal" data-cat="verzorging">
+          <div class="dienst-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <div class="dienst-title">Palliatieve zorgen</div>
+          <div class="dienst-desc">Comfortgerichte begeleiding en zorg in de laatste levensfase, met aandacht voor
+            patiënt en familie.</div>
+        </div>
+        <div class="dienst-card reveal" data-cat="verzorging">
+          <div class="dienst-icon"><i class="fa-solid fa-droplet"></i></div>
+          <div class="dienst-title">Sondevoeding</div>
+          <div class="dienst-desc">Toediening en opvolging van enterale voeding via neussonde of PEG-sonde.</div>
+        </div>
+        <div class="dienst-card reveal" data-cat="medisch">
+          <div class="dienst-icon"><i class="fa-solid fa-bandage"></i></div>
+          <div class="dienst-title">Wondzorg</div>
+          <div class="dienst-desc">Professionele verzorging van chronische en postoperatieve wonden met moderne
+            verbandtechnieken.</div>
+        </div>
+        <div class="dienst-card reveal" data-cat="medisch">
+          <div class="dienst-icon"><i class="fa-solid fa-syringe"></i></div>
+          <div class="dienst-title">Inspuitingen</div>
+          <div class="dienst-desc">Intramusculaire en subcutane injecties, inclusief anticoagulantia en
+            vitaminepreparaten.</div>
+        </div>
+        <div class="dienst-card reveal" data-cat="medisch">
+          <div class="dienst-icon"><i class="fa-solid fa-vials"></i></div>
+          <div class="dienst-title">Bloedafname</div>
+          <div class="dienst-desc">Labo-bloedafname aan huis met snelle verwerking via uw huisarts of specialist.</div>
+        </div>
+        <div class="dienst-card reveal" data-cat="medisch">
+          <div class="dienst-icon"><i class="fa-solid fa-compress"></i></div>
+          <div class="dienst-title">Compressietherapie</div>
+          <div class="dienst-desc">Aanleggen van compressieverbanden bij lymfoedeem, spataderen en postoperatieve
+            zwellingen.</div>
+        </div>
+        <div class="dienst-card reveal" data-cat="medisch">
+          <div class="dienst-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+          <div class="dienst-title">Poortkatherspoelen</div>
+          <div class="dienst-desc">Onderhoud en spoeling van subcutane infuuspoorten bij kankerpatiënten en langdurige
+            therapie.</div>
+        </div>
+        <div class="dienst-card reveal" data-cat="medisch">
+          <div class="dienst-icon"><i class="fa-solid fa-toilet"></i></div>
+          <div class="dienst-title">Blaas- &amp; maagsondes</div>
+          <div class="dienst-desc">Plaatsing, wissel en opvolging van blaaskatheters en maagsonders.</div>
+        </div>
+        <div class="dienst-card reveal" data-cat="opvolging">
+          <div class="dienst-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="dienst-title">Diabetesopvolging</div>
+          <div class="dienst-desc">Bloedsuikercontrole, insulinetoediening en educatie voor diabetespatiënten en hun
+            familie.</div>
+        </div>
+        <div class="dienst-card reveal" data-cat="opvolging">
+          <div class="dienst-icon"><i class="fa-solid fa-pills"></i></div>
+          <div class="dienst-title">Medicatiebeheer</div>
+          <div class="dienst-desc">Voorbereiding en controle van medicatieschema's, met aandacht voor correcte dosering
+            en toedieningsvorm.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" style="background:var(--warm-gray)">
+    <div class="container">
+      <div class="reveal" style="text-align:center">
+        <span class="section-label">Leer ons kennen</span>
+        <h2 class="section-title">Ons <em>team</em></h2>
+        <p style="color:var(--ink-soft);max-width:560px;margin:12px auto 0;font-size:16px">Gediplomeerde
+          verpleegkundigen met passie voor zorg. Klik op een profiel voor meer informatie.</p>
+      </div>
+      <div class="team-grid">
+        <a href="team/evy-nuyts.html" class="team-card reveal">
+          <div class="team-photo-wrap"><img src="../images/Evy-Nuyts.jpg" alt="Evy Nuyts"></div>
+          <div class="team-card-body">
+            <div class="team-name">Evy Nuyts</div>
+            <div class="team-role">Verpleegkundige</div>
+            <div class="team-specs"><span class="spec-tag">Geriatrie</span><span class="spec-tag">Wondzorg</span></div>
+            <div class="avail-row"><span class="avail-dot"></span>Beschikbaar</div>
+          </div>
+        </a>
+        <a href="team/hanane-oubali.html" class="team-card reveal">
+          <div class="team-photo-wrap"><img src="../images/Hanane-Oubali.png" alt="Hanane Oubali"></div>
+          <div class="team-card-body">
+            <div class="team-name">Hanane Oubali</div>
+            <div class="team-role">Verpleegkundige</div>
+            <div class="team-langs">🌐 NL · AR</div>
+            <div class="team-specs"><span class="spec-tag">Diabetes</span><span class="spec-tag">Injecties</span></div>
+            <div class="avail-row"><span class="avail-dot"></span>Beschikbaar</div>
+          </div>
+        </a>
+        <a href="team/martine-jacobs.html" class="team-card reveal">
+          <div class="team-photo-wrap"><img src="../images/Martine-Jacobs.jpg" alt="Martine Jacobs"></div>
+          <div class="team-card-body">
+            <div class="team-name">Martine Jacobs</div>
+            <div class="team-role">Verpleegkundige</div>
+            <div class="team-specs"><span class="spec-tag">Palliatief</span><span class="spec-tag">Wondzorg</span></div>
+            <div class="avail-row"><span class="avail-dot"></span>Beschikbaar</div>
+          </div>
+        </a>
+        <a href="team/leen-van-gorp.html" class="team-card reveal">
+          <div class="team-photo-wrap"><img src="../images/Leen-van-Gorp.png" alt="Leen Van Gorp"></div>
+          <div class="team-card-body">
+            <div class="team-name">Leen Van Gorp</div>
+            <div class="team-role">Verpleegkundige</div>
+            <div class="team-specs"><span class="spec-tag">Post-op</span><span class="spec-tag">Compressie</span></div>
+            <div class="avail-row"><span class="avail-dot"></span>Beschikbaar</div>
+          </div>
+        </a>
+        <a href="team/blerta-fiqi.html" class="team-card reveal">
+          <div class="team-photo-wrap"><img src="../images/Blerta-Fiqi.jpg" alt="Blerta Fiqi"></div>
+          <div class="team-card-body">
+            <div class="team-name">Blerta Fiqi</div>
+            <div class="team-role">Verpleegkundige</div>
+            <div class="team-specs"><span class="spec-tag">Hygiëne</span><span class="spec-tag">Persoonszorg</span>
+            </div>
+            <div class="avail-row"><span class="avail-dot"></span>Beschikbaar</div>
+          </div>
+        </a>
+        <a href="team/gabriela-chivu.html" class="team-card reveal">
+          <div class="team-photo-wrap"><img src="../images/Gabriela-Chivu.png" alt="Gabriela Chivu"></div>
+          <div class="team-card-body">
+            <div class="team-name">Gabriela Chivu</div>
+            <div class="team-role">Verpleegkundige</div>
+            <div class="team-langs">🌐 NL · RO</div>
+            <div class="team-specs"><span class="spec-tag">Medicatie</span><span class="spec-tag">Bloedafname</span>
+            </div>
+            <div class="avail-row"><span class="avail-dot"></span>Beschikbaar</div>
+          </div>
+        </a>
+        <a href="team/philippe-van-de-ven.html" class="team-card reveal">
+          <div class="team-photo-wrap"><img src="../images/Philippe-van-de-ven.png" alt="Philippe Van de Ven"></div>
+          <div class="team-card-body">
+            <div class="team-name">Philippe Van de Ven</div>
+            <div class="team-role">Verpleegkundige</div>
+            <div class="team-specs"><span class="spec-tag">Katheter</span><span class="spec-tag">Stoma</span></div>
+            <div class="avail-row"><span class="avail-dot"></span>Beschikbaar</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONLINE AFSPRAAK -->
+  <section id="afspraak" class="afspraak-section">
+    <div class="afspraak-inner">
+      <div class="reveal">
+        <span class="section-label" style="color:var(--teal);display:block;text-align:center">Direct regelen</span>
+        <h2 class="afspraak-title">Online afspraak maken</h2>
+        <p class="afspraak-sub">Kies uw dienst, datum en tijdslot — wij nemen binnen 2 uur contact op ter bevestiging.
+        </p>
+      </div>
+
+      <!-- Progress -->
+      <div class="progress-bar" id="progress-bar">
+        <div class="prog-step active" id="ps1">
+          <div class="prog-circle">1</div>
+          <div class="prog-label">Dienst</div>
+        </div>
+        <div class="prog-connector" id="pc1"></div>
+        <div class="prog-step" id="ps2">
+          <div class="prog-circle">2</div>
+          <div class="prog-label">Datum</div>
+        </div>
+        <div class="prog-connector" id="pc2"></div>
+        <div class="prog-step" id="ps3">
+          <div class="prog-circle">3</div>
+          <div class="prog-label">Tijdslot</div>
+        </div>
+        <div class="prog-connector" id="pc3"></div>
+        <div class="prog-step" id="ps4">
+          <div class="prog-circle">4</div>
+          <div class="prog-label">Gegevens</div>
+        </div>
+      </div>
+
+      <!-- Step 1: Dienst -->
+      <div class="wizard-step active" id="step1">
+        <h3 class="wizard-heading">Welke zorg heeft u nodig?</h3>
+        <div class="service-options">
+          <div class="service-option"><input type="radio" name="service" id="s1" value="Wondzorg"><label for="s1"><i
+                class="fa-solid fa-bandage"></i>Wondzorg</label></div>
+          <div class="service-option"><input type="radio" name="service" id="s2" value="Inspuitingen"><label for="s2"><i
+                class="fa-solid fa-syringe"></i>Inspuitingen</label></div>
+          <div class="service-option"><input type="radio" name="service" id="s3" value="Bloedafname"><label for="s3"><i
+                class="fa-solid fa-vials"></i>Bloedafname</label></div>
+          <div class="service-option"><input type="radio" name="service" id="s4" value="Hygiënische zorgen"><label
+              for="s4"><i class="fa-solid fa-soap"></i>Hygiënische zorgen</label></div>
+          <div class="service-option"><input type="radio" name="service" id="s5" value="Diabetesopvolging"><label
+              for="s5"><i class="fa-solid fa-chart-line"></i>Diabetesopvolging</label></div>
+          <div class="service-option"><input type="radio" name="service" id="s6" value="Andere"><label for="s6"><i
+                class="fa-solid fa-ellipsis"></i>Andere dienst</label></div>
+        </div>
+        <div class="wizard-nav"><button class="btn-primary" onclick="wizardNext(1)">Volgende stap <i
+              class="fa-solid fa-arrow-right" style="margin-left:6px"></i></button></div>
+      </div>
+
+      <!-- Step 2: Datum -->
+      <div class="wizard-step" id="step2">
+        <h3 class="wizard-heading">Kies uw gewenste datum</h3>
+        <div class="calendar-wrap">
+          <div class="cal-header">
+            <button class="cal-nav-btn" id="cal-prev-btn" onclick="calMove(-1)"><i
+                class="fa-solid fa-chevron-left"></i></button>
+            <div class="cal-title" id="cal-title">—</div>
+            <button class="cal-nav-btn" onclick="calMove(1)"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+        <div class="selected-date-info" id="selected-date-info"></div>
+        <div class="wizard-nav">
+          <button class="btn-white-outline" onclick="wizardBack(2)"><i class="fa-solid fa-arrow-left"
+              style="margin-right:6px"></i>Terug</button>
+          <button class="btn-primary" onclick="wizardNext(2)">Volgende stap <i class="fa-solid fa-arrow-right"
+              style="margin-left:6px"></i></button>
+        </div>
+      </div>
+
+      <!-- Step 3: Tijdslot -->
+      <div class="wizard-step" id="step3">
+        <h3 class="wizard-heading">Kies een tijdslot</h3>
+        <div class="time-slots">
+          <div class="time-slot" onclick="selectSlot(this,'08:00–09:00')">
+            <div class="time-slot-time">08:00–09:00</div>
+            <div class="time-slot-avail">Beschikbaar</div>
+          </div>
+          <div class="time-slot" onclick="selectSlot(this,'09:00–10:00')">
+            <div class="time-slot-time">09:00–10:00</div>
+            <div class="time-slot-avail">Beschikbaar</div>
+          </div>
+          <div class="time-slot" onclick="selectSlot(this,'10:00–11:00')">
+            <div class="time-slot-time">10:00–11:00</div>
+            <div class="time-slot-avail">Beschikbaar</div>
+          </div>
+          <div class="time-slot" onclick="selectSlot(this,'14:00–15:00')">
+            <div class="time-slot-time">14:00–15:00</div>
+            <div class="time-slot-avail">Beschikbaar</div>
+          </div>
+          <div class="time-slot" onclick="selectSlot(this,'15:00–16:00')">
+            <div class="time-slot-time">15:00–16:00</div>
+            <div class="time-slot-avail">Beschikbaar</div>
+          </div>
+          <div class="time-slot" onclick="selectSlot(this,'16:00–17:00')">
+            <div class="time-slot-time">16:00–17:00</div>
+            <div class="time-slot-avail">Beschikbaar</div>
+          </div>
+        </div>
+        <div class="wizard-nav">
+          <button class="btn-white-outline" onclick="wizardBack(3)"><i class="fa-solid fa-arrow-left"
+              style="margin-right:6px"></i>Terug</button>
+          <button class="btn-primary" onclick="wizardNext(3)">Volgende stap <i class="fa-solid fa-arrow-right"
+              style="margin-left:6px"></i></button>
+        </div>
+      </div>
+
+      <!-- Step 4: Gegevens -->
+      <div class="wizard-step" id="step4">
+        <h3 class="wizard-heading">Uw gegevens</h3>
+        <form id="booking-form" onsubmit="submitBooking(event)">
+          <div class="form-grid">
+            <div class="form-field"><label class="form-label" for="b-naam">Volledige naam *</label><input
+                class="form-input" id="b-naam" type="text" placeholder="Naam Voornaam" required></div>
+            <div class="form-field"><label class="form-label" for="b-tel">Telefoonnummer *</label><input
+                class="form-input" id="b-tel" type="tel" placeholder="+32 xxx xx xx xx" required></div>
+            <div class="form-field"><label class="form-label" for="b-email">E-mailadres *</label><input
+                class="form-input" id="b-email" type="email" placeholder="uw@email.be" required></div>
+            <div class="form-field"><label class="form-label" for="b-dob">Geboortedatum</label><input class="form-input"
+                id="b-dob" type="date"></div>
+            <div class="form-field"><label class="form-label" for="b-huisarts">Naam huisarts</label><input
+                class="form-input" id="b-huisarts" type="text" placeholder="Dr. ..."></div>
+            <div class="form-field full"><label class="form-label" for="b-opmerking">Opmerkingen &amp; voorkeur
+                verpleegkundige</label><textarea class="form-input" id="b-opmerking"
+                placeholder="Bijkomende informatie..."></textarea></div>
+          </div>
+          <div class="wizard-nav">
+            <button type="button" class="btn-white-outline" onclick="wizardBack(4)"><i class="fa-solid fa-arrow-left"
+                style="margin-right:6px"></i>Terug</button>
+            <button type="submit" class="btn-primary"><i class="fa-solid fa-calendar-check"
+                style="margin-right:7px"></i>Afspraak bevestigen</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Bevestiging -->
+      <div class="wizard-step" id="step-confirm">
+        <div class="confirm-box">
+          <div class="confirm-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="confirm-title">Afspraak aangevraagd!</div>
+          <div class="confirm-msg">Bedankt! Wij nemen binnen <strong style="color:var(--teal)">2 uur</strong> contact
+            met u op ter bevestiging.<br><br>Vragen? Bel ons: <a href="tel:+32479921888"
+              style="color:var(--teal);font-weight:700">+32 479 92 18 88</a></div>
+          <button class="btn-primary" style="margin-top:28px" onclick="resetWizard()">Nieuwe afspraak maken</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="reviews-inner container">
+      <div class="reviews-header reveal">
+        <span class="section-label" style="display:block;text-align:center">Wat onze patiënten zeggen</span>
+        <div class="rating-display">
+          <div class="rating-big">4.8</div>
+          <div>
+            <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star-half-stroke"></i></div>
+            <div class="rating-meta">Gebaseerd op 47 Google-beoordelingen</div>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="review-quote">Evy verzorgt mijn vader al maanden met grote toewijding. Ze is altijd op tijd en haar
+            werkwijze geeft hem echt rust. We zijn heel tevreden.</p>
+          <div class="reviewer-name">Marie-Claire V.</div>
+          <div class="reviewer-meta">Turnhout · 2 maanden geleden</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="review-quote">Snel, professioneel en ontzettend vriendelijk. Hanane sprak ook Arabisch met mijn
+            moeder, dat gaf haar zo veel comfort. Echte aanraders.</p>
+          <div class="reviewer-name">Ahmed B.</div>
+          <div class="reviewer-meta">Beerse · 1 maand geleden</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <p class="review-quote">De online afspraak werkte perfect. Dezelfde dag nog teruggebeld en de volgende ochtend
+            was de verpleegkundige er al. Indrukwekkend.</p>
+          <div class="reviewer-name">Kristof M.</div>
+          <div class="reviewer-meta">Kasterlee · 3 weken geleden</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background:var(--warm-gray)">
+    <div class="faq-inner container reveal">
+      <span class="section-label" style="display:block;text-align:center">Veelgestelde vragen</span>
+      <h2 class="section-title" style="text-align:center">Alles wat u wil <em>weten</em></h2>
+      <div class="faq-list">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Hoe snel kan ik thuisverpleging starten?<i
+              class="fa-solid fa-chevron-down faq-chevron"></i></div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Meestal binnen 24 uur na uw eerste contact. Voor urgente situaties staan wij 24/7
+              beschikbaar.</div>
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Heb ik een voorschrift nodig?<i class="fa-solid fa-chevron-down faq-chevron"></i></div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Voor de meeste handelingen is een voorschrift van uw huisarts vereist. Wij helpen u
+              dit snel te regelen.</div>
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Wat kost thuisverpleging?<i class="fa-solid fa-chevron-down faq-chevron"></i></div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Via het derdebetalerssysteem van uw mutualiteit betaalt u niets. Wij factureren
+              rechtstreeks aan uw ziekenfonds.</div>
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Zijn jullie beschikbaar in het weekend?<i class="fa-solid fa-chevron-down faq-chevron"></i>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Ja, op zaterdag van 08:00 tot 14:00. Voor urgentie zijn wij 24/7 bereikbaar.</div>
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Kan ik een voorkeur geven voor een verpleegkundige?<i
+              class="fa-solid fa-chevron-down faq-chevron"></i></div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Ja, bij het maken van een afspraak kunt u een voorkeur aangeven. Wij proberen hier
+              zoveel mogelijk rekening mee te houden.</div>
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Welke gemeenten bedienen jullie?<i class="fa-solid fa-chevron-down faq-chevron"></i></div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Turnhout, Oud-Turnhout, Kasterlee, Lichtaart, Geel, Beerse en Vosselaar.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TALEN -->
+  <section class="talen-section">
+    <div class="talen-inner container reveal">
+      <span class="section-label" style="display:block">Meertalige zorg</span>
+      <h2 class="talen-title">Ons team spreekt uw taal</h2>
+      <div class="talen-row">
+        <div class="taal-pill"><i class="fa-solid fa-language"></i>Nederlands</div>
+        <div class="taal-pill"><i class="fa-solid fa-language"></i>Arabisch</div>
+        <div class="taal-pill"><i class="fa-solid fa-language"></i>Roemeens</div>
+        <div class="taal-pill"><i class="fa-solid fa-language"></i>Engels</div>
+      </div>
+      <p class="talen-desc">Wij geloven dat goede zorg begint bij begrip. Ons multiculturele team zorgt ervoor dat elke
+        patiënt in zijn of haar moedertaal geholpen kan worden.</p>
+    </div>
+  </section>
+
+  <!-- URGENTIE STRIP -->
+  <div class="urgentie-strip">
+    <div class="urgentie-inner container">
+      <div class="urgentie-text"><i class="fa-solid fa-triangle-exclamation" style="font-size:20px"></i>Dringende
+        thuiszorg nodig?</div>
+      <a href="tel:+32479921888" class="urgentie-phone"><i class="fa-solid fa-phone"></i>+32 479 92 18 88</a>
+      <a href="tel:+32479921888" class="urgentie-btn">Bel direct</a>
+    </div>
+  </div>
+
+  <!-- CONTACT / INTAKE -->
+  <section id="contact">
+    <div class="contact-inner container">
+      <div class="reveal">
+        <span class="section-label">Neem contact op</span>
+        <h2 class="section-title">Bereikbaar &amp; <em>nabij</em></h2>
+        <div class="contact-info-block" style="margin-top:28px">
+          <div class="contact-label">Adres</div>
+          <div class="contact-val"><i class="fa-solid fa-location-dot"></i>Hendrik Consciencestraat 20, 2300 Turnhout
+          </div>
+        </div>
+        <div class="contact-info-block">
+          <div class="contact-label">Telefoon</div>
+          <div class="contact-val"><i class="fa-solid fa-phone"></i><a href="tel:+32479921888">+32 479 92 18 88</a>
+          </div>
+          <div class="contact-val" style="margin-top:6px"><i class="fa-solid fa-phone"></i><a
+              href="tel:+32488455417">+32 488 45 54 17</a></div>
+        </div>
+        <div class="contact-info-block">
+          <div class="contact-label">E-mail</div>
+          <div class="contact-val"><i class="fa-solid fa-envelope"></i><a
+              href="mailto:info@curakempenthuisverpleging.be">info@curakempenthuisverpleging.be</a></div>
+        </div>
+        <div class="contact-info-block">
+          <div class="contact-label">Openingsuren</div>
+          <div class="contact-val" style="flex-direction:column;align-items:flex-start;gap:4px;margin-top:6px">
+            <span><strong>Ma–Vr:</strong> 08:00–18:00</span>
+            <span><strong>Za:</strong> 08:00–14:00</span>
+            <span style="color:var(--teal);font-weight:600">Urgentie: 24/7</span>
+          </div>
+        </div>
+        <div class="map-frame">
+          <iframe
+            src="https://maps.google.com/maps?q=Hendrik+Consciencestraat+20,+2300+Turnhout&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen loading="lazy" title="CuraKempen locatie"></iframe>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="intake-title">Snel aanmelden</div>
+        <div class="intake-sub">Vul het intakeformulier in en wij nemen zo snel mogelijk contact met u op.</div>
+        <div id="intake-success" class="intake-success">
+          <div class="intake-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="intake-success-title">Aanvraag ontvangen!</div>
+          <div class="intake-success-msg">Wij nemen binnen 24 uur contact met u op.<br>Bij urgentie: bel <a
+              href="tel:+32479921888" style="color:var(--teal);font-weight:700">+32 479 92 18 88</a>.</div>
+        </div>
+        <form id="intake-form" onsubmit="submitIntake(event)">
+          <div class="intake-grid">
+            <div class="intake-field"><label class="intake-label">Voornaam *</label><input class="intake-input"
+                type="text" required></div>
+            <div class="intake-field"><label class="intake-label">Achternaam *</label><input class="intake-input"
+                type="text" required></div>
+            <div class="intake-field"><label class="intake-label">Geboortedatum</label><input class="intake-input"
+                type="date"></div>
+            <div class="intake-field"><label class="intake-label">Telefoon *</label><input class="intake-input"
+                type="tel" required></div>
+            <div class="intake-field full"><label class="intake-label">Adres</label><input class="intake-input"
+                type="text" placeholder="Straat, nummer, gemeente"></div>
+            <div class="intake-field full"><label class="intake-label">E-mail</label><input class="intake-input"
+                type="email"></div>
+            <div class="intake-field full"><label class="intake-label">Naam huisarts</label><input class="intake-input"
+                type="text" placeholder="Dr. ..."></div>
+            <div class="intake-field full">
+              <label class="intake-label">Type zorg</label>
+              <select class="intake-input">
+                <option value="">Selecteer een dienst</option>
+                <option>Wondzorg</option>
+                <option>Inspuitingen</option>
+                <option>Bloedafname</option>
+                <option>Hygiënische zorgen</option>
+                <option>Diabetesopvolging</option>
+                <option>Medicatiebeheer</option>
+                <option>Palliatieve zorgen</option>
+                <option>Compressietherapie</option>
+                <option>Andere</option>
+              </select>
+            </div>
+            <div class="intake-field full"><label class="intake-label">Opmerkingen</label><textarea class="intake-input"
+                placeholder="Bijkomende informatie..."></textarea></div>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center"><i
+              class="fa-solid fa-paper-plane" style="margin-right:8px"></i>Aanvraag versturen</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo"><img src="../images/logo.webp" alt="CuraKempen"></div>
+          <div class="footer-tagline">Professionele thuisverpleging in de Kempen. Mederi erkend. 100% vergoed via uw
+            mutualiteit.</div>
+          <div class="footer-mederi"><img src="../images/mederi.jpg" alt="Mederi kwaliteitslabel"></div>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <ul class="footer-list">
+            <li><i class="fa-solid fa-location-dot"></i><span>Hendrik Consciencestraat 20<br>2300 Turnhout</span></li>
+            <li><i class="fa-solid fa-phone"></i><a href="tel:+32479921888">+32 479 92 18 88</a></li>
+            <li><i class="fa-solid fa-phone"></i><a href="tel:+32488455417">+32 488 45 54 17</a></li>
+            <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@curakempenthuisverpleging.be"
+                style="word-break:break-all">info@curakempenthuisverpleging.be</a></li>
+          </ul>
+          <div style="margin-top:20px">
+            <div class="footer-heading">Openingsuren</div>
+            <ul class="footer-list">
+              <li>
+                <span class="hours-row"><span class="hours-dot" id="footer-dot"></span><span
+                    id="footer-hours-label">Ma–Vr 08:00–18:00</span></span>
+              </li>
+              <li><span style="width:14px;display:inline-block"></span>Za 08:00–14:00</li>
+              <li><i class="fa-solid fa-circle-exclamation" style="color:var(--teal)"></i>Urgentie 24/7</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Navigatie</div>
+          <ul class="footer-list" style="margin-bottom:24px">
+            <li><a href="#over">Over ons</a></li>
+            <li><a href="#diensten">Diensten</a></li>
+            <li><a href="#team">Ons team</a></li>
+            <li><a href="#afspraak">Online afspraak</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <div class="footer-heading">Juridisch</div>
+          <ul class="footer-list">
+            <li><a href="#">Privacybeleid</a></li>
+            <li><a href="#">Cookiebeleid</a></li>
+            <li><a href="#">Algemene voorwaarden</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="footer-year"></span> CuraKempen. Alle rechten voorbehouden.</span>
+        <span>Erkend door <a href="#">Mederi</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FAB -->
+  <a class="whatsapp-fab" href="https://wa.me/32479921888" target="_blank" rel="noopener"
+    aria-label="WhatsApp CuraKempen">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // SCROLL REVEAL
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    // COUNT-UP
+    function animCount(el) {
+      const target = +el.dataset.count, sfx = el.dataset.suffix || '';
+      const dur = 1600, steps = dur / 16;
+      let cur = 0, inc = target / steps;
+      const t = setInterval(() => {
+        cur = Math.min(cur + inc, target);
+        el.textContent = Math.floor(cur) + sfx;
+        if (cur >= target) clearInterval(t);
+      }, 16);
+    }
+    const statsObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('[data-count]').forEach(animCount); statsObs.unobserve(e.target); } });
+    }, { threshold: 0.3 });
+    const sg = document.querySelector('.stats-grid');
+    if (sg) statsObs.observe(sg);
+
+    // DIENSTEN FILTER
+    function filterDiensten(cat, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.dienst-card').forEach(c => {
+        c.style.display = (cat === 'alle' || c.dataset.cat === cat) ? '' : 'none';
+      });
+    }
+
+    // FAQ ACCORDION
+    function toggleFaq(item) {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    // BOOKING WIZARD
+    let bk = { service: null, date: null, slot: null };
+    let calY, calM;
+    const MONTHS = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'];
+    const DOWS = ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'];
+
+    function wizardNext(step) {
+      if (step === 1) {
+        const r = document.querySelector('input[name="service"]:checked');
+        if (!r) { alert('Kies een dienst.'); return; }
+        bk.service = r.value;
+        const n = new Date(); if (!calY) { calY = n.getFullYear(); calM = n.getMonth(); }
+        renderCal();
+      }
+      if (step === 2 && !bk.date) { alert('Kies een datum.'); return; }
+      if (step === 3 && !bk.slot) { alert('Kies een tijdslot.'); return; }
+      goStep(step + 1);
+    }
+    function wizardBack(step) { goStep(step - 1); }
+
+    function goStep(n) {
+      document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+      document.getElementById(n <= 4 ? 'step' + n : 'step-confirm').classList.add('active');
+      for (let i = 1; i <= 4; i++) {
+        const ps = document.getElementById('ps' + i);
+        if (!ps) continue;
+        ps.classList.remove('active', 'done');
+        if (i < n) ps.classList.add('done');
+        else if (i === n) ps.classList.add('active');
+        if (i <= 3) { const pc = document.getElementById('pc' + i); if (pc) pc.classList.toggle('done', i < n); }
+      }
+    }
+
+    function renderCal() {
+      const title = document.getElementById('cal-title');
+      const grid = document.getElementById('cal-grid');
+      if (!title || !grid) return;
+      title.textContent = MONTHS[calM] + ' ' + calY;
+      grid.innerHTML = '';
+      DOWS.forEach(d => { const el = document.createElement('div'); el.className = 'cal-dow'; el.textContent = d; grid.appendChild(el); });
+
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      const firstDow = (new Date(calY, calM, 1).getDay() + 6) % 7;
+      const daysInMonth = new Date(calY, calM + 1, 0).getDate();
+      const prevDays = new Date(calY, calM, 0).getDate();
+
+      for (let i = firstDow - 1; i >= 0; i--) {
+        const el = document.createElement('div'); el.className = 'cal-day other-month'; el.textContent = prevDays - i; grid.appendChild(el);
+      }
+      for (let d = 1; d <= daysInMonth; d++) {
+        const date = new Date(calY, calM, d);
+        const dow = (date.getDay() + 6) % 7;
+        const past = date < today;
+        const weekend = dow >= 5;
+        const isToday = date.toDateString() === today.toDateString();
+        const isSel = bk.date && date.toDateString() === bk.date.toDateString();
+        const el = document.createElement('div');
+        let cls = 'cal-day';
+        if (!past && !weekend) cls += ' selectable';
+        else cls += ' disabled';
+        if (isToday) cls += ' today';
+        if (isSel) cls += ' selected';
+        el.className = cls;
+        el.textContent = d;
+        if (!past && !weekend) el.onclick = () => pickDay(d, el);
+        grid.appendChild(el);
+      }
+      const total = firstDow + daysInMonth;
+      const rem = (7 - (total % 7)) % 7;
+      for (let d = 1; d <= rem; d++) { const el = document.createElement('div'); el.className = 'cal-day other-month'; el.textContent = d; grid.appendChild(el); }
+
+      const prev = document.getElementById('cal-prev-btn');
+      const n = new Date();
+      if (prev) { prev.disabled = calY === n.getFullYear() && calM === n.getMonth(); }
+    }
+
+    function pickDay(d, el) {
+      document.querySelectorAll('.cal-day.selected').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+      bk.date = new Date(calY, calM, d);
+      const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const info = document.getElementById('selected-date-info');
+      if (info) info.textContent = 'Gekozen: ' + bk.date.toLocaleDateString('nl-BE', opts);
+    }
+    function calMove(dir) { calM += dir; if (calM > 11) { calM = 0; calY++; } else if (calM < 0) { calM = 11; calY--; } renderCal(); }
+
+    function selectSlot(el, slot) {
+      document.querySelectorAll('.time-slot').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected'); bk.slot = slot;
+    }
+    function submitBooking(e) { e.preventDefault(); goStep(5); }
+    function resetWizard() {
+      bk = { service: null, date: null, slot: null };
+      document.querySelectorAll('input[name="service"]').forEach(r => r.checked = false);
+      document.querySelectorAll('.time-slot').forEach(e => e.classList.remove('selected'));
+      goStep(1);
+    }
+
+    // INTAKE FORM
+    function submitIntake(e) {
+      e.preventDefault();
+      document.getElementById('intake-form').style.display = 'none';
+      document.getElementById('intake-success').style.display = 'block';
+    }
+
+    // OPENING HOURS
+    function updateHours() {
+      const n = new Date(), day = n.getDay(), h = n.getHours() + n.getMinutes() / 60;
+      let open = false, lbl = '';
+      if (day >= 1 && day <= 5 && h >= 8 && h < 18) { open = true; lbl = 'Nu open · Ma–Vr 08:00–18:00'; }
+      else if (day === 6 && h >= 8 && h < 14) { open = true; lbl = 'Nu open · Za 08:00–14:00'; }
+      else lbl = 'Gesloten · Urgentie 24/7';
+      const dot = document.getElementById('footer-dot'), label = document.getElementById('footer-hours-label');
+      if (dot) dot.className = 'hours-dot ' + (open ? 'open' : 'closed');
+      if (label) label.textContent = lbl;
+    }
+    updateHours();
+
+    // FOOTER YEAR
+    const fy = document.getElementById('footer-year');
+    if (fy) fy.textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

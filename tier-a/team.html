@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ons Team — CuraKempen Thuisverpleging</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg: #FAF8F4;
+      --bg-alt: #F0EDE5;
+      --ink: #1A1A18;
+      --ink-soft: #5C5850;
+      --sage: #5E8B63;
+      --sage-light: #EAF0EB;
+      --sage-dark: #3D6B42;
+      --terracotta: #B8401A;
+      --rule: #D8D3C8;
+      --white: #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; font-weight: 400; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    nav { background: var(--white); border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo img { height: 40px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-family: 'Nunito', sans-serif; font-weight: 500; font-size: 15px; color: var(--ink-soft); transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-cta { background: var(--sage) !important; color: var(--white) !important; padding: 10px 22px !important; border-radius: 6px; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--sage-dark) !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); }
+    .nav-mobile { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--rule); padding: 16px 24px 24px; }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .nav-mobile ul a { font-family: 'Nunito', sans-serif; font-weight: 500; font-size: 16px; color: var(--ink-soft); }
+
+    .btn-primary { background: var(--sage); color: var(--white); font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 15px; padding: 12px 28px; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--sage-dark); }
+    .btn-white { background: var(--white); color: var(--sage-dark); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 15px; padding: 12px 28px; border-radius: 6px; border: none; cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-white:hover { background: var(--bg-alt); }
+    .btn-outline-white { background: transparent; color: var(--white); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 15px; padding: 12px 28px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.7); cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+    .section-label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
+
+    .page-hero { background: var(--bg-alt); padding: 56px 24px; }
+    .page-hero .section-inner { max-width: 1100px; margin: 0 auto; }
+    .breadcrumb { font-size: 13px; color: var(--ink-soft); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--sage); }
+    .page-hero h1 { font-size: 52px; color: var(--ink); line-height: 1.1; }
+
+    /* TEAM INTRO */
+    .team-intro { background: var(--bg); padding: 56px 24px 40px; }
+    .team-intro .section-inner { max-width: 1100px; margin: 0 auto; }
+    .team-intro p { font-size: 17px; color: var(--ink-soft); max-width: 700px; margin-bottom: 20px; }
+    .lang-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--sage-light);
+      color: var(--sage-dark);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 6px;
+    }
+
+    /* TEAM GRID */
+    .team-section { background: var(--bg); padding: 0 24px 80px; }
+    .team-section .section-inner { max-width: 1100px; margin: 0 auto; }
+    .team-grid-full { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+    .team-card { border: 1px solid var(--rule); overflow: hidden; transition: box-shadow 0.2s ease; display: block; }
+    .team-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .team-card img { width: 100%; height: 220px; object-fit: cover; object-position: top; }
+    .team-card-body { padding: 16px; }
+    .team-card-body strong { display: block; font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 2px; }
+    .team-card-body .title { font-size: 13px; color: var(--ink-soft); margin-bottom: 10px; display: block; }
+    .team-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .team-tag { background: var(--sage-light); color: var(--sage-dark); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+
+    /* JOIN CTA */
+    .join-cta { background: var(--bg-alt); padding: 56px 24px; }
+    .join-cta .section-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .join-cta h2 { font-size: 30px; color: var(--ink); margin-bottom: 8px; }
+    .join-cta p { color: var(--ink-soft); font-size: 15px; }
+    .join-cta a.email-link { color: var(--sage); font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; }
+    .join-cta a.email-link:hover { color: var(--sage-dark); }
+
+    .cta-section { background: var(--sage); padding: 80px 24px; }
+    .cta-section .section-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .cta-section h2 { font-size: 42px; color: var(--white); margin-bottom: 12px; }
+    .cta-section p { color: rgba(255,255,255,0.85); font-size: 17px; margin-bottom: 36px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    footer { background: var(--ink); padding: 64px 24px 32px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.5fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-col h4 { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--bg); margin-bottom: 16px; }
+    .footer-col p, .footer-col a { font-size: 14px; color: rgba(250,248,244,0.65); line-height: 1.8; }
+    .footer-col a:hover { color: var(--bg); }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-logo img { height: 36px; margin-bottom: 12px; opacity: 0.9; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 13px; color: rgba(250,248,244,0.4); }
+    .footer-bottom a { color: rgba(250,248,244,0.5); font-size: 13px; }
+    .footer-bottom a:hover { color: var(--bg); }
+
+    @media (max-width: 900px) {
+      .team-grid-full { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-hero h1 { font-size: 36px; }
+      .team-grid-full { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    .urgentie-strip { background: var(--terracotta); color: var(--white); text-align: center; padding: 14px; font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 15px; }
+    .urgentie-strip a { color: var(--white); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html"><img src="../images/logo.webp" alt="CuraKempen" height="40"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tel:+32479921888" class="nav-cta">Bel ons</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu openen"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tel:+32479921888" class="nav-cta btn-primary">Bel ons</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="section-inner">
+        <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Team</div>
+        <div class="section-label">Wie zorgt voor u?</div>
+        <h1>Ons Team</h1>
+      </div>
+    </section>
+
+    <section class="team-intro">
+      <div class="section-inner">
+        <p>Zeven gediplomeerde verpleegkundigen en zorgkundigen. Elke dag voor u klaar in de Kempen. Elk teamlid werd persoonlijk geselecteerd op vakkennis, warme benadering en lokale betrokkenheid.</p>
+        <div class="lang-bar">
+          <i class="fa fa-language"></i>
+          Ons team spreekt: <strong>Nederlands &middot; Arabisch &middot; Roemeens &middot; Engels</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <div class="section-inner">
+        <div class="team-grid-full">
+
+          <a href="team/evy-nuyts.html" class="team-card">
+            <img src="../images/Evy-Nuyts.jpg" alt="Evy Nuyts">
+            <div class="team-card-body">
+              <strong>Evy Nuyts</strong>
+              <span class="title">Verpleegkundige</span>
+              <div class="team-tags">
+                <span class="team-tag">Geriatrische zorg</span>
+                <span class="team-tag">Wondzorg</span>
+                <span class="team-tag">Ouderenzorg</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="team/hanane-oubali.html" class="team-card">
+            <img src="../images/Hanane-Oubali.png" alt="Hanane Oubali">
+            <div class="team-card-body">
+              <strong>Hanane Oubali</strong>
+              <span class="title">Verpleegkundige</span>
+              <div class="team-tags">
+                <span class="team-tag">Diabeteszorg</span>
+                <span class="team-tag">Inspuitingen</span>
+                <span class="team-tag">NL &middot; AR</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="team/martine-jacobs.html" class="team-card">
+            <img src="../images/Martine-Jacobs.jpg" alt="Martine Jacobs">
+            <div class="team-card-body">
+              <strong>Martine Jacobs</strong>
+              <span class="title">Verpleegkundige</span>
+              <div class="team-tags">
+                <span class="team-tag">Palliatieve zorg</span>
+                <span class="team-tag">Ouderenzorg</span>
+                <span class="team-tag">Begeleiding</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="team/leen-van-gorp.html" class="team-card">
+            <img src="../images/Leen-van-Gorp.png" alt="Leen van Gorp">
+            <div class="team-card-body">
+              <strong>Leen van Gorp</strong>
+              <span class="title">Verpleegkundige</span>
+              <div class="team-tags">
+                <span class="team-tag">Post-operatieve zorg</span>
+                <span class="team-tag">Compressietherapie</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="team/blerta-fiqi.html" class="team-card">
+            <img src="../images/Blerta-Fiqi.jpg" alt="Blerta Fiqi">
+            <div class="team-card-body">
+              <strong>Blerta Fiqi</strong>
+              <span class="title">Zorgkundige+</span>
+              <div class="team-tags">
+                <span class="team-tag">Hygi&euml;nische zorg</span>
+                <span class="team-tag">Dagelijkse zorg</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="team/gabriela-chivu.html" class="team-card">
+            <img src="../images/Gabriela-Chivu.png" alt="Gabriela Chivu">
+            <div class="team-card-body">
+              <strong>Gabriela Chivu</strong>
+              <span class="title">Verpleegkundige</span>
+              <div class="team-tags">
+                <span class="team-tag">Medicatiebeheer</span>
+                <span class="team-tag">Bloedafname</span>
+                <span class="team-tag">NL &middot; RO</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="team/philippe-van-de-ven.html" class="team-card">
+            <img src="../images/Philippe-van-de-ven.png" alt="Philippe van de Ven">
+            <div class="team-card-body">
+              <strong>Philippe van de Ven</strong>
+              <span class="title">Verpleegkundige</span>
+              <div class="team-tags">
+                <span class="team-tag">Katheterplaatsing</span>
+                <span class="team-tag">Stomazorg</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="join-cta">
+      <div class="section-inner">
+        <div>
+          <h2>Word een deel van ons team</h2>
+          <p>Bent u een gediplomeerde verpleegkundige of zorgkundige met passion voor thuiszorg?<br>Wij zijn altijd op zoek naar gemotiveerde collega's in de Kempen.</p>
+          <a href="mailto:info@curakempenthuisverpleging.be" class="email-link"><i class="fa fa-envelope"></i> info@curakempenthuisverpleging.be</a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1765896387387-0538bc9f997e?auto=format&fit=crop&w=1200&q=80" alt="Team" style="width:280px;height:180px;object-fit:cover;border-radius:8px;">
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="section-inner">
+        <h2>Neem vandaag nog contact op</h2>
+        <p>Wilt u weten welke verpleegkundige het best bij uw zorgnoden past? Bel ons gerust.</p>
+        <div class="cta-actions">
+          <a href="tel:+32479921888" class="btn-white"><i class="fa fa-phone"></i> +32 479 92 18 88</a>
+          <a href="https://wa.me/32479921888" class="btn-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="contact.html" class="btn-outline-white"><i class="fa fa-envelope"></i> Contactformulier</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="urgentie-strip">
+    Dringende zorg? Bel ons 24/7: <a href="tel:+32479921888">+32 479 92 18 88</a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><img src="../images/logo.webp" alt="CuraKempen"></div>
+          <p>Professionele thuisverpleging in de Kempen.</p>
+          <p style="margin-top:12px;font-size:13px;color:rgba(250,248,244,0.5);">Erkend door Mederi &middot; 100% terugbetaald</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>
+            <i class="fa fa-location-dot" style="color:var(--sage);margin-right:6px;"></i>Hendrik Consciencestraat 20, 2300 Turnhout<br><br>
+            <i class="fa fa-phone" style="color:var(--sage);margin-right:6px;"></i><a href="tel:+32479921888">+32 479 92 18 88</a><br>
+            <i class="fa fa-envelope" style="color:var(--sage);margin-right:6px;"></i><a href="mailto:info@curakempenthuisverpleging.be">info@curakempenthuisverpleging.be</a>
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Openingsuren</h4>
+          <p>Ma&ndash;Vr: 07:00 &ndash; 20:00<br>Zaterdag: 08:00 &ndash; 14:00<br>Zondag: gesloten<br><br><strong style="color:var(--bg);font-size:13px;">Urgentie 24/7</strong></p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigatie</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="over.html">Over ons</a></li>
+            <li><a href="diensten.html">Diensten</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacybeleid</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="yr"></span> CuraKempen. Alle rechten voorbehouden.</p>
+        <a href="privacy.html">Privacybeleid</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    hamburger.addEventListener('click', function() { navMobile.classList.toggle('open'); });
+    document.addEventListener('click', function(e) {
+      if (!hamburger.contains(e.target) && !navMobile.contains(e.target)) navMobile.classList.remove('open');
+    });
+  </script>
+</body>
+</html>

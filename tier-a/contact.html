@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — CuraKempen Thuisverpleging</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg: #FAF8F4;
+      --bg-alt: #F0EDE5;
+      --ink: #1A1A18;
+      --ink-soft: #5C5850;
+      --sage: #5E8B63;
+      --sage-light: #EAF0EB;
+      --sage-dark: #3D6B42;
+      --terracotta: #B8401A;
+      --rule: #D8D3C8;
+      --white: #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; font-weight: 400; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* DEMO BANNER */
+    .demo-banner { background: #1A1A18; color: #fff; text-align: center; padding: 8px 16px; font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; }
+
+    /* NAV */
+    nav { background: var(--white); border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo img { height: 40px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-family: 'Nunito', sans-serif; font-weight: 500; font-size: 15px; color: var(--ink-soft); transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-cta { background: var(--sage) !important; color: var(--white) !important; padding: 10px 22px !important; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s ease !important; }
+    .nav-cta:hover { background: var(--sage-dark) !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); }
+    .nav-mobile { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--rule); padding: 16px 24px 24px; }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .nav-mobile ul a { font-family: 'Nunito', sans-serif; font-weight: 500; font-size: 16px; color: var(--ink-soft); }
+    .nav-mobile .nav-cta { display: inline-block; margin-top: 8px; }
+
+    /* BUTTONS */
+    .btn-primary { background: var(--sage); color: var(--white); font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 15px; padding: 12px 28px; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--sage-dark); }
+    .btn-whatsapp { background: #25D366; color: var(--white); font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 15px; padding: 12px 28px; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-whatsapp:hover { background: #1ebe59; }
+
+    /* SECTION LABEL */
+    .section-label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
+
+    /* PAGE HERO */
+    .page-hero { background: var(--bg-alt); padding: 56px 24px; }
+    .page-hero .section-inner { max-width: 1100px; margin: 0 auto; }
+    .breadcrumb { font-size: 13px; color: var(--ink-soft); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--sage); }
+    .page-hero h1 { font-size: 52px; color: var(--ink); line-height: 1.1; margin-bottom: 12px; }
+    .page-hero p { font-size: 17px; color: var(--ink-soft); max-width: 580px; }
+
+    /* CONTACT MAIN */
+    .contact-section { background: var(--bg); padding: 72px 24px; }
+    .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+
+    /* CONTACT INFO */
+    .contact-info h2 { font-size: 32px; color: var(--ink); margin-bottom: 32px; }
+    .contact-block { margin-bottom: 28px; }
+    .contact-block-label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 8px; }
+    .contact-block p { font-size: 15px; color: var(--ink-soft); line-height: 1.7; }
+    .contact-block a { color: var(--ink-soft); transition: color 0.2s; }
+    .contact-block a:hover { color: var(--sage); }
+    .contact-icon-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .contact-icon-row i { color: var(--sage); font-size: 16px; margin-top: 3px; flex-shrink: 0; width: 18px; }
+    .contact-icon-row p { font-size: 15px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+    .contact-icon-row a { color: var(--ink-soft); transition: color 0.2s; }
+    .contact-icon-row a:hover { color: var(--sage); }
+
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+    .hours-table tr td { font-size: 14px; color: var(--ink-soft); padding: 5px 0; }
+    .hours-table tr td:first-child { font-weight: 600; color: var(--ink); width: 100px; }
+    .hours-urgency { margin-top: 10px; display: inline-block; background: var(--terracotta); color: var(--white); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px; padding: 6px 14px; border-radius: 4px; }
+
+    .lang-tag { display: inline-block; background: var(--sage-light); color: var(--sage-dark); font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 13px; padding: 4px 12px; border-radius: 4px; margin-right: 6px; }
+
+    .whatsapp-btn-wrap { margin-top: 24px; }
+
+    /* CONTACT FORM */
+    .contact-form-col h2 { font-size: 32px; color: var(--ink); margin-bottom: 8px; }
+    .contact-form-col p { font-size: 15px; color: var(--ink-soft); margin-bottom: 28px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 6px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select { width: 100%; font-family: 'Nunito', sans-serif; font-size: 15px; color: var(--ink); background: var(--white); border: 1px solid var(--rule); padding: 11px 14px; border-radius: 6px; outline: none; transition: border-color 0.2s; }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--sage); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-note { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+    .form-submit { margin-top: 8px; }
+    .form-privacy { font-size: 12px; color: var(--ink-soft); margin-top: 12px; }
+    .form-privacy a { color: var(--sage); text-decoration: underline; }
+
+    /* TERUGBETALING */
+    .terugbetaling { background: var(--sage-light); padding: 72px 24px; }
+    .terugbetaling .section-inner { max-width: 1100px; margin: 0 auto; }
+    .terugbetaling h2 { font-size: 36px; color: var(--ink); margin-bottom: 8px; }
+    .terugbetaling > .section-inner > p { font-size: 16px; color: var(--ink-soft); margin-bottom: 40px; }
+    .terugbetaling-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .terug-step { display: flex; gap: 20px; padding: 28px 24px; position: relative; }
+    .terug-step + .terug-step::before { content: ''; position: absolute; left: 0; top: 28px; bottom: 28px; width: 1px; background: var(--rule); }
+    .terug-num { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--sage); line-height: 1; flex-shrink: 0; }
+    .terug-content h3 { font-size: 18px; color: var(--ink); margin-bottom: 6px; }
+    .terug-content p { font-size: 14px; color: var(--ink-soft); }
+
+    /* MAP */
+    .map-section { background: var(--bg-alt); }
+    .map-section iframe { display: block; width: 100%; height: 380px; border: 0; }
+
+    /* URGENTIE STRIP */
+    .urgentie-strip { background: var(--terracotta); color: var(--white); text-align: center; padding: 14px; font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 15px; }
+    .urgentie-strip a { color: var(--white); text-decoration: underline; }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 64px 24px 32px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.5fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-col h4 { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--bg); margin-bottom: 16px; }
+    .footer-col p, .footer-col a { font-size: 14px; color: rgba(250,248,244,0.65); line-height: 1.8; }
+    .footer-col a:hover { color: var(--bg); }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-logo img { height: 36px; margin-bottom: 12px; opacity: 0.9; }
+    .footer-tagline { font-size: 13px; color: rgba(250,248,244,0.5); margin-top: 12px; }
+    .riziv-badge { display: inline-block; background: rgba(94,139,99,0.25); border: 1px solid rgba(94,139,99,0.5); color: rgba(250,248,244,0.7); font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; padding: 5px 12px; border-radius: 4px; margin-top: 14px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 13px; color: rgba(250,248,244,0.4); }
+    .footer-bottom a { color: rgba(250,248,244,0.5); font-size: 13px; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--bg); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .terugbetaling-steps { grid-template-columns: 1fr; }
+      .terug-step + .terug-step::before { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .page-hero h1 { font-size: 38px; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .page-hero h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-banner">
+    DEMO &mdash; Pakket A: Basis &middot; &euro;490 &middot; Responsive &middot; Alle pagina's beschikbaar
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html"><img src="../images/logo.webp" alt="CuraKempen logo" height="40"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tel:+32479921888" class="nav-cta">Bel ons</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu openen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tel:+32479921888" class="nav-cta btn-primary">Bel ons</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="section-inner">
+        <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Contact</div>
+        <div class="section-label">Neem contact op</div>
+        <h1>Hoe kunnen wij u helpen?</h1>
+        <p>Heeft u een zorgvraag, wilt u een afspraak inplannen of gewoon meer informatie? Wij staan voor u klaar &mdash; bel, mail, WhatsApp of vul het formulier in.</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-inner">
+
+        <div class="contact-info">
+          <h2>Onze contactgegevens</h2>
+
+          <div class="contact-block">
+            <div class="contact-block-label">Adres</div>
+            <div class="contact-icon-row">
+              <i class="fa fa-location-dot"></i>
+              <p>Hendrik Consciencestraat 20<br>2300 Turnhout</p>
+            </div>
+          </div>
+
+          <div class="contact-block">
+            <div class="contact-block-label">Telefoon</div>
+            <div class="contact-icon-row">
+              <i class="fa fa-phone"></i>
+              <p><a href="tel:+32479921888">+32 479 92 18 88</a></p>
+            </div>
+            <div class="contact-icon-row">
+              <i class="fa fa-phone"></i>
+              <p><a href="tel:+32488455417">+32 488 45 54 17</a></p>
+            </div>
+          </div>
+
+          <div class="contact-block">
+            <div class="contact-block-label">E-mail</div>
+            <div class="contact-icon-row">
+              <i class="fa fa-envelope"></i>
+              <p><a href="mailto:info@curakempenthuisverpleging.be">info@curakempenthuisverpleging.be</a></p>
+            </div>
+          </div>
+
+          <div class="contact-block">
+            <div class="contact-block-label">Openingsuren</div>
+            <table class="hours-table">
+              <tr><td>Ma &ndash; Vr</td><td>07:00 &ndash; 20:00</td></tr>
+              <tr><td>Zaterdag</td><td>08:00 &ndash; 14:00</td></tr>
+              <tr><td>Zondag</td><td>Gesloten</td></tr>
+            </table>
+            <span class="hours-urgency"><i class="fa fa-circle-exclamation" style="margin-right:6px;"></i>Urgentie 24/7 beschikbaar</span>
+          </div>
+
+          <div class="contact-block">
+            <div class="contact-block-label">Ons team spreekt</div>
+            <span class="lang-tag">NL</span>
+            <span class="lang-tag">AR</span>
+            <span class="lang-tag">RO</span>
+          </div>
+
+          <div class="whatsapp-btn-wrap">
+            <a href="https://wa.me/32479921888" class="btn-whatsapp" target="_blank" rel="noopener">
+              <i class="fab fa-whatsapp"></i> WhatsApp ons
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-col">
+          <div class="section-label">Contactformulier</div>
+          <h2>Stuur ons een bericht</h2>
+          <p>Wij reageren binnen 24 uur op werkdagen. Voor dringende zorg: bel ons rechtstreeks.</p>
+          <form action="#" method="post" novalidate>
+            <div class="form-group">
+              <label for="naam">Uw naam <span style="color:var(--terracotta);">*</span></label>
+              <input type="text" id="naam" name="naam" placeholder="Voor- en achternaam" required>
+            </div>
+            <div class="form-group">
+              <label for="tel">Telefoonnummer <span style="color:var(--terracotta);">*</span></label>
+              <input type="tel" id="tel" name="tel" placeholder="+32 4xx xx xx xx" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mailadres</label>
+              <input type="email" id="email" name="email" placeholder="uwadres@email.be">
+            </div>
+            <div class="form-group">
+              <label for="onderwerp">Onderwerp</label>
+              <select id="onderwerp" name="onderwerp">
+                <option value="">Kies een onderwerp&hellip;</option>
+                <option>Afspraak inplannen</option>
+                <option>Informatie over diensten</option>
+                <option>Terugbetaling &amp; mutualiteit</option>
+                <option>Doorverwijzing van huisarts</option>
+                <option>Andere vraag</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="bericht">Uw bericht <span style="color:var(--terracotta);">*</span></label>
+              <textarea id="bericht" name="bericht" placeholder="Beschrijf kort uw zorgvraag of stel uw vraag&hellip;" required></textarea>
+              <p class="form-note">Geef indien mogelijk aan welke zorgen u nodig heeft en uw beschikbaarheid.</p>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="btn-primary"><i class="fa fa-paper-plane"></i> Verzenden</button>
+            </div>
+            <p class="form-privacy">Door dit formulier te verzenden gaat u akkoord met ons <a href="privacy.html">privacybeleid</a>. Uw gegevens worden nooit gedeeld met derden.</p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="terugbetaling">
+      <div class="section-inner">
+        <div class="section-label">Hoe werkt terugbetaling?</div>
+        <h2>Alles geregeld via uw mutualiteit</h2>
+        <p>U hoeft zich nergens zorgen over te maken &mdash; wij regelen de administratie van A tot Z.</p>
+        <div class="terugbetaling-steps">
+          <div class="terug-step">
+            <div class="terug-num">1</div>
+            <div class="terug-content">
+              <h3>Huisarts schrijft voor</h3>
+              <p>Uw huisarts stelt een medisch voorschrift op voor de nodige verpleegkundige handelingen.</p>
+            </div>
+          </div>
+          <div class="terug-step">
+            <div class="terug-num">2</div>
+            <div class="terug-content">
+              <h3>Wij regelen de mutualiteit</h3>
+              <p>CuraKempen dient het voorschrift in bij uw ziekenfonds en regelt de volledige terugbetaling.</p>
+            </div>
+          </div>
+          <div class="terug-step">
+            <div class="terug-num">3</div>
+            <div class="terug-content">
+              <h3>U betaalt niets</h3>
+              <p>De meeste verpleegkundige handelingen zijn 100% gedekt. U geniet van zorg zonder financiële zorgen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-section">
+      <iframe
+        src="https://maps.google.com/maps?q=Hendrik+Consciencestraat+20,+2300+Turnhout&output=embed"
+        title="CuraKempen locatie op Google Maps"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </section>
+
+  </main>
+
+  <div class="urgentie-strip">
+    Dringende zorg? Bel ons 24/7: <a href="tel:+32479921888">+32 479 92 18 88</a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><img src="../images/logo.webp" alt="CuraKempen"></div>
+          <p>Professionele thuisverpleging in de Kempen &mdash; persoonlijk, warm en vakkundig.</p>
+          <p class="footer-tagline">Erkend door Mederi &middot; 100% terugbetaald</p>
+          <div class="riziv-badge">RIZIV-erkenningsnummer: 000000-00-00</div>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>
+            <i class="fa fa-location-dot" style="color:var(--sage);margin-right:6px;"></i>Hendrik Consciencestraat 20<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;2300 Turnhout<br><br>
+            <i class="fa fa-phone" style="color:var(--sage);margin-right:6px;"></i><a href="tel:+32479921888">+32 479 92 18 88</a><br>
+            <i class="fa fa-phone" style="color:var(--sage);margin-right:6px;"></i><a href="tel:+32488455417">+32 488 45 54 17</a><br>
+            <i class="fab fa-whatsapp" style="color:var(--sage);margin-right:6px;"></i><a href="https://wa.me/32479921888">WhatsApp</a><br>
+            <i class="fa fa-envelope" style="color:var(--sage);margin-right:6px;"></i><a href="mailto:info@curakempenthuisverpleging.be">info@curakempenthuisverpleging.be</a>
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Openingsuren</h4>
+          <p>
+            Ma&ndash;Vr: 07:00 &ndash; 20:00<br>
+            Zaterdag: 08:00 &ndash; 14:00<br>
+            Zondag: gesloten<br><br>
+            <strong style="color:var(--bg);font-size:13px;">Urgentie 24/7 beschikbaar</strong>
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigatie</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="over.html">Over ons</a></li>
+            <li><a href="diensten.html">Diensten</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacybeleid</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="yr"></span> CuraKempen. Alle rechten voorbehouden.</p>
+        <a href="privacy.html">Privacybeleid</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    hamburger.addEventListener('click', function() { navMobile.classList.toggle('open'); });
+    document.addEventListener('click', function(e) {
+      if (!hamburger.contains(e.target) && !navMobile.contains(e.target)) {
+        navMobile.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>

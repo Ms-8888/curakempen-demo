@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over ons — CuraKempen Thuisverpleging</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg: #FAF8F4;
+      --bg-alt: #F0EDE5;
+      --ink: #1A1A18;
+      --ink-soft: #5C5850;
+      --sage: #5E8B63;
+      --sage-light: #EAF0EB;
+      --sage-dark: #3D6B42;
+      --terracotta: #B8401A;
+      --rule: #D8D3C8;
+      --white: #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; font-weight: 400; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    nav { background: var(--white); border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo img { height: 40px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-family: 'Nunito', sans-serif; font-weight: 500; font-size: 15px; color: var(--ink-soft); transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-cta { background: var(--sage) !important; color: var(--white) !important; padding: 10px 22px !important; border-radius: 6px; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--sage-dark) !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); }
+    .nav-mobile { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--rule); padding: 16px 24px 24px; }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .nav-mobile ul a { font-family: 'Nunito', sans-serif; font-weight: 500; font-size: 16px; color: var(--ink-soft); }
+
+    .btn-primary { background: var(--sage); color: var(--white); font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 15px; padding: 12px 28px; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--sage-dark); }
+    .btn-secondary { border: 2px solid var(--sage); color: var(--sage); background: transparent; font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 15px; padding: 12px 28px; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; display: inline-block; }
+    .btn-secondary:hover { background: var(--sage); color: var(--white); }
+
+    .section-label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
+
+    /* PAGE HERO */
+    .page-hero { background: var(--bg-alt); padding: 56px 24px; }
+    .page-hero .section-inner { max-width: 1100px; margin: 0 auto; }
+    .breadcrumb { font-size: 13px; color: var(--ink-soft); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .page-hero h1 { font-size: 52px; color: var(--ink); line-height: 1.1; }
+
+    /* MISSION */
+    .mission { background: var(--bg); padding: 80px 24px; }
+    .mission .section-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+    .mission-quote {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 28px;
+      color: var(--sage);
+      line-height: 1.4;
+      padding-top: 8px;
+    }
+    .mission-text p { color: var(--ink-soft); font-size: 16px; margin-bottom: 20px; }
+
+    /* VALUES */
+    .values { background: var(--bg-alt); padding: 80px 24px; }
+    .values .section-inner { max-width: 1100px; margin: 0 auto; }
+    .values h2 { font-size: 38px; margin-bottom: 48px; color: var(--ink); }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .value-item {}
+    .value-num { font-family: 'DM Serif Display', serif; font-size: 56px; color: var(--sage); line-height: 1; margin-bottom: 16px; }
+    .value-item h3 { font-size: 22px; margin-bottom: 12px; color: var(--ink); }
+    .value-item p { color: var(--ink-soft); font-size: 15px; }
+
+    /* PHOTO STRIP */
+    .photo-strip { background: var(--bg); }
+    .photo-strip img { width: 100%; height: 300px; object-fit: cover; object-position: center; display: block; }
+
+    /* TERUGBETALING */
+    .terugbetaling { background: var(--bg-alt); padding: 80px 24px; }
+    .terugbetaling .section-inner { max-width: 1100px; margin: 0 auto; }
+    .terugbetaling h2 { font-size: 38px; margin-bottom: 12px; color: var(--ink); }
+    .terugbetaling .intro { color: var(--ink-soft); font-size: 16px; margin-bottom: 48px; }
+    .tb-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .tb-step { position: relative; }
+    .tb-step-num { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--sage); margin-bottom: 12px; line-height: 1; }
+    .tb-step h3 { font-size: 20px; margin-bottom: 10px; color: var(--ink); }
+    .tb-step p { color: var(--ink-soft); font-size: 15px; }
+
+    /* CTA SECTION */
+    .cta-section { background: var(--sage); padding: 80px 24px; }
+    .cta-section .section-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .cta-section h2 { font-size: 42px; color: var(--white); margin-bottom: 12px; }
+    .cta-section p { color: rgba(255,255,255,0.85); font-size: 17px; margin-bottom: 36px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-white { background: var(--white); color: var(--sage-dark); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 15px; padding: 12px 28px; border-radius: 6px; border: none; cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-white:hover { background: var(--bg-alt); }
+    .btn-outline-white { background: transparent; color: var(--white); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 15px; padding: 12px 28px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.7); cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 64px 24px 32px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.5fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-col h4 { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--bg); margin-bottom: 16px; }
+    .footer-col p, .footer-col a { font-size: 14px; color: rgba(250,248,244,0.65); line-height: 1.8; }
+    .footer-col a:hover { color: var(--bg); }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-logo img { height: 36px; margin-bottom: 12px; opacity: 0.9; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 13px; color: rgba(250,248,244,0.4); }
+    .footer-bottom a { color: rgba(250,248,244,0.5); font-size: 13px; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--bg); }
+
+    @media (max-width: 900px) {
+      .mission .section-inner { grid-template-columns: 1fr; gap: 32px; }
+      .values-grid { grid-template-columns: 1fr; gap: 32px; }
+      .tb-steps { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-hero h1 { font-size: 36px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    .urgentie-strip { background: var(--terracotta); color: var(--white); text-align: center; padding: 14px; font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 15px; }
+    .urgentie-strip a { color: var(--white); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html"><img src="../images/logo.webp" alt="CuraKempen logo" height="40"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tel:+32479921888" class="nav-cta">Bel ons</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu openen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tel:+32479921888" class="nav-cta btn-primary">Bel ons</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="section-inner">
+        <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Over ons</div>
+        <div class="section-label">Wie zijn wij?</div>
+        <h1>Over CuraKempen</h1>
+      </div>
+    </section>
+
+    <section class="mission">
+      <div class="section-inner">
+        <div class="mission-quote">
+          &ldquo;Voor ons is zorg verlenen ook vertrouwen opbouwen.&rdquo;
+        </div>
+        <div class="mission-text">
+          <p>CuraKempen is een erkende thuisverpleegpraktijk die geworteld is in de Kempen. We zijn gestart vanuit een eenvoudige overtuiging: mensen verdienen kwalitatieve verpleegkundige zorg in hun eigen thuis, omringd door vertrouwde mensen en omgeving. Geen anonimiteit, geen haast &mdash; maar echte aandacht.</p>
+          <p>Ons team van gediplomeerde verpleegkundigen en zorgkundigen staat dagelijks voor pati&euml;nten uit Turnhout en omstreken. We werken nauw samen met huisartsen, specialisten en ziekenhuizen om een naadloze overgang te garanderen tussen klinische en thuiszorg. Van wondzorg en inspuitingen tot palliatieve begeleiding &mdash; we bieden een volledig pakket verpleegkundige handelingen aan huis.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="values">
+      <div class="section-inner">
+        <div class="section-label">Onze waarden</div>
+        <h2>Wat ons onderscheidt</h2>
+        <div class="values-grid">
+          <div class="value-item">
+            <div class="value-num">01</div>
+            <h3>Holistische zorg</h3>
+            <p>We zien de pati&euml;nt als geheel &mdash; niet enkel de medische aandoening. Aandacht voor lichamelijk, psychisch en sociaal welzijn maakt deel uit van elke zorgrelatie die we aangaan.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-num">02</div>
+            <h3>Mederi kwaliteitslabel</h3>
+            <p>Als erkend lid van het Mederi-netwerk werken wij volgens de hoogste kwaliteitsstandaarden voor thuisverpleging in Belgi&euml;. Dit garandeert u professionele, veilige en gestandaardiseerde zorg bij elk bezoek.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-num">03</div>
+            <h3>100% terugbetaald</h3>
+            <p>Alle verpleegkundige handelingen worden volledig vergoed via uw ziekenfonds, op basis van een medisch voorschrift van uw huisarts. U betaalt niets bij &mdash; wij regelen de administratie.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="photo-strip">
+      <img src="https://images.unsplash.com/photo-1651407825801-eec2dcbd86bd?auto=format&fit=crop&w=1400&h=300&q=80" alt="CuraKempen team aan het werk">
+    </div>
+
+    <section class="terugbetaling">
+      <div class="section-inner">
+        <div class="section-label">Financieel</div>
+        <h2>Hoe werkt terugbetaling?</h2>
+        <p class="intro">Thuisverpleging hoeft u niets te kosten. Dankzij het Belgische ziekteverzekeringsstelsel worden alle verpleegkundige handelingen volledig terugbetaald.</p>
+        <div class="tb-steps">
+          <div class="tb-step">
+            <div class="tb-step-num">1</div>
+            <h3>Huisarts schrijft voor</h3>
+            <p>Uw huisarts stelt een verpleegkundig voorschrift op voor de benodigde zorgen. Dit is een eenvoudig document dat wij ook kunnen helpen aanvragen.</p>
+          </div>
+          <div class="tb-step">
+            <div class="tb-step-num">2</div>
+            <h3>Wij regelen uw mutualiteit</h3>
+            <p>CuraKempen dient alle documenten in bij uw ziekenfonds &mdash; CM, Mutualiteit Solidaris, OZ of een andere. Wij kennen de procedures en handelen alles correct en snel af.</p>
+          </div>
+          <div class="tb-step">
+            <div class="tb-step-num">3</div>
+            <h3>U betaalt niets</h3>
+            <p>U ontvangt geen factuur van ons. De vergoeding wordt rechtstreeks afgerekend met uw mutualiteit. Eenvoudig, transparant en volledig zorgeloos voor u.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="section-inner">
+        <h2>Neem vandaag nog contact op</h2>
+        <p>Onze verpleegkundigen staan klaar om u te helpen. Bel, stuur een WhatsApp of vul het contactformulier in.</p>
+        <div class="cta-actions">
+          <a href="tel:+32479921888" class="btn-white"><i class="fa fa-phone"></i> +32 479 92 18 88</a>
+          <a href="https://wa.me/32479921888" class="btn-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="contact.html" class="btn-outline-white"><i class="fa fa-envelope"></i> Contactformulier</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="urgentie-strip">
+    Dringende zorg? Bel ons 24/7: <a href="tel:+32479921888">+32 479 92 18 88</a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><img src="../images/logo.webp" alt="CuraKempen"></div>
+          <p>Professionele thuisverpleging in de Kempen &mdash; persoonlijk, warm en vakkundig.</p>
+          <p style="margin-top:12px;font-size:13px;color:rgba(250,248,244,0.5);">Erkend door Mederi &middot; 100% terugbetaald</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>
+            <i class="fa fa-location-dot" style="color:var(--sage);margin-right:6px;"></i>Hendrik Consciencestraat 20<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;2300 Turnhout<br><br>
+            <i class="fa fa-phone" style="color:var(--sage);margin-right:6px;"></i><a href="tel:+32479921888">+32 479 92 18 88</a><br>
+            <i class="fab fa-whatsapp" style="color:var(--sage);margin-right:6px;"></i><a href="https://wa.me/32479921888">WhatsApp</a><br>
+            <i class="fa fa-envelope" style="color:var(--sage);margin-right:6px;"></i><a href="mailto:info@curakempenthuisverpleging.be">info@curakempenthuisverpleging.be</a>
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Openingsuren</h4>
+          <p>Ma&ndash;Vr: 07:00 &ndash; 20:00<br>Zaterdag: 08:00 &ndash; 14:00<br>Zondag: gesloten<br><br><strong style="color:var(--bg);font-size:13px;">Urgentie 24/7 beschikbaar</strong></p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigatie</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="over.html">Over ons</a></li>
+            <li><a href="diensten.html">Diensten</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacybeleid</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="yr"></span> CuraKempen. Alle rechten voorbehouden.</p>
+        <a href="privacy.html">Privacybeleid</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    hamburger.addEventListener('click', function() { navMobile.classList.toggle('open'); });
+    document.addEventListener('click', function(e) {
+      if (!hamburger.contains(e.target) && !navMobile.contains(e.target)) navMobile.classList.remove('open');
+    });
+  </script>
+</body>
+</html>

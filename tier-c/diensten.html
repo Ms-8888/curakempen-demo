@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diensten — CuraKempen Thuisverpleging Kempen</title>
+<meta name="description" content="Bekijk alle thuisverpleegdiensten van CuraKempen: basisverzorging, specialistische zorg, technische zorgen en begeleiding van chronische aandoeningen. 100% vergoed.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FAFAF7;
+  --slate:#0D1B2A;
+  --slate-mid:#1A3045;
+  --teal:#0BA888;
+  --teal-dim:#087A63;
+  --teal-light:#E6F7F4;
+  --ink:#0D1B2A;
+  --ink-soft:#5A6A76;
+  --rule:#D8E4E0;
+  --warm-gray:#F2F0EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--ink);font-size:17px;line-height:1.65}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:'Fraunces',serif}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:96px 24px}
+
+/* NAV */
+nav{background:var(--slate);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav-logo img{filter:brightness(0) invert(1);height:38px;display:block}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:14.5px;color:rgba(255,255,255,0.65);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-ctas{display:flex;align-items:center;gap:10px}
+.btn-nav-primary{background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;padding:10px 22px;border-radius:4px;border:none;cursor:pointer;transition:background 0.2s;display:inline-block}
+.btn-nav-primary:hover{background:var(--teal-dim)}
+.nav-hamburger{display:none;background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.nav-mobile{display:none;background:var(--slate);padding:20px 24px;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;color:rgba(255,255,255,0.7);padding:10px 0;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.06);font-size:15px}
+
+/* BUTTONS */
+.btn-primary{display:inline-block;background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:13px 28px;border-radius:6px;border:none;cursor:pointer;transition:transform 0.15s ease,box-shadow 0.15s ease;text-decoration:none}
+.btn-primary:hover{transform:scale(1.01);box-shadow:0 4px 20px rgba(11,168,136,0.35)}
+.btn-secondary{display:inline-block;border:1.5px solid var(--teal);color:var(--teal);font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 28px;border-radius:6px;background:transparent;cursor:pointer;text-decoration:none}
+.section-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;display:block}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(30px,3.5vw,44px);font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:20px}
+.section-title em{font-style:italic}
+
+/* TRUST STRIP */
+.trust-strip{background:var(--teal);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:center}
+.trust-items{display:flex;gap:40px;align-items:center;flex-wrap:wrap;justify-content:center}
+.trust-item{color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px}
+
+/* PAGE HERO */
+.page-hero{background:var(--slate);padding:72px 24px}
+.page-hero-inner{max-width:1120px;margin:0 auto}
+.page-hero-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;display:block}
+.page-hero-title{font-family:'Fraunces',serif;font-size:clamp(36px,4.5vw,58px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:20px}
+.page-hero-title em{font-style:italic;color:var(--teal)}
+.page-hero-sub{color:rgba(255,255,255,0.65);font-size:18px;line-height:1.7;max-width:640px}
+
+/* TABS */
+.diensten-inner{max-width:1120px;margin:0 auto}
+.tab-bar{display:flex;gap:4px;margin:40px 0 36px;border-bottom:2px solid var(--rule);overflow-x:auto}
+.tab-btn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;padding:11px 22px;border:none;background:none;color:var(--ink-soft);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color 0.2s,border-color 0.2s;white-space:nowrap}
+.tab-btn.active{color:var(--teal);border-bottom-color:var(--teal)}
+.tab-btn:hover{color:var(--ink)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* DIENSTEN GRID */
+.diensten-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.dienst-card{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:28px;box-shadow:0 2px 16px rgba(13,27,42,0.06);transition:transform 0.2s,box-shadow 0.2s;position:relative}
+.dienst-card:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(13,27,42,0.1)}
+.dienst-icon{width:48px;height:48px;background:var(--teal-light);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--teal);font-size:21px}
+.dienst-title{font-family:'Fraunces',serif;font-size:19px;font-weight:600;color:var(--ink);margin-bottom:10px}
+.dienst-desc{font-size:14.5px;color:var(--ink-soft);line-height:1.65;margin-bottom:16px}
+.vergoed-badge{display:inline-flex;align-items:center;gap:6px;background:var(--teal-light);color:var(--teal-dim);font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px}
+
+/* CTA SECTION */
+.cta-band{background:var(--slate);padding:64px 24px;text-align:center}
+.cta-band-title{font-family:'Fraunces',serif;font-size:clamp(26px,3vw,38px);font-weight:700;color:#fff;margin-bottom:14px}
+.cta-band-title em{font-style:italic;color:var(--teal)}
+.cta-band-sub{color:rgba(255,255,255,0.6);font-size:16px;margin-bottom:32px;max-width:540px;margin-left:auto;margin-right:auto}
+
+/* URGENTIE */
+.urgentie-strip{background:#B8401A;padding:22px 24px}
+.urgentie-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.urgentie-text{color:#fff;font-size:18px;font-weight:600;display:flex;align-items:center;gap:12px}
+.urgentie-phone{font-size:22px;font-weight:700;color:#fff;display:flex;align-items:center;gap:10px}
+.urgentie-btn{background:#fff;color:#B8401A;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;padding:11px 24px;border-radius:6px;display:inline-block}
+
+/* FOOTER */
+footer{background:var(--slate);color:rgba(255,255,255,0.6);padding:64px 24px 32px}
+.footer-inner{max-width:1120px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo{margin-bottom:16px}
+.footer-logo img{filter:brightness(0) invert(1);height:38px}
+.footer-tagline{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:20px;line-height:1.65}
+.footer-heading{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px}
+.footer-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-list li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.5}
+.footer-list a{color:rgba(255,255,255,0.55);transition:color 0.2s}
+.footer-list a:hover{color:#fff}
+.footer-list i{color:var(--teal);margin-top:2px;width:14px;flex-shrink:0;font-size:13px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:rgba(255,255,255,0.3)}
+.footer-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s}
+
+/* WHATSAPP FAB */
+.whatsapp-fab{position:fixed;bottom:28px;right:28px;z-index:200;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,0.45);animation:pulse-wa 2.5s infinite;transition:transform 0.2s}
+.whatsapp-fab:hover{transform:scale(1.08)}
+@keyframes pulse-wa{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.45),0 0 0 0 rgba(37,211,102,0.35)}60%{box-shadow:0 4px 20px rgba(37,211,102,0.45),0 0 0 10px rgba(37,211,102,0)}}
+
+/* COOKIE */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--slate);color:rgba(255,255,255,0.8);padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;font-size:14px;z-index:500;border-top:1px solid rgba(255,255,255,0.1)}
+.cookie-banner.hidden{display:none}
+.cookie-btn{padding:8px 20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;cursor:pointer;border:none}
+.cookie-accept{background:var(--teal);color:#fff}
+.cookie-info{background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);text-decoration:none;display:inline-block;padding:8px 20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px}
+
+@media(max-width:1024px){.diensten-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}.footer-grid>div:last-child{grid-column:1/-1}}
+@media(max-width:768px){section{padding:64px 20px}.nav-links,.nav-ctas{display:none}.nav-hamburger{display:block}.diensten-grid{grid-template-columns:1fr}.urgentie-inner{flex-direction:column;text-align:center}.trust-items{gap:16px}.footer-grid{grid-template-columns:1fr;gap:32px}}
+</style>
+</head>
+<body>
+
+<div style="background:var(--slate);color:var(--teal);text-align:center;padding:8px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600">DEMO — Pakket C: Volledig Platform &nbsp;·&nbsp; Online booking, FAQ, intakeformulier &nbsp;·&nbsp; €3.490</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../images/logo.webp" alt="CuraKempen" style="height:38px;filter:brightness(0) invert(1)"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="over.html">Over ons</a>
+      <a href="diensten.html" class="active">Diensten</a>
+      <a href="team.html">Team</a>
+      <a href="booking.html">Afspraak</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="booking.html" class="btn-nav-primary">Afspraak maken</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-mob').classList.toggle('open')" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="nav-mob" class="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="over.html">Over ons</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="team.html">Team</a>
+    <a href="booking.html">Afspraak</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-label">Ons zorgaanbod</span>
+    <h1 class="page-hero-title">Alle diensten,<br><em>volledig vergoed</em></h1>
+    <p class="page-hero-sub">Van dagelijkse basisverzorging tot specialistische technische zorgen — CuraKempen biedt een breed scala aan thuisverpleegkundige diensten, allemaal gedekt door uw mutualiteit.</p>
+  </div>
+</div>
+
+<div class="trust-strip">
+  <div class="trust-items">
+    <div class="trust-item"><i class="fa-solid fa-check"></i> 100% vergoed via mutualiteit</div>
+    <div class="trust-item"><i class="fa-solid fa-check"></i> RIZIV-erkend</div>
+    <div class="trust-item"><i class="fa-solid fa-check"></i> 24/7 bereikbaar</div>
+  </div>
+</div>
+
+<section>
+  <div class="diensten-inner container">
+    <div class="reveal">
+      <span class="section-label">Ons zorgaanbod</span>
+      <h2 class="section-title">Wat wij voor u <em>doen</em></h2>
+      <p style="color:var(--ink-soft);font-size:16px;line-height:1.75;max-width:640px">Selecteer een categorie om de diensten te bekijken. Alle handelingen worden uitgevoerd door gediplomeerde verpleegkundigen en zijn gedekt door uw verplichte ziekteverzekering.</p>
+    </div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('basis',this)">Basisverzorging</button>
+      <button class="tab-btn" onclick="switchTab('spec',this)">Specialistische Zorg</button>
+      <button class="tab-btn" onclick="switchTab('tech',this)">Technische Zorgen</button>
+      <button class="tab-btn" onclick="switchTab('chronisch',this)">Chronische Aandoeningen</button>
+    </div>
+
+    <!-- Tab: Basisverzorging -->
+    <div class="tab-panel active" id="tab-basis">
+      <div class="diensten-grid">
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-soap"></i></div>
+          <div class="dienst-title">Hygiënische zorgen</div>
+          <p class="dienst-desc">Dagelijkse volledige lichamelijke wassing, haarwas, mondverzorging en persoonlijke hygiëne. Uitgevoerd met respect voor de privacy en waardigheid van de patiënt in de eigen thuisomgeving.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-pills"></i></div>
+          <div class="dienst-title">Medicatiebeheer</div>
+          <p class="dienst-desc">Voorbereiding, controle en toediening van medicatie conform het voorschrift van de huisarts. Wij bewaken interacties, doseringen en innametijdstippen, en signaleren afwijkingen aan de behandelende arts.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-bandage"></i></div>
+          <div class="dienst-title">Wondzorg</div>
+          <p class="dienst-desc">Professionele verzorging van acute en chronische wonden: reiniging, debridement, verbandwissel en opvolging van het wondgenezingsproces. Inclusief rapportage aan huisarts of wondspecialist.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Specialistische Zorg -->
+    <div class="tab-panel" id="tab-spec">
+      <div class="diensten-grid">
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <div class="dienst-title">Palliatieve zorg</div>
+          <p class="dienst-desc">Comfortgerichte, holistische begeleiding voor patiënten in de laatste levensfase. Wij werken nauw samen met het palliatief netwerk, de huisarts en de familie om pijn en ongemak te verlichten en waardigheid te bewaren.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-person-cane"></i></div>
+          <div class="dienst-title">Geriatrische zorg</div>
+          <p class="dienst-desc">Gespecialiseerde zorg afgestemd op de kwetsbare oudere patiënt: valpreventie, decubituspreventie, cognitieve opvolging en nauwe samenwerking met de geriater en het zorgteam.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-kit-medical"></i></div>
+          <div class="dienst-title">Post-operatieve zorg</div>
+          <p class="dienst-desc">Opvolging na een chirurgische ingreep: wondcontrole, drainagecontrole, pijnmedicatie en monitoring van vitale parameters. Wij schakelen snel als er tekenen van complicaties zijn.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Technische Zorgen -->
+    <div class="tab-panel" id="tab-tech">
+      <div class="diensten-grid">
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-toilet"></i></div>
+          <div class="dienst-title">Katheterplaatsing</div>
+          <p class="dienst-desc">Plaatsing, wissel en opvolging van urinaire blaaskriteters (transurethraal en suprapubisch). Inclusief onderhoud van de drainagezak en educatie van de patiënt en mantelzorger.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+          <div class="dienst-title">Stomazorg</div>
+          <p class="dienst-desc">Volledige verzorging en opvolging van colostomie, ileostomie en urostomie. Wij begeleiden de patiënt en zijn omgeving bij de omgang met de stoma en het juiste gebruik van stomamaterialen.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-vials"></i></div>
+          <div class="dienst-title">Bloedafname</div>
+          <p class="dienst-desc">Veneuze bloedafname aan huis conform het labo-voorschrift. Stalen worden dezelfde dag overgedragen aan het aangevraagde laboratorium. Resultaten worden gecommuniceerd aan uw huisarts.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Chronische Aandoeningen -->
+    <div class="tab-panel" id="tab-chronisch">
+      <div class="diensten-grid">
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="dienst-title">Diabeteszorg</div>
+          <p class="dienst-desc">Bloedsuikercontrole, insulinetoediening, begeleiding van het dieet en educatie voor diabetespatiënten type 1 en type 2. Wij bewaken voetgezondheid en signaleren tekenen van complicaties aan de endocrinoloog.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-compress"></i></div>
+          <div class="dienst-title">Compressietherapie</div>
+          <p class="dienst-desc">Aanleggen van compressieverbanden en -kousen bij lymfoedeem, chronisch veneuze insufficiëntie, spataderen en postoperatieve zwellingen. Gecombineerd met educatie over zelfredzaamheid.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+        <div class="dienst-card reveal">
+          <div class="dienst-icon"><i class="fa-solid fa-file-medical"></i></div>
+          <div class="dienst-title">Complexe dossiers</div>
+          <p class="dienst-desc">Coördinatie en opvolging van patiënten met meerdere chronische aandoeningen of een complex zorgtraject. Wij fungeren als aanspreekpunt tussen patiënt, huisarts, specialist en ziekenfonds.</p>
+          <span class="vergoed-badge"><i class="fa-solid fa-circle-check"></i>Vergoed via mutualiteit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="cta-band-title">Klaar om te <em>starten</em>?</h2>
+      <p class="cta-band-sub">Maak vandaag een afspraak. Wij nemen contact op binnen 2 uur en regelen alles met uw mutualiteit.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="booking.html" class="btn-primary"><i class="fa-solid fa-calendar-check" style="margin-right:8px"></i>Afspraak maken</a>
+        <a href="tel:+32479921888" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,0.35);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 28px;border-radius:6px"><i class="fa-solid fa-phone"></i>Bel direct</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="urgentie-strip">
+  <div class="urgentie-inner container">
+    <div class="urgentie-text"><i class="fa-solid fa-triangle-exclamation" style="font-size:20px"></i>Dringende zorg? Bel ons 24/7:</div>
+    <a href="tel:+32479921888" class="urgentie-phone"><i class="fa-solid fa-phone"></i>+32 479 92 18 88</a>
+    <a href="tel:+32479921888" class="urgentie-btn">Bel direct</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><img src="../images/logo.webp" alt="CuraKempen"></div>
+        <div class="footer-tagline">Professionele thuisverpleging in de Kempen. RIZIV-erkend. 100% vergoed via uw mutualiteit.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:8px">RIZIV-erkenningsnummer: 000000-00-00</div>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-list">
+          <li><i class="fa-solid fa-location-dot"></i><span>Hendrik Consciencestraat 20<br>2300 Turnhout</span></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+32479921888">+32 479 92 18 88</a></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+32488455417">+32 488 45 54 17</a></li>
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@curakempenthuisverpleging.be" style="word-break:break-all">info@curakempenthuisverpleging.be</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Navigatie</div>
+        <ul class="footer-list" style="margin-bottom:24px">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="over.html">Over ons</a></li>
+          <li><a href="diensten.html">Diensten</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="booking.html">Afspraak</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="footer-heading">Juridisch</div>
+        <ul class="footer-list">
+          <li><a href="privacy.html">Privacybeleid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="footer-year"></span> CuraKempen. Alle rechten voorbehouden.</span>
+      <span>RIZIV-erkend thuisverpleging</span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-fab" href="https://wa.me/32479921888" target="_blank" rel="noopener" aria-label="WhatsApp CuraKempen"><i class="fa-brands fa-whatsapp"></i></a>
+
+<div class="cookie-banner" id="cookie-banner">
+  <span>Wij gebruiken cookies voor een optimale ervaring.</span>
+  <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accepteren</button>
+  <a href="privacy.html#cookies" class="cookie-info">Meer info</a>
+</div>
+
+<script>
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+  // Re-trigger reveals in newly shown tab
+  document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => {
+    el.classList.remove('visible');
+    ro.observe(el);
+  });
+}
+
+function acceptCookies() {
+  localStorage.setItem('ck_consent','1');
+  document.getElementById('cookie-banner').classList.add('hidden');
+}
+if (localStorage.getItem('ck_consent')) document.getElementById('cookie-banner').classList.add('hidden');
+</script>
+</body>
+</html>

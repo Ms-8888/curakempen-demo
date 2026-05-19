@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afspraak Maken — CuraKempen Thuisverpleging</title>
+<meta name="description" content="Maak eenvoudig een afspraak bij CuraKempen in 4 stappen: kies het type zorg, uw datum, tijdvoorkeur en vul uw gegevens in. Wij nemen contact op binnen 2 uur.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FAFAF7;
+  --slate:#0D1B2A;
+  --slate-mid:#1A3045;
+  --teal:#0BA888;
+  --teal-dim:#087A63;
+  --teal-light:#E6F7F4;
+  --ink:#0D1B2A;
+  --ink-soft:#5A6A76;
+  --rule:#D8E4E0;
+  --warm-gray:#F2F0EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--slate);color:var(--ink);font-size:17px;line-height:1.65}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:'Fraunces',serif}
+
+/* NAV */
+nav{background:var(--slate);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav-logo img{filter:brightness(0) invert(1);height:38px;display:block}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:14.5px;color:rgba(255,255,255,0.65);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-ctas{display:flex;align-items:center;gap:10px}
+.btn-nav-primary{background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;padding:10px 22px;border-radius:4px;border:none;cursor:pointer;transition:background 0.2s;display:inline-block}
+.btn-nav-primary:hover{background:var(--teal-dim)}
+.nav-hamburger{display:none;background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.nav-mobile{display:none;background:var(--slate);padding:20px 24px;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;color:rgba(255,255,255,0.7);padding:10px 0;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.06);font-size:15px}
+
+/* PAGE HEADER */
+.booking-header{padding:64px 24px 40px;text-align:center}
+.booking-header-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;display:block}
+.booking-header-title{font-family:'Fraunces',serif;font-size:clamp(32px,4vw,52px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:14px}
+.booking-header-title em{font-style:italic;color:var(--teal)}
+.booking-header-sub{color:rgba(255,255,255,0.6);font-size:16px;max-width:520px;margin:0 auto}
+
+/* WIZARD CONTAINER */
+.wizard-container{max-width:740px;margin:0 auto;padding:0 24px 80px}
+
+/* STEP INDICATOR */
+.step-indicator{display:flex;align-items:center;margin-bottom:52px}
+.si-step{display:flex;flex-direction:column;align-items:center;position:relative;flex:0 0 auto}
+.si-circle{width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:rgba(255,255,255,0.3);background:transparent;transition:all 0.35s;z-index:1;position:relative}
+.si-step.active .si-circle{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:0 0 0 4px rgba(11,168,136,0.2)}
+.si-step.done .si-circle{border-color:var(--teal-dim);background:var(--teal-dim);color:#fff}
+.si-label{font-size:11px;font-weight:600;color:rgba(255,255,255,0.3);margin-top:8px;text-align:center;transition:color 0.35s;white-space:nowrap}
+.si-step.active .si-label,.si-step.done .si-label{color:rgba(255,255,255,0.75)}
+.si-line{flex:1;height:2px;background:rgba(255,255,255,0.1);margin:0 8px;margin-bottom:28px;transition:background 0.35s}
+.si-line.done{background:var(--teal)}
+
+/* WIZARD CARDS */
+.wizard-step{display:none}
+.wizard-step.active{display:block}
+.step-card{background:var(--slate-mid);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:40px 40px 36px}
+.step-heading{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:8px}
+.step-sub{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:32px}
+
+/* SERVICE OPTIONS */
+.service-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
+.service-option{position:relative}
+.service-option input{position:absolute;opacity:0;width:0;height:0}
+.service-option label{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.08);border-radius:10px;padding:18px 16px;cursor:pointer;transition:border-color 0.2s,background 0.2s;font-size:14.5px;color:rgba(255,255,255,0.65);font-weight:500}
+.service-option label:hover{border-color:rgba(11,168,136,0.4);background:rgba(11,168,136,0.04)}
+.service-option input:checked+label{border-color:var(--teal);background:rgba(11,168,136,0.1);color:#fff}
+.service-option label i{color:var(--teal);font-size:20px;flex-shrink:0;margin-top:1px}
+.so-text{}
+.so-title{font-weight:600;font-size:14.5px;display:block;margin-bottom:3px}
+.so-desc{font-size:12px;color:rgba(255,255,255,0.35);line-height:1.5}
+
+/* CALENDAR */
+.calendar-wrap{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:24px;margin-bottom:16px}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.cal-title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#fff}
+.cal-nav-btn{background:none;border:1px solid rgba(255,255,255,0.15);color:#fff;width:34px;height:34px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:background 0.2s}
+.cal-nav-btn:hover:not(:disabled){background:rgba(255,255,255,0.08)}
+.cal-nav-btn:disabled{opacity:0.25;cursor:default}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-dow{text-align:center;font-size:11px;font-weight:700;color:rgba(255,255,255,0.25);padding:5px 0;letter-spacing:0.5px}
+.cal-day{text-align:center;padding:9px 4px;border-radius:7px;font-size:13.5px;font-weight:500;cursor:pointer;transition:background 0.15s,color 0.15s;color:rgba(255,255,255,0.65);display:flex;align-items:center;justify-content:center}
+.cal-day.selectable:hover{background:rgba(11,168,136,0.2);color:#fff}
+.cal-day.selected{background:var(--teal);color:#fff;font-weight:700}
+.cal-day.today{outline:1px solid rgba(11,168,136,0.4)}
+.cal-day.disabled{color:rgba(255,255,255,0.15);cursor:default}
+.cal-day.other-month{color:rgba(255,255,255,0.1)}
+.selected-info{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:24px;min-height:20px}
+
+/* TIME PREFERENCE */
+.time-pref-title{font-size:13px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.time-prefs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:32px}
+.time-pref-opt{position:relative}
+.time-pref-opt input{position:absolute;opacity:0;width:0;height:0}
+.time-pref-opt label{display:flex;flex-direction:column;align-items:center;gap:4px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 12px;cursor:pointer;transition:all 0.2s;text-align:center}
+.time-pref-opt label:hover{border-color:rgba(11,168,136,0.35)}
+.time-pref-opt input:checked+label{border-color:var(--teal);background:rgba(11,168,136,0.09)}
+.tp-time{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:#fff}
+.tp-label{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px}
+.time-pref-opt input:checked+label .tp-label{color:rgba(255,255,255,0.7)}
+
+/* FORM */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field.full{grid-column:1/-1}
+.form-label{font-size:13px;font-weight:600;color:rgba(255,255,255,0.5)}
+.form-input{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);border-radius:7px;padding:12px 15px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;transition:border-color 0.2s;outline:none;width:100%}
+.form-input:focus{border-color:var(--teal)}
+.form-input::placeholder{color:rgba(255,255,255,0.2)}
+select.form-input option{background:var(--slate);color:#fff}
+textarea.form-input{resize:vertical;min-height:90px}
+
+/* STEP 4: SUMMARY */
+.summary-box{background:rgba(11,168,136,0.07);border:1px solid rgba(11,168,136,0.25);border-radius:10px;padding:24px 28px;margin-bottom:28px}
+.summary-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+.summary-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;font-size:15px}
+.summary-row:last-child{margin-bottom:0}
+.summary-row i{color:var(--teal);width:18px;flex-shrink:0;margin-top:2px}
+.summary-row span{color:rgba(255,255,255,0.75)}
+.summary-row strong{color:#fff}
+
+/* WIZARD NAV */
+.wizard-nav{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;margin-top:32px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:13px 28px;border-radius:7px;border:none;cursor:pointer;transition:transform 0.15s ease,box-shadow 0.15s ease}
+.btn-primary:hover{transform:scale(1.01);box-shadow:0 4px 20px rgba(11,168,136,0.35)}
+.btn-back{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.65);font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 24px;border-radius:7px;background:transparent;cursor:pointer;transition:border-color 0.2s,color 0.2s}
+.btn-back:hover{border-color:rgba(255,255,255,0.5);color:#fff}
+
+/* SUCCESS */
+.success-card{background:var(--slate-mid);border:1px solid rgba(11,168,136,0.35);border-radius:12px;padding:64px 48px;text-align:center}
+.success-icon{font-size:56px;color:var(--teal);margin-bottom:20px}
+.success-title{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:#fff;margin-bottom:12px}
+.success-msg{color:rgba(255,255,255,0.6);font-size:16px;line-height:1.75;max-width:420px;margin:0 auto 32px}
+
+/* TRUST ROW */
+.trust-row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:48px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.07)}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.4)}
+.trust-item i{color:var(--teal)}
+
+/* COOKIE */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--slate-mid);color:rgba(255,255,255,0.8);padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;font-size:14px;z-index:500;border-top:1px solid rgba(255,255,255,0.1)}
+.cookie-banner.hidden{display:none}
+.ck-btn{padding:8px 20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;cursor:pointer;border:none}
+.ck-accept{background:var(--teal);color:#fff}
+.ck-info{background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);text-decoration:none;display:inline-block;padding:8px 20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px}
+
+@media(max-width:768px){.nav-links,.nav-ctas{display:none}.nav-hamburger{display:block}.service-options{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.time-prefs{grid-template-columns:1fr 1fr}.step-card{padding:28px 22px}.success-card{padding:40px 24px}}
+@media(max-width:480px){.time-prefs{grid-template-columns:1fr}.si-label{display:none}}
+</style>
+</head>
+<body>
+
+<div style="background:rgba(11,168,136,0.12);color:var(--teal);text-align:center;padding:8px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600">DEMO — Pakket C: Volledig Platform &nbsp;·&nbsp; Online booking, FAQ, intakeformulier &nbsp;·&nbsp; €3.490</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../images/logo.webp" alt="CuraKempen" style="height:38px;filter:brightness(0) invert(1)"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="over.html">Over ons</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="team.html">Team</a>
+      <a href="booking.html" class="active">Afspraak</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="booking.html" class="btn-nav-primary">Afspraak maken</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-mob').classList.toggle('open')" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="nav-mob" class="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="over.html">Over ons</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="team.html">Team</a>
+    <a href="booking.html">Afspraak</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="booking-header">
+  <span class="booking-header-label">Online afspraak maken</span>
+  <h1 class="booking-header-title">Uw zorg in <em>4 stappen</em> geregeld</h1>
+  <p class="booking-header-sub">Kies uw type zorg, gewenste datum en tijdvoorkeur, vul uw gegevens in en wij nemen binnen 2 uur contact op ter bevestiging.</p>
+</div>
+
+<div class="wizard-container">
+
+  <!-- STEP INDICATOR -->
+  <div class="step-indicator" id="step-indicator">
+    <div class="si-step active" id="si1"><div class="si-circle">1</div><div class="si-label">Type zorg</div></div>
+    <div class="si-line" id="sl1"></div>
+    <div class="si-step" id="si2"><div class="si-circle">2</div><div class="si-label">Datum</div></div>
+    <div class="si-line" id="sl2"></div>
+    <div class="si-step" id="si3"><div class="si-circle">3</div><div class="si-label">Gegevens</div></div>
+    <div class="si-line" id="sl3"></div>
+    <div class="si-step" id="si4"><div class="si-circle">4</div><div class="si-label">Bevestiging</div></div>
+  </div>
+
+  <!-- STEP 1: Type zorg -->
+  <div class="wizard-step active" id="step1">
+    <div class="step-card">
+      <h2 class="step-heading">Welke zorg heeft u nodig?</h2>
+      <p class="step-sub">Selecteer het type verpleegkundige zorg dat u wenst. Heeft u twijfels? Kies "Andere" en omschrijf uw situatie.</p>
+      <div class="service-options">
+        <div class="service-option">
+          <input type="radio" name="service" id="s1" value="Hygiënische zorgen">
+          <label for="s1">
+            <i class="fa-solid fa-soap"></i>
+            <span class="so-text"><span class="so-title">Hygiënische zorgen</span><span class="so-desc">Dagelijkse wassing, persoonsverzorging</span></span>
+          </label>
+        </div>
+        <div class="service-option">
+          <input type="radio" name="service" id="s2" value="Wondzorg">
+          <label for="s2">
+            <i class="fa-solid fa-bandage"></i>
+            <span class="so-text"><span class="so-title">Wondzorg</span><span class="so-desc">Verbandwissels, wondopvolging</span></span>
+          </label>
+        </div>
+        <div class="service-option">
+          <input type="radio" name="service" id="s3" value="Medicatiebeheer">
+          <label for="s3">
+            <i class="fa-solid fa-pills"></i>
+            <span class="so-text"><span class="so-title">Medicatiebeheer</span><span class="so-desc">Voorbereiding, toediening, controle</span></span>
+          </label>
+        </div>
+        <div class="service-option">
+          <input type="radio" name="service" id="s4" value="Andere zorg">
+          <label for="s4">
+            <i class="fa-solid fa-ellipsis"></i>
+            <span class="so-text"><span class="so-title">Andere zorg</span><span class="so-desc">Bloedafname, injecties, stoma, katheter…</span></span>
+          </label>
+        </div>
+      </div>
+      <div class="wizard-nav">
+        <button class="btn-primary" onclick="wizardNext(1)">Volgende <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: Datum + tijdvoorkeur -->
+  <div class="wizard-step" id="step2">
+    <div class="step-card">
+      <h2 class="step-heading">Kies uw voorkeursdatum</h2>
+      <p class="step-sub">Weekdagen zijn beschikbaar. Zaterdag enkel op aanvraag. Wij bevestigen uw afspraak telefonisch.</p>
+
+      <div class="calendar-wrap">
+        <div class="cal-header">
+          <button class="cal-nav-btn" id="cal-prev-btn" onclick="calMove(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+          <div class="cal-title" id="cal-title">—</div>
+          <button class="cal-nav-btn" onclick="calMove(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+      <div class="selected-info" id="selected-info"></div>
+
+      <div class="time-pref-title">Tijdvoorkeur</div>
+      <div class="time-prefs">
+        <div class="time-pref-opt">
+          <input type="radio" name="timeref" id="t1" value="Ochtend (07:00–12:00)">
+          <label for="t1"><span class="tp-time">07:00–12:00</span><span class="tp-label">Ochtend</span></label>
+        </div>
+        <div class="time-pref-opt">
+          <input type="radio" name="timeref" id="t2" value="Namiddag (12:00–17:00)">
+          <label for="t2"><span class="tp-time">12:00–17:00</span><span class="tp-label">Namiddag</span></label>
+        </div>
+        <div class="time-pref-opt">
+          <input type="radio" name="timeref" id="t3" value="Avond (17:00–20:00)">
+          <label for="t3"><span class="tp-time">17:00–20:00</span><span class="tp-label">Avond</span></label>
+        </div>
+      </div>
+
+      <div class="wizard-nav">
+        <button class="btn-back" onclick="wizardBack(2)"><i class="fa-solid fa-arrow-left"></i> Terug</button>
+        <button class="btn-primary" onclick="wizardNext(2)">Volgende <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: Gegevens -->
+  <div class="wizard-step" id="step3">
+    <div class="step-card">
+      <h2 class="step-heading">Uw gegevens</h2>
+      <p class="step-sub">Vul uw contactgegevens in zodat wij uw afspraak kunnen bevestigen en afstemmen op uw situatie.</p>
+      <form id="booking-form" onsubmit="submitBooking(event)">
+        <div class="form-grid">
+          <div class="form-field"><label class="form-label" for="b-naam">Volledige naam *</label><input class="form-input" id="b-naam" type="text" placeholder="Voornaam Achternaam" required></div>
+          <div class="form-field"><label class="form-label" for="b-tel">Telefoonnummer *</label><input class="form-input" id="b-tel" type="tel" placeholder="+32 xxx xx xx xx" required></div>
+          <div class="form-field"><label class="form-label" for="b-email">E-mailadres</label><input class="form-input" id="b-email" type="email" placeholder="uw@email.be"></div>
+          <div class="form-field"><label class="form-label" for="b-geb">Geboortedatum</label><input class="form-input" id="b-geb" type="date"></div>
+          <div class="form-field full"><label class="form-label" for="b-adres">Thuisadres (bezoekadres) *</label><input class="form-input" id="b-adres" type="text" placeholder="Straat, nummer, postcode, gemeente" required></div>
+          <div class="form-field full"><label class="form-label" for="b-info">Extra informatie &amp; voorkeur verpleegkundige</label><textarea class="form-input" id="b-info" placeholder="Heeft u een voorkeur voor een specifieke verpleegkundige? Of is er bijkomende informatie die wij moeten weten?"></textarea></div>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.3);margin-bottom:20px;line-height:1.6">Uw gegevens worden verwerkt conform onze <a href="privacy.html" style="color:var(--teal)">privacyverklaring</a> en enkel gebruikt voor uw zorgtraject.</p>
+        <div class="wizard-nav">
+          <button type="button" class="btn-back" onclick="wizardBack(3)"><i class="fa-solid fa-arrow-left"></i> Terug</button>
+          <button type="submit" class="btn-primary"><i class="fa-solid fa-eye"></i> Overzicht bekijken</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- STEP 4: Bevestiging (samenvatting) -->
+  <div class="wizard-step" id="step4">
+    <div class="step-card">
+      <h2 class="step-heading">Bevestig uw afspraak</h2>
+      <p class="step-sub">Controleer uw gegevens en bevestig uw aanvraag. Wij nemen contact op binnen 2 uur.</p>
+
+      <div class="summary-box">
+        <div class="summary-title">Overzicht afspraak</div>
+        <div class="summary-row"><i class="fa-solid fa-stethoscope"></i><span>Type zorg: <strong id="sum-service">—</strong></span></div>
+        <div class="summary-row"><i class="fa-solid fa-calendar"></i><span>Datum: <strong id="sum-date">—</strong></span></div>
+        <div class="summary-row"><i class="fa-solid fa-clock"></i><span>Tijdvoorkeur: <strong id="sum-time">—</strong></span></div>
+        <div class="summary-row"><i class="fa-solid fa-user"></i><span>Naam: <strong id="sum-naam">—</strong></span></div>
+        <div class="summary-row"><i class="fa-solid fa-phone"></i><span>Telefoon: <strong id="sum-tel">—</strong></span></div>
+        <div class="summary-row"><i class="fa-solid fa-location-dot"></i><span>Adres: <strong id="sum-adres">—</strong></span></div>
+      </div>
+
+      <div class="wizard-nav">
+        <button class="btn-back" onclick="wizardBack(4)"><i class="fa-solid fa-arrow-left"></i> Wijzigen</button>
+        <button class="btn-primary" onclick="finalSubmit()"><i class="fa-solid fa-calendar-check"></i> Afspraak bevestigen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="wizard-step" id="step-success">
+    <div class="success-card">
+      <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <div class="success-title">Afspraak aangevraagd!</div>
+      <p class="success-msg">Bedankt voor uw aanvraag. Ons team neemt binnen <strong style="color:var(--teal)">2 uur</strong> contact met u op ter bevestiging.<br><br>Heeft u dringende nood aan zorg?<br>Bel ons rechtstreeks:</p>
+      <a href="tel:+32479921888" class="btn-primary" style="margin:0 auto;display:inline-flex"><i class="fa-solid fa-phone"></i>+32 479 92 18 88</a>
+      <div style="margin-top:24px">
+        <button onclick="resetWizard()" style="background:none;border:none;color:rgba(255,255,255,0.35);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;cursor:pointer;text-decoration:underline">Nieuwe afspraak maken</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST ROW -->
+  <div class="trust-row">
+    <div class="trust-item"><i class="fa-solid fa-check"></i>100% vergoed via mutualiteit</div>
+    <div class="trust-item"><i class="fa-solid fa-check"></i>RIZIV-erkend</div>
+    <div class="trust-item"><i class="fa-solid fa-check"></i>Urgentie 24/7</div>
+    <div class="trust-item"><i class="fa-solid fa-lock"></i>Beveiligd &amp; GDPR-conform</div>
+  </div>
+</div>
+
+<div class="cookie-banner" id="cookie-banner">
+  <span>Wij gebruiken cookies voor een optimale ervaring.</span>
+  <button class="ck-btn ck-accept" onclick="acceptCookies()">Accepteren</button>
+  <a href="privacy.html#cookies" class="ck-info">Meer info</a>
+</div>
+
+<script>
+let bk = { service: null, date: null, time: null };
+let calY, calM;
+const MONTHS = ['Januari','Februari','Maart','April','Mei','Juni','Juli','Augustus','September','Oktober','November','December'];
+const DOWS = ['Ma','Di','Wo','Do','Vr','Za','Zo'];
+
+// INIT CALENDAR
+const now = new Date();
+calY = now.getFullYear();
+calM = now.getMonth();
+renderCal();
+
+function updateIndicator(activeStep) {
+  for (let i = 1; i <= 4; i++) {
+    const si = document.getElementById('si' + i);
+    si.classList.remove('active','done');
+    if (i < activeStep) si.classList.add('done');
+    else if (i === activeStep) si.classList.add('active');
+  }
+  for (let i = 1; i <= 3; i++) {
+    const sl = document.getElementById('sl' + i);
+    sl.classList.toggle('done', i < activeStep);
+  }
+}
+
+function showStep(n) {
+  document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+  const id = (n === 5) ? 'step-success' : 'step' + n;
+  document.getElementById(id).classList.add('active');
+  if (n <= 4) updateIndicator(n);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function wizardNext(step) {
+  if (step === 1) {
+    const r = document.querySelector('input[name="service"]:checked');
+    if (!r) { alert('Selecteer eerst een type zorg.'); return; }
+    bk.service = r.value;
+    showStep(2);
+    return;
+  }
+  if (step === 2) {
+    if (!bk.date) { alert('Kies een datum.'); return; }
+    const tp = document.querySelector('input[name="timeref"]:checked');
+    if (!tp) { alert('Kies een tijdvoorkeur.'); return; }
+    bk.time = tp.value;
+    showStep(3);
+    return;
+  }
+}
+function wizardBack(step) { showStep(step - 1); }
+
+function submitBooking(e) {
+  e.preventDefault();
+  bk.naam = document.getElementById('b-naam').value;
+  bk.tel = document.getElementById('b-tel').value;
+  bk.adres = document.getElementById('b-adres').value;
+
+  document.getElementById('sum-service').textContent = bk.service;
+  const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+  document.getElementById('sum-date').textContent = bk.date ? bk.date.toLocaleDateString('nl-BE', opts) : '—';
+  document.getElementById('sum-time').textContent = bk.time || '—';
+  document.getElementById('sum-naam').textContent = bk.naam;
+  document.getElementById('sum-tel').textContent = bk.tel;
+  document.getElementById('sum-adres').textContent = bk.adres;
+
+  showStep(4);
+}
+function finalSubmit() { showStep(5); }
+
+function resetWizard() {
+  bk = { service: null, date: null, time: null };
+  document.querySelectorAll('input[name="service"]').forEach(r => r.checked = false);
+  document.querySelectorAll('input[name="timeref"]').forEach(r => r.checked = false);
+  document.getElementById('booking-form').reset();
+  document.getElementById('selected-info').textContent = '';
+  calY = new Date().getFullYear();
+  calM = new Date().getMonth();
+  renderCal();
+  showStep(1);
+  updateIndicator(1);
+}
+
+function renderCal() {
+  const title = document.getElementById('cal-title');
+  const grid = document.getElementById('cal-grid');
+  if (!title || !grid) return;
+  title.textContent = MONTHS[calM] + ' ' + calY;
+  grid.innerHTML = '';
+  DOWS.forEach(d => { const el = document.createElement('div'); el.className = 'cal-dow'; el.textContent = d; grid.appendChild(el); });
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const firstDow = (new Date(calY, calM, 1).getDay() + 6) % 7;
+  const daysInMonth = new Date(calY, calM + 1, 0).getDate();
+  const prevDays = new Date(calY, calM, 0).getDate();
+
+  for (let i = firstDow - 1; i >= 0; i--) {
+    const el = document.createElement('div'); el.className = 'cal-day other-month'; el.textContent = prevDays - i; grid.appendChild(el);
+  }
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(calY, calM, d);
+    const dow = (date.getDay() + 6) % 7;
+    const past = date < today;
+    const weekend = dow >= 6; // only Sunday fully blocked (Saturday allowed on request but shown as available)
+    const isToday = date.toDateString() === today.toDateString();
+    const isSel = bk.date && date.toDateString() === bk.date.toDateString();
+    const el = document.createElement('div');
+    let cls = 'cal-day';
+    if (!past && !weekend) cls += ' selectable';
+    else if (weekend && !past) cls += ' selectable'; // Sa available
+    else cls += ' disabled';
+    if (past) { el.className = 'cal-day disabled'; el.textContent = d; grid.appendChild(el); continue; }
+    if (isToday) cls += ' today';
+    if (isSel) cls += ' selected';
+    el.className = cls;
+    el.textContent = d;
+    el.onclick = () => pickDay(d, el);
+    grid.appendChild(el);
+  }
+  const total = firstDow + daysInMonth;
+  const rem = (7 - (total % 7)) % 7;
+  for (let d = 1; d <= rem; d++) { const el = document.createElement('div'); el.className = 'cal-day other-month'; el.textContent = d; grid.appendChild(el); }
+
+  const prev = document.getElementById('cal-prev-btn');
+  const n = new Date();
+  if (prev) prev.disabled = (calY === n.getFullYear() && calM <= n.getMonth());
+}
+
+function pickDay(d, el) {
+  document.querySelectorAll('.cal-day.selected').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  bk.date = new Date(calY, calM, d);
+  const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+  const info = document.getElementById('selected-info');
+  if (info) info.textContent = 'Gekozen: ' + bk.date.toLocaleDateString('nl-BE', opts);
+}
+
+function calMove(dir) {
+  calM += dir;
+  if (calM > 11) { calM = 0; calY++; }
+  else if (calM < 0) { calM = 11; calY--; }
+  renderCal();
+}
+
+function acceptCookies() {
+  localStorage.setItem('ck_consent','1');
+  document.getElementById('cookie-banner').classList.add('hidden');
+}
+if (localStorage.getItem('ck_consent')) document.getElementById('cookie-banner').classList.add('hidden');
+</script>
+</body>
+</html>

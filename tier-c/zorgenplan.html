@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zorgplan — CuraKempen Digitaal Platform (Demo)</title>
+<meta name="description" content="Bekijk hoe een digitaal zorgplan eruitziet bij CuraKempen. Dit is een demonstratie van ons digitale zorgdossier voor patiënten en mantelzorgers.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FAFAF7;
+  --slate:#0D1B2A;
+  --slate-mid:#1A3045;
+  --teal:#0BA888;
+  --teal-dim:#087A63;
+  --teal-light:#E6F7F4;
+  --ink:#0D1B2A;
+  --ink-soft:#5A6A76;
+  --rule:#D8E4E0;
+  --warm-gray:#F2F0EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--warm-gray);color:var(--ink);font-size:17px;line-height:1.65}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:'Fraunces',serif}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{background:var(--slate);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav-logo img{filter:brightness(0) invert(1);height:38px;display:block}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:14.5px;color:rgba(255,255,255,0.65);transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-ctas{display:flex;align-items:center;gap:10px}
+.btn-nav-primary{background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;padding:10px 22px;border-radius:4px;border:none;cursor:pointer;transition:background 0.2s;display:inline-block}
+.btn-nav-primary:hover{background:var(--teal-dim)}
+.nav-hamburger{display:none;background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.nav-mobile{display:none;background:var(--slate);padding:20px 24px;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;color:rgba(255,255,255,0.7);padding:10px 0;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.06);font-size:15px}
+
+/* PAGE HERO */
+.page-hero{background:var(--slate);padding:72px 24px}
+.page-hero-inner{max-width:1120px;margin:0 auto}
+.page-hero-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;display:block}
+.page-hero-title{font-family:'Fraunces',serif;font-size:clamp(32px,4vw,50px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:14px}
+.page-hero-title em{font-style:italic;color:var(--teal)}
+.page-hero-sub{color:rgba(255,255,255,0.6);font-size:16px;line-height:1.65;max-width:580px}
+
+/* DEMO DISCLAIMER */
+.demo-banner{background:var(--teal-light);border:1.5px solid var(--teal);border-radius:8px;padding:16px 24px;display:flex;align-items:flex-start;gap:16px;margin-bottom:32px}
+.demo-banner i{color:var(--teal);font-size:20px;flex-shrink:0;margin-top:2px}
+.demo-banner-text{font-size:14.5px;color:var(--teal-dim);line-height:1.65}
+.demo-banner-text strong{font-weight:700;color:var(--ink)}
+
+/* MAIN LAYOUT */
+.zorgplan-layout{max-width:1120px;margin:0 auto;padding:64px 24px}
+
+/* PATIENT CARD */
+.patient-card{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:28px 32px;margin-bottom:32px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;box-shadow:0 2px 16px rgba(13,27,42,0.06)}
+.patient-avatar{width:72px;height:72px;border-radius:50%;background:var(--teal-light);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--teal);flex-shrink:0}
+.patient-info{}
+.patient-name{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.patient-meta{font-size:14px;color:var(--ink-soft);display:flex;gap:20px;flex-wrap:wrap}
+.patient-meta span{display:flex;align-items:center;gap:6px}
+.patient-meta i{color:var(--teal);font-size:12px}
+.patient-status{text-align:right}
+.status-badge{display:inline-flex;align-items:center;gap:6px;background:var(--teal-light);color:var(--teal-dim);font-size:13px;font-weight:700;padding:7px 16px;border-radius:20px}
+.status-dot{width:8px;height:8px;background:#22C55E;border-radius:50%}
+.nurse-badge{margin-top:8px;font-size:13px;color:var(--ink-soft)}
+.nurse-badge strong{color:var(--ink)}
+
+/* SECTION CARD */
+.section-card{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:28px 32px;margin-bottom:28px;box-shadow:0 2px 16px rgba(13,27,42,0.06)}
+.section-card-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.section-card-title i{font-size:13px}
+.section-card h3{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:16px}
+
+/* ZORGPLAN TABLE */
+.zorgplan-table{width:100%;border-collapse:collapse;font-size:14.5px}
+.zorgplan-table thead th{background:var(--warm-gray);color:var(--ink-soft);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:11px 16px;text-align:left;border-bottom:2px solid var(--rule)}
+.zorgplan-table tbody td{padding:14px 16px;border-bottom:1px solid var(--rule);vertical-align:middle;color:var(--ink)}
+.zorgplan-table tbody tr:last-child td{border-bottom:none}
+.zorgplan-table tbody tr:hover td{background:rgba(11,168,136,0.03)}
+.nurse-name{font-weight:600;color:var(--ink)}
+.freq-badge{display:inline-block;background:var(--warm-gray);color:var(--ink-soft);font-size:12px;font-weight:600;padding:3px 10px;border-radius:4px}
+
+/* STATUS PILLS */
+.pill-gepland{display:inline-flex;align-items:center;gap:5px;background:#FEF3C7;color:#92400E;font-size:12px;font-weight:700;padding:4px 11px;border-radius:20px}
+.pill-voltooid{display:inline-flex;align-items:center;gap:5px;background:#D1FAE5;color:#065F46;font-size:12px;font-weight:700;padding:4px 11px;border-radius:20px}
+.pill-gepland::before{content:'';width:6px;height:6px;border-radius:50%;background:#F59E0B;flex-shrink:0}
+.pill-voltooid::before{content:'';width:6px;height:6px;border-radius:50%;background:#10B981;flex-shrink:0}
+
+/* RAPPORT */
+.rapport-list{display:flex;flex-direction:column;gap:20px}
+.rapport-item{border-left:3px solid var(--teal);padding:16px 20px;background:var(--warm-gray);border-radius:0 8px 8px 0}
+.rapport-meta{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.rapport-date{font-size:12px;font-weight:700;color:var(--teal-dim);letter-spacing:0.5px;text-transform:uppercase}
+.rapport-nurse{font-size:13px;font-weight:600;color:var(--ink)}
+.rapport-note{font-size:15px;color:var(--ink-soft);line-height:1.7;font-style:italic}
+.rapport-note::before{content:'\201C';font-style:normal;color:var(--teal);font-size:20px;line-height:0;vertical-align:-5px;margin-right:3px}
+.rapport-note::after{content:'\201D';font-style:normal;color:var(--teal);font-size:20px;line-height:0;vertical-align:-5px;margin-left:3px}
+
+/* CTA CARD */
+.cta-card{background:var(--slate);border-radius:10px;padding:48px 40px;text-align:center;margin-top:40px}
+.cta-card-title{font-family:'Fraunces',serif;font-size:clamp(24px,3vw,34px);font-weight:700;color:#fff;margin-bottom:12px}
+.cta-card-title em{font-style:italic;color:var(--teal)}
+.cta-card-sub{color:rgba(255,255,255,0.55);font-size:16px;margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:13px 28px;border-radius:7px;border:none;cursor:pointer;transition:transform 0.15s ease,box-shadow 0.15s ease;text-decoration:none}
+.btn-primary:hover{transform:scale(1.01);box-shadow:0 4px 20px rgba(11,168,136,0.35)}
+
+/* FOOTER */
+footer{background:var(--slate);color:rgba(255,255,255,0.6);padding:64px 24px 32px}
+.footer-inner{max-width:1120px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo{margin-bottom:16px}
+.footer-logo img{filter:brightness(0) invert(1);height:38px}
+.footer-tagline{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:20px;line-height:1.65}
+.footer-heading{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px}
+.footer-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-list li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.5}
+.footer-list a{color:rgba(255,255,255,0.55);transition:color 0.2s}
+.footer-list a:hover{color:#fff}
+.footer-list i{color:var(--teal);margin-top:2px;width:14px;flex-shrink:0;font-size:13px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:rgba(255,255,255,0.3)}
+.footer-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s}
+
+/* WHATSAPP FAB */
+.whatsapp-fab{position:fixed;bottom:28px;right:28px;z-index:200;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,0.45);animation:pulse-wa 2.5s infinite;transition:transform 0.2s}
+.whatsapp-fab:hover{transform:scale(1.08)}
+@keyframes pulse-wa{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.45),0 0 0 0 rgba(37,211,102,0.35)}60%{box-shadow:0 4px 20px rgba(37,211,102,0.45),0 0 0 10px rgba(37,211,102,0)}}
+
+/* COOKIE */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--slate);color:rgba(255,255,255,0.8);padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;font-size:14px;z-index:500;border-top:1px solid rgba(255,255,255,0.1)}
+.cookie-banner.hidden{display:none}
+.cookie-btn{padding:8px 20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;cursor:pointer;border:none}
+.cookie-accept{background:var(--teal);color:#fff}
+.cookie-info{background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);text-decoration:none;display:inline-block;padding:8px 20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px}
+
+.urgentie-strip{background:#B8401A;padding:22px 24px}
+.urgentie-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.urgentie-text{color:#fff;font-size:18px;font-weight:600;display:flex;align-items:center;gap:12px}
+.urgentie-phone{font-size:22px;font-weight:700;color:#fff;display:flex;align-items:center;gap:10px}
+.urgentie-btn{background:#fff;color:#B8401A;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;padding:11px 24px;border-radius:6px;display:inline-block}
+
+@media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px}.footer-grid>div:last-child{grid-column:1/-1}}
+@media(max-width:768px){.nav-links,.nav-ctas{display:none}.nav-hamburger{display:block}.patient-card{grid-template-columns:auto 1fr;gap:16px}.patient-status{grid-column:1/-1;text-align:left}.zorgplan-table{font-size:13px}.section-card{padding:20px}.cta-card{padding:32px 20px}.footer-grid{grid-template-columns:1fr;gap:32px}}
+@media(max-width:480px){.patient-card{grid-template-columns:1fr}.patient-avatar{display:none}}
+</style>
+</head>
+<body>
+
+<div style="background:var(--slate);color:var(--teal);text-align:center;padding:8px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600">DEMO — Pakket C: Volledig Platform &nbsp;·&nbsp; Online booking, FAQ, intakeformulier &nbsp;·&nbsp; €3.490</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../images/logo.webp" alt="CuraKempen" style="height:38px;filter:brightness(0) invert(1)"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="over.html">Over ons</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="team.html">Team</a>
+      <a href="booking.html">Afspraak</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="booking.html" class="btn-nav-primary">Afspraak maken</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-mob').classList.toggle('open')" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="nav-mob" class="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="over.html">Over ons</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="team.html">Team</a>
+    <a href="booking.html">Afspraak</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-label">Digitaal zorgdossier — demo</span>
+    <h1 class="page-hero-title">Zo ziet uw <em>zorgplan</em> eruit</h1>
+    <p class="page-hero-sub">Als patiënt bij CuraKempen heeft u toegang tot een overzichtelijk digitaal zorgdossier. Hieronder vindt u een realistische demonstratie.</p>
+  </div>
+</div>
+
+<div class="zorgplan-layout">
+
+  <!-- DEMO DISCLAIMER -->
+  <div class="demo-banner reveal">
+    <i class="fa-solid fa-circle-info"></i>
+    <div class="demo-banner-text"><strong>Dit is een demonstratie.</strong> Alle gegevens op deze pagina zijn fictief en dienen uitsluitend ter illustratie van ons digitale zorgplatform. Echte patiëntgegevens worden nooit openbaar gemaakt.</div>
+  </div>
+
+  <!-- PATIENT CARD -->
+  <div class="patient-card reveal">
+    <div class="patient-avatar"><i class="fa-solid fa-user"></i></div>
+    <div class="patient-info">
+      <div class="patient-name">Mevrouw Maria Janssen</div>
+      <div class="patient-meta">
+        <span><i class="fa-solid fa-cake-candles"></i>78 jaar</span>
+        <span><i class="fa-solid fa-location-dot"></i>Turnhout (adres vertrouwelijk)</span>
+        <span><i class="fa-solid fa-calendar-check"></i>Patiënt sinds: januari 2025</span>
+      </div>
+      <div class="nurse-badge" style="margin-top:10px"><i class="fa-solid fa-user-nurse" style="color:var(--teal);margin-right:6px"></i>Toegewezen verpleegkundige: <strong>Leen Van Gorp</strong></div>
+    </div>
+    <div class="patient-status">
+      <div class="status-badge"><div class="status-dot"></div>Actief dossier</div>
+      <div class="nurse-badge" style="margin-top:10px">Dossier bijgewerkt:<br><strong>16 mei 2026</strong></div>
+    </div>
+  </div>
+
+  <!-- ZORGPLAN OVERZICHT -->
+  <div class="section-card reveal">
+    <div class="section-card-title"><i class="fa-solid fa-clipboard-list"></i>Zorgplan overzicht</div>
+    <table class="zorgplan-table">
+      <thead>
+        <tr>
+          <th>Zorghandeling</th>
+          <th>Frequentie</th>
+          <th>Uitvoerder</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hygiënische verzorging</strong><br><span style="font-size:12px;color:var(--ink-soft)">Volledige lichamelijke wassing, mondverzorging</span></td>
+          <td><span class="freq-badge">Dagelijks</span></td>
+          <td><span class="nurse-name">Blerta Fiqi</span></td>
+          <td><span class="pill-gepland">Gepland</span></td>
+        </tr>
+        <tr>
+          <td><strong>Wondzorg linkeronderbeen</strong><br><span style="font-size:12px;color:var(--ink-soft)">Verbandwissel, reiniging, wondopvolging</span></td>
+          <td><span class="freq-badge">3×/week</span></td>
+          <td><span class="nurse-name">Leen Van Gorp</span></td>
+          <td><span class="pill-voltooid">Voltooid</span></td>
+        </tr>
+        <tr>
+          <td><strong>Medicatietoediening</strong><br><span style="font-size:12px;color:var(--ink-soft)">Bloeddrukmedicatie, diureticum, vitamine D</span></td>
+          <td><span class="freq-badge">Dagelijks</span></td>
+          <td><span class="nurse-name">Hanane Oubali</span></td>
+          <td><span class="pill-gepland">Gepland</span></td>
+        </tr>
+        <tr>
+          <td><strong>Bloedafname</strong><br><span style="font-size:12px;color:var(--ink-soft)">Labo-controle nierfunctie, coagulatie</span></td>
+          <td><span class="freq-badge">1×/maand</span></td>
+          <td><span class="nurse-name">Gabriela Chivu</span></td>
+          <td><span class="pill-gepland">Gepland</span></td>
+        </tr>
+        <tr>
+          <td><strong>Palliatieve ondersteuning</strong><br><span style="font-size:12px;color:var(--ink-soft)">Comfortgericht gesprek, pijncontrole, familie-opvolging</span></td>
+          <td><span class="freq-badge">Wekelijks</span></td>
+          <td><span class="nurse-name">Martine Jacobs</span></td>
+          <td><span class="pill-voltooid">Voltooid</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RAPPORTAGE -->
+  <div class="section-card reveal">
+    <div class="section-card-title"><i class="fa-solid fa-file-medical"></i>Verpleegkundige rapportage</div>
+    <div class="rapport-list">
+
+      <div class="rapport-item">
+        <div class="rapport-meta">
+          <span class="rapport-date">Do 15 mei 2026</span>
+          <span class="rapport-nurse"><i class="fa-solid fa-user-nurse" style="color:var(--teal);margin-right:5px;font-size:12px"></i>Leen Van Gorp</span>
+        </div>
+        <p class="rapport-note">Wond linkeronderbeen herstelt goed. Roodheid duidelijk afgenomen, geen tekenen van infectie. Verbandwissel uitgevoerd met Aquacel-verband. Patiënte voelt zich comfortabel en is goed gehumored. Volgende controle gepland voor dinsdag 20 mei. Communicatie aan Dr. Pieters overgemaakt.</p>
+      </div>
+
+      <div class="rapport-item">
+        <div class="rapport-meta">
+          <span class="rapport-date">Di 13 mei 2026</span>
+          <span class="rapport-nurse"><i class="fa-solid fa-user-nurse" style="color:var(--teal);margin-right:5px;font-size:12px"></i>Martine Jacobs</span>
+        </div>
+        <p class="rapport-note">Wekelijks palliatief gesprek gehad met mevrouw Janssen en haar dochter. Stemming wisselend, maar patiënte voelt zich gesteund. Pijnmedicatie adequaat — geen bijstelling nodig. Dochter toont interesse in mantelzorgeropleiding. Infopakket palliatief netwerk Kempen bezorgd. Volgende bezoek 20 mei.</p>
+      </div>
+
+      <div class="rapport-item">
+        <div class="rapport-meta">
+          <span class="rapport-date">Ma 12 mei 2026</span>
+          <span class="rapport-nurse"><i class="fa-solid fa-user-nurse" style="color:var(--teal);margin-right:5px;font-size:12px"></i>Hanane Oubali</span>
+        </div>
+        <p class="rapport-note">Medicatietoediening verlopen zonder problemen. Bloeddruk gemeten: 138/82 mmHg — stabiel. Patiënte meldt lichte duizeligheid bij opstaan; aanbeveling gegeven om trager rechtop te komen. Overlegd met huisarts, geen dosiswijziging nodig. Medicatieschema bijgewerkt in dossier.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-card reveal">
+    <h2 class="cta-card-title">Wilt u ook een <em>persoonlijk zorgplan</em>?</h2>
+    <p class="cta-card-sub">Elk CuraKempen-patiënt krijgt een digitaal zorgdossier met helder overzicht, vaste verpleegkundige en directe communicatie met uw arts. Maak vandaag een afspraak.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="booking.html" class="btn-primary"><i class="fa-solid fa-calendar-check"></i>Afspraak maken</a>
+      <a href="contact.html" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,0.3);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 26px;border-radius:7px">Meer informatie</a>
+    </div>
+  </div>
+</div>
+
+<div class="urgentie-strip">
+  <div class="urgentie-inner container">
+    <div class="urgentie-text"><i class="fa-solid fa-triangle-exclamation" style="font-size:20px"></i>Dringende zorg? Bel ons 24/7:</div>
+    <a href="tel:+32479921888" class="urgentie-phone"><i class="fa-solid fa-phone"></i>+32 479 92 18 88</a>
+    <a href="tel:+32479921888" class="urgentie-btn">Bel direct</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><img src="../images/logo.webp" alt="CuraKempen"></div>
+        <div class="footer-tagline">Professionele thuisverpleging in de Kempen. RIZIV-erkend. 100% vergoed via uw mutualiteit.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:8px">RIZIV-erkenningsnummer: 000000-00-00</div>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-list">
+          <li><i class="fa-solid fa-location-dot"></i><span>Hendrik Consciencestraat 20<br>2300 Turnhout</span></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+32479921888">+32 479 92 18 88</a></li>
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@curakempenthuisverpleging.be" style="word-break:break-all">info@curakempenthuisverpleging.be</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Navigatie</div>
+        <ul class="footer-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="over.html">Over ons</a></li>
+          <li><a href="diensten.html">Diensten</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="booking.html">Afspraak</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacybeleid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="footer-year"></span> CuraKempen. Alle rechten voorbehouden.</span>
+      <span>RIZIV-erkend thuisverpleging</span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-fab" href="https://wa.me/32479921888" target="_blank" rel="noopener" aria-label="WhatsApp CuraKempen"><i class="fa-brands fa-whatsapp"></i></a>
+
+<div class="cookie-banner" id="cookie-banner">
+  <span>Wij gebruiken cookies voor een optimale ervaring.</span>
+  <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accepteren</button>
+  <a href="privacy.html#cookies" class="cookie-info">Meer info</a>
+</div>
+
+<script>
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+function acceptCookies() {
+  localStorage.setItem('ck_consent','1');
+  document.getElementById('cookie-banner').classList.add('hidden');
+}
+if (localStorage.getItem('ck_consent')) document.getElementById('cookie-banner').classList.add('hidden');
+</script>
+</body>
+</html>

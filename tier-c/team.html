@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ons Team — CuraKempen Thuisverpleging Kempen</title>
+<meta name="description" content="Ontmoet het team van gediplomeerde verpleegkundigen van CuraKempen. 7 professionals actief in Turnhout en de Kempen. Meertalig: NL, AR, RO.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FAFAF7;
+  --slate:#0D1B2A;
+  --slate-mid:#1A3045;
+  --teal:#0BA888;
+  --teal-dim:#087A63;
+  --teal-light:#E6F7F4;
+  --ink:#0D1B2A;
+  --ink-soft:#5A6A76;
+  --rule:#D8E4E0;
+  --warm-gray:#F2F0EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--ink);font-size:17px;line-height:1.65}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:'Fraunces',serif}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:96px 24px}
+
+/* NAV */
+nav{background:var(--slate);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav-logo img{filter:brightness(0) invert(1);height:38px;display:block}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:14.5px;color:rgba(255,255,255,0.65);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-ctas{display:flex;align-items:center;gap:10px}
+.btn-nav-primary{background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;padding:10px 22px;border-radius:4px;border:none;cursor:pointer;transition:background 0.2s;display:inline-block}
+.btn-nav-primary:hover{background:var(--teal-dim)}
+.nav-hamburger{display:none;background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.nav-mobile{display:none;background:var(--slate);padding:20px 24px;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;color:rgba(255,255,255,0.7);padding:10px 0;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.06);font-size:15px}
+
+/* BUTTONS */
+.btn-primary{display:inline-block;background:var(--teal);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:13px 28px;border-radius:6px;border:none;cursor:pointer;transition:transform 0.15s ease,box-shadow 0.15s ease;text-decoration:none}
+.btn-primary:hover{transform:scale(1.01);box-shadow:0 4px 20px rgba(11,168,136,0.35)}
+.section-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;display:block}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(30px,3.5vw,44px);font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:20px}
+.section-title em{font-style:italic}
+
+/* TRUST STRIP */
+.trust-strip{background:var(--teal);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:center}
+.trust-items{display:flex;gap:40px;align-items:center;flex-wrap:wrap;justify-content:center}
+.trust-item{color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px}
+
+/* PAGE HERO */
+.page-hero{background:var(--slate);padding:72px 24px}
+.page-hero-inner{max-width:1120px;margin:0 auto}
+.page-hero-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;display:block}
+.page-hero-title{font-family:'Fraunces',serif;font-size:clamp(36px,4.5vw,58px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:20px}
+.page-hero-title em{font-style:italic;color:var(--teal)}
+.page-hero-sub{color:rgba(255,255,255,0.65);font-size:18px;line-height:1.7;max-width:640px}
+
+/* TEAM GRID */
+.team-grid-full{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px}
+.team-card-full{background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(13,27,42,0.06);transition:transform 0.2s,box-shadow 0.2s}
+.team-card-full:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(13,27,42,0.12)}
+.team-photo-wrap{overflow:hidden;height:260px}
+.team-photo-wrap img{width:100%;height:260px;object-fit:cover;object-position:top;transition:transform 0.4s ease}
+.team-card-full:hover .team-photo-wrap img{transform:scale(1.04)}
+.team-card-body{padding:22px 24px 24px}
+.team-name{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.team-role{font-size:14px;color:var(--ink-soft);margin-bottom:10px;font-weight:500}
+.team-langs{font-size:13px;color:var(--teal-dim);font-weight:600;margin-bottom:10px}
+.team-specs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.spec-tag{font-size:12px;font-weight:600;color:var(--teal-dim);background:var(--teal-light);padding:4px 11px;border-radius:20px}
+.avail-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.avail-badge{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--teal-dim)}
+.avail-dot{width:9px;height:9px;background:#22C55E;border-radius:50%;flex-shrink:0}
+.profiel-link{font-size:13px;font-weight:600;color:var(--teal);display:flex;align-items:center;gap:5px;transition:gap 0.15s}
+.team-card-full:hover .profiel-link{gap:8px}
+
+/* TALEN SECTION */
+.talen-section{background:var(--teal-light);padding:64px 24px}
+.talen-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.talen-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.taal-pill{background:#fff;border:1px solid var(--rule);border-radius:20px;padding:10px 22px;font-weight:600;font-size:14px;color:var(--teal-dim);display:flex;align-items:center;gap:8px}
+
+/* URGENTIE */
+.urgentie-strip{background:#B8401A;padding:22px 24px}
+.urgentie-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.urgentie-text{color:#fff;font-size:18px;font-weight:600;display:flex;align-items:center;gap:12px}
+.urgentie-phone{font-size:22px;font-weight:700;color:#fff;display:flex;align-items:center;gap:10px}
+.urgentie-btn{background:#fff;color:#B8401A;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;padding:11px 24px;border-radius:6px;display:inline-block}
+
+/* FOOTER */
+footer{background:var(--slate);color:rgba(255,255,255,0.6);padding:64px 24px 32px}
+.footer-inner{max-width:1120px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo{margin-bottom:16px}
+.footer-logo img{filter:brightness(0) invert(1);height:38px}
+.footer-tagline{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:20px;line-height:1.65}
+.footer-heading{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px}
+.footer-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-list li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.5}
+.footer-list a{color:rgba(255,255,255,0.55);transition:color 0.2s}
+.footer-list a:hover{color:#fff}
+.footer-list i{color:var(--teal);margin-top:2px;width:14px;flex-shrink:0;font-size:13px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:rgba(255,255,255,0.3)}
+.footer-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s}
+
+/* WHATSAPP FAB */
+.whatsapp-fab{position:fixed;bottom:28px;right:28px;z-index:200;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,0.45);animation:pulse-wa 2.5s infinite;transition:transform 0.2s}
+.whatsapp-fab:hover{transform:scale(1.08)}
+@keyframes pulse-wa{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.45),0 0 0 0 rgba(37,211,102,0.35)}60%{box-shadow:0 4px 20px rgba(37,211,102,0.45),0 0 0 10px rgba(37,211,102,0)}}
+
+/* COOKIE */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--slate);color:rgba(255,255,255,0.8);padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;font-size:14px;z-index:500;border-top:1px solid rgba(255,255,255,0.1)}
+.cookie-banner.hidden{display:none}
+.cookie-btn{padding:8px 20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;cursor:pointer;border:none}
+.cookie-accept{background:var(--teal);color:#fff}
+.cookie-info{background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);text-decoration:none;display:inline-block;padding:8px 20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px}
+
+@media(max-width:1024px){.team-grid-full{grid-template-columns:repeat(2,1fr)}.talen-inner{grid-template-columns:1fr;gap:36px}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}.footer-grid>div:last-child{grid-column:1/-1}}
+@media(max-width:768px){section{padding:64px 20px}.nav-links,.nav-ctas{display:none}.nav-hamburger{display:block}.urgentie-inner{flex-direction:column;text-align:center}.trust-items{gap:16px}.footer-grid{grid-template-columns:1fr;gap:32px}}
+@media(max-width:580px){.team-grid-full{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div style="background:var(--slate);color:var(--teal);text-align:center;padding:8px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600">DEMO — Pakket C: Volledig Platform &nbsp;·&nbsp; Online booking, FAQ, intakeformulier &nbsp;·&nbsp; €3.490</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../images/logo.webp" alt="CuraKempen" style="height:38px;filter:brightness(0) invert(1)"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="over.html">Over ons</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="team.html" class="active">Team</a>
+      <a href="booking.html">Afspraak</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="booking.html" class="btn-nav-primary">Afspraak maken</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-mob').classList.toggle('open')" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="nav-mob" class="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="over.html">Over ons</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="team.html">Team</a>
+    <a href="booking.html">Afspraak</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-label">Uw zorgteam in de Kempen</span>
+    <h1 class="page-hero-title">Mensen die <em>zorgen</em><br>met hart en kennis</h1>
+    <p class="page-hero-sub">Zeven gediplomeerde verpleegkundigen, elk met een eigen specialisatie en een gedeelde passie voor warme, professionele thuiszorg. Wij zijn uw vaste aanspreekpunt, dag na dag.</p>
+  </div>
+</div>
+
+<div class="trust-strip">
+  <div class="trust-items">
+    <div class="trust-item"><i class="fa-solid fa-check"></i> 100% vergoed via mutualiteit</div>
+    <div class="trust-item"><i class="fa-solid fa-check"></i> RIZIV-erkend</div>
+    <div class="trust-item"><i class="fa-solid fa-check"></i> 24/7 bereikbaar</div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <span class="section-label">Ontmoet ons team</span>
+      <h2 class="section-title">Uw <em>zorgteam</em></h2>
+      <p style="color:var(--ink-soft);max-width:600px;margin:0 auto;font-size:16px;line-height:1.7">Klik op een profiel voor meer informatie over specialisaties, werkgebied en beschikbaarheid. Alle teamleden zijn momenteel beschikbaar voor nieuwe patiënten.</p>
+    </div>
+
+    <div class="team-grid-full">
+      <div class="team-card-full reveal">
+        <div class="team-photo-wrap"><img src="../images/Evy-Nuyts.jpg" alt="Evy Nuyts" loading="lazy"></div>
+        <div class="team-card-body">
+          <div class="team-name">Evy Nuyts</div>
+          <div class="team-role">Gediplomeerd verpleegkundige</div>
+          <div class="team-langs"><i class="fa-solid fa-language" style="margin-right:5px"></i>NL · EN</div>
+          <div class="team-specs">
+            <span class="spec-tag">Geriatrie</span>
+            <span class="spec-tag">Wondzorg</span>
+            <span class="spec-tag">Palliatief</span>
+          </div>
+          <div class="avail-row">
+            <div class="avail-badge"><span class="avail-dot"></span>Beschikbaar</div>
+            <a href="team/evy-nuyts.html" class="profiel-link">Profiel bekijken <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card-full reveal">
+        <div class="team-photo-wrap"><img src="../images/Hanane-Oubali.png" alt="Hanane Oubali" loading="lazy"></div>
+        <div class="team-card-body">
+          <div class="team-name">Hanane Oubali</div>
+          <div class="team-role">Gediplomeerd verpleegkundige</div>
+          <div class="team-langs"><i class="fa-solid fa-language" style="margin-right:5px"></i>NL · AR</div>
+          <div class="team-specs">
+            <span class="spec-tag">Diabeteszorg</span>
+            <span class="spec-tag">Injecties</span>
+            <span class="spec-tag">Medicatie</span>
+          </div>
+          <div class="avail-row">
+            <div class="avail-badge"><span class="avail-dot"></span>Beschikbaar</div>
+            <a href="team/hanane-oubali.html" class="profiel-link">Profiel bekijken <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card-full reveal">
+        <div class="team-photo-wrap"><img src="../images/Martine-Jacobs.jpg" alt="Martine Jacobs" loading="lazy"></div>
+        <div class="team-card-body">
+          <div class="team-name">Martine Jacobs</div>
+          <div class="team-role">Gediplomeerd verpleegkundige</div>
+          <div class="team-langs"><i class="fa-solid fa-language" style="margin-right:5px"></i>NL · FR</div>
+          <div class="team-specs">
+            <span class="spec-tag">Palliatieve zorg</span>
+            <span class="spec-tag">Wondzorg</span>
+            <span class="spec-tag">Post-op</span>
+          </div>
+          <div class="avail-row">
+            <div class="avail-badge"><span class="avail-dot"></span>Beschikbaar</div>
+            <a href="team/martine-jacobs.html" class="profiel-link">Profiel bekijken <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card-full reveal">
+        <div class="team-photo-wrap"><img src="../images/Leen-van-Gorp.png" alt="Leen Van Gorp" loading="lazy"></div>
+        <div class="team-card-body">
+          <div class="team-name">Leen Van Gorp</div>
+          <div class="team-role">Gediplomeerd verpleegkundige</div>
+          <div class="team-langs"><i class="fa-solid fa-language" style="margin-right:5px"></i>NL · EN</div>
+          <div class="team-specs">
+            <span class="spec-tag">Post-operatief</span>
+            <span class="spec-tag">Compressietherapie</span>
+          </div>
+          <div class="avail-row">
+            <div class="avail-badge"><span class="avail-dot"></span>Beschikbaar</div>
+            <a href="team/leen-van-gorp.html" class="profiel-link">Profiel bekijken <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card-full reveal">
+        <div class="team-photo-wrap"><img src="../images/Blerta-Fiqi.jpg" alt="Blerta Fiqi" loading="lazy"></div>
+        <div class="team-card-body">
+          <div class="team-name">Blerta Fiqi</div>
+          <div class="team-role">Gediplomeerd verpleegkundige</div>
+          <div class="team-langs"><i class="fa-solid fa-language" style="margin-right:5px"></i>NL · EN · AL</div>
+          <div class="team-specs">
+            <span class="spec-tag">Hygiënische zorgen</span>
+            <span class="spec-tag">Persoonszorg</span>
+          </div>
+          <div class="avail-row">
+            <div class="avail-badge"><span class="avail-dot"></span>Beschikbaar</div>
+            <a href="team/blerta-fiqi.html" class="profiel-link">Profiel bekijken <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card-full reveal">
+        <div class="team-photo-wrap"><img src="../images/Gabriela-Chivu.png" alt="Gabriela Chivu" loading="lazy"></div>
+        <div class="team-card-body">
+          <div class="team-name">Gabriela Chivu</div>
+          <div class="team-role">Gediplomeerd verpleegkundige</div>
+          <div class="team-langs"><i class="fa-solid fa-language" style="margin-right:5px"></i>NL · RO</div>
+          <div class="team-specs">
+            <span class="spec-tag">Medicatiebeheer</span>
+            <span class="spec-tag">Bloedafname</span>
+          </div>
+          <div class="avail-row">
+            <div class="avail-badge"><span class="avail-dot"></span>Beschikbaar</div>
+            <a href="team/gabriela-chivu.html" class="profiel-link">Profiel bekijken <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card-full reveal">
+        <div class="team-photo-wrap"><img src="../images/Philippe-van-de-ven.png" alt="Philippe Van de Ven" loading="lazy"></div>
+        <div class="team-card-body">
+          <div class="team-name">Philippe Van de Ven</div>
+          <div class="team-role">Gediplomeerd verpleegkundige</div>
+          <div class="team-langs"><i class="fa-solid fa-language" style="margin-right:5px"></i>NL · EN</div>
+          <div class="team-specs">
+            <span class="spec-tag">Katheterplaatsing</span>
+            <span class="spec-tag">Stomazorg</span>
+            <span class="spec-tag">Technische zorgen</span>
+          </div>
+          <div class="avail-row">
+            <div class="avail-badge"><span class="avail-dot"></span>Beschikbaar</div>
+            <a href="team/philippe-van-de-ven.html" class="profiel-link">Profiel bekijken <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px">
+      <a href="booking.html" class="btn-primary"><i class="fa-solid fa-calendar-check" style="margin-right:8px"></i>Afspraak maken met ons team</a>
+    </div>
+  </div>
+</section>
+
+<!-- TALEN -->
+<div class="talen-section">
+  <div class="talen-inner container">
+    <div class="reveal">
+      <span class="section-label">Meertalige zorg</span>
+      <h2 style="font-family:'Fraunces',serif;font-size:clamp(26px,3vw,38px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px">Ons team spreekt<br><em style="font-style:italic">uw taal</em></h2>
+      <p style="color:var(--ink-soft);font-size:16px;line-height:1.75;max-width:480px">Goede zorg begint bij wederzijds begrip. Ons multiculturele team garandeert dat elke patiënt in zijn of haar moedertaal geholpen en begeleid wordt — ook in emotioneel moeilijke momenten.</p>
+      <div class="talen-row">
+        <div class="taal-pill"><i class="fa-solid fa-language"></i>Nederlands</div>
+        <div class="taal-pill"><i class="fa-solid fa-language"></i>Arabisch</div>
+        <div class="taal-pill"><i class="fa-solid fa-language"></i>Roemeens</div>
+        <div class="taal-pill"><i class="fa-solid fa-language"></i>Frans</div>
+        <div class="taal-pill"><i class="fa-solid fa-language"></i>Engels</div>
+      </div>
+      <p style="color:var(--teal-dim);font-weight:600;font-size:14px">Ons team spreekt: NL · AR · RO · FR · EN</p>
+    </div>
+    <div class="reveal">
+      <img src="https://images.unsplash.com/photo-1765896387387-0538bc9f997e?auto=format&fit=crop&w=1200&q=80" alt="Meertalig zorgteam CuraKempen" style="border-radius:8px;height:340px;width:100%;object-fit:cover;border:1px solid var(--rule)" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<div class="urgentie-strip">
+  <div class="urgentie-inner container">
+    <div class="urgentie-text"><i class="fa-solid fa-triangle-exclamation" style="font-size:20px"></i>Dringende zorg? Bel ons 24/7:</div>
+    <a href="tel:+32479921888" class="urgentie-phone"><i class="fa-solid fa-phone"></i>+32 479 92 18 88</a>
+    <a href="tel:+32479921888" class="urgentie-btn">Bel direct</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><img src="../images/logo.webp" alt="CuraKempen"></div>
+        <div class="footer-tagline">Professionele thuisverpleging in de Kempen. RIZIV-erkend. 100% vergoed via uw mutualiteit.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:8px">RIZIV-erkenningsnummer: 000000-00-00</div>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-list">
+          <li><i class="fa-solid fa-location-dot"></i><span>Hendrik Consciencestraat 20<br>2300 Turnhout</span></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+32479921888">+32 479 92 18 88</a></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+32488455417">+32 488 45 54 17</a></li>
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@curakempenthuisverpleging.be" style="word-break:break-all">info@curakempenthuisverpleging.be</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Navigatie</div>
+        <ul class="footer-list" style="margin-bottom:24px">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="over.html">Over ons</a></li>
+          <li><a href="diensten.html">Diensten</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="booking.html">Afspraak</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="footer-heading">Juridisch</div>
+        <ul class="footer-list">
+          <li><a href="privacy.html">Privacybeleid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="footer-year"></span> CuraKempen. Alle rechten voorbehouden.</span>
+      <span>RIZIV-erkend thuisverpleging</span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-fab" href="https://wa.me/32479921888" target="_blank" rel="noopener" aria-label="WhatsApp CuraKempen"><i class="fa-brands fa-whatsapp"></i></a>
+
+<div class="cookie-banner" id="cookie-banner">
+  <span>Wij gebruiken cookies voor een optimale ervaring.</span>
+  <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accepteren</button>
+  <a href="privacy.html#cookies" class="cookie-info">Meer info</a>
+</div>
+
+<script>
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+function acceptCookies() {
+  localStorage.setItem('ck_consent','1');
+  document.getElementById('cookie-banner').classList.add('hidden');
+}
+if (localStorage.getItem('ck_consent')) document.getElementById('cookie-banner').classList.add('hidden');
+</script>
+</body>
+</html>

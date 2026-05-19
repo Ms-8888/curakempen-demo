@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Over Ons — CuraKempen Thuisverpleging</title>
+<meta name="description" content="Leer CuraKempen kennen: ons verhaal, onze waarden en het team achter de zorg. Erkende thuisverpleging in Turnhout en de Kempen.">
+<link rel="icon" href="../images/logo.webp">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F8F4EC;
+  --cream-dark: #EEE8D8;
+  --forest: #1E3D2F;
+  --forest-mid: #2D5940;
+  --forest-light: #E8F0E9;
+  --gold: #C8A45A;
+  --gold-light: #FBF5E6;
+  --ink: #1A1A18;
+  --ink-soft: #4A4840;
+  --rule: #D0C8B8;
+  --white: #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.65; }
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+section[id] { scroll-margin-top: 72px; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* DEMO BANNER */
+.demo-banner { background: #1A1A18; color: #C8A45A; text-align: center; padding: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; }
+
+/* NAV */
+nav { background: var(--forest); position: sticky; top: 0; z-index: 100; }
+.nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo img { height: 40px; filter: brightness(0) invert(1); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: #fff; }
+.nav-links a.active { color: var(--gold); }
+.nav-cta { border: 1px solid rgba(255,255,255,0.4); color: white !important; padding: 9px 20px; }
+.nav-cta:hover { background: rgba(255,255,255,0.1); }
+.nav-hamburger { display: none; background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
+.nav-mobile { display: none; background: var(--forest-mid); padding: 16px 24px 20px; }
+.nav-mobile.open { display: block; }
+.nav-mobile a { display: block; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.nav-mobile a:last-child { border-bottom: none; }
+.nav-mobile a:hover { color: white; }
+
+/* PAGE HERO */
+.page-hero { background: var(--forest); padding: 72px 24px 80px; }
+.page-hero-inner { max-width: 1100px; margin: 0 auto; }
+.page-hero-badge { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(200,164,90,0.4); padding: 6px 14px; margin-bottom: 20px; }
+.page-hero h1 { font-size: 52px; font-weight: 700; color: var(--white); line-height: 1.12; margin-bottom: 16px; }
+.page-hero h1 em { font-style: italic; color: var(--gold); }
+.page-hero-sub { font-size: 18px; color: rgba(248,244,236,0.75); max-width: 540px; line-height: 1.7; }
+
+/* GOLD DIVIDER */
+.gold-rule-divider { height: 6px; background: var(--gold); }
+
+/* SECTION SHARED */
+.section-eyebrow { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+.section-header { text-align: center; margin-bottom: 52px; }
+.section-header h2 { font-size: 40px; font-weight: 700; color: var(--forest); margin-bottom: 14px; }
+.section-header p { font-size: 17px; color: var(--ink-soft); max-width: 520px; margin: 0 auto; }
+
+/* VERHAAL */
+.verhaal-section { background: var(--white); padding: 90px 24px; }
+.verhaal-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.verhaal-img-wrap { position: relative; }
+.verhaal-img-wrap img { width: 100%; height: 420px; object-fit: cover; object-position: center; border-radius: 6px; display: block; position: relative; z-index: 1; }
+.gold-frame { position: absolute; inset: -8px; border: 2px solid var(--gold); border-radius: 8px; z-index: 0; }
+.verhaal-pull { position: absolute; bottom: -24px; right: -24px; background: var(--forest); color: var(--gold); font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; padding: 20px 24px; max-width: 260px; line-height: 1.5; border-radius: 4px; z-index: 2; }
+.verhaal-text h2 { font-size: 40px; font-weight: 700; color: var(--forest); margin-bottom: 20px; line-height: 1.2; }
+.verhaal-text p { font-size: 16px; color: var(--ink-soft); margin-bottom: 16px; line-height: 1.75; }
+.riziv-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--forest-light); border: 1px solid var(--rule); padding: 12px 18px; border-radius: 4px; margin-top: 8px; }
+.riziv-badge span { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--forest); }
+
+/* STATS */
+.stats-section { background: var(--cream); padding: 70px 24px; }
+.stats-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700; color: var(--forest); line-height: 1; margin-bottom: 8px; }
+.stat-label { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* VALUES */
+.values-section { background: var(--cream-dark); padding: 90px 24px; }
+.values-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.value-card { background: var(--cream); border: 1px solid var(--rule); border-left: 4px solid var(--gold); padding: 32px 28px; }
+.value-card-icon { font-size: 28px; color: var(--gold); margin-bottom: 16px; }
+.value-card h3 { font-size: 22px; font-weight: 700; color: var(--forest); margin-bottom: 12px; }
+.value-card p { font-size: 15px; color: var(--ink-soft); line-height: 1.7; }
+
+/* TERUGBETALING */
+.terugbetaling-section { background: var(--forest-light); padding: 90px 24px; }
+.steps-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+.steps-grid::before { content: ''; position: absolute; top: 36px; left: 16%; right: 16%; height: 1px; background: var(--rule); }
+.step { text-align: center; padding: 0 24px; }
+.step-num { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 700; color: var(--forest); opacity: 0.18; line-height: 1; margin-bottom: -16px; display: block; }
+.step-icon { width: 56px; height: 56px; background: var(--forest); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 20px; position: relative; z-index: 1; }
+.step h3 { font-size: 19px; font-weight: 600; color: var(--forest); margin-bottom: 10px; }
+.step p { font-size: 14px; color: var(--ink-soft); }
+
+/* TALEN */
+.talen-section { background: var(--white); padding: 56px 24px; border-top: 1px solid var(--rule); }
+.talen-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+.talen-inner p { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--ink-soft); margin-bottom: 16px; }
+.talen-pills { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.talen-pill { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--forest); background: var(--forest-light); padding: 8px 20px; border-radius: 24px; border: 1px solid var(--rule); }
+
+/* TEAM TEASER */
+.team-teaser-section { background: var(--cream); padding: 90px 24px; }
+.team-teaser-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px; }
+.team-card { text-decoration: none; color: inherit; display: block; }
+.team-card:hover .team-img { transform: scale(1.03); }
+.team-img-wrap { overflow: hidden; border-radius: 6px; margin-bottom: 12px; }
+.team-img { width: 100%; height: 220px; object-fit: cover; object-position: top; border-radius: 6px; display: block; transition: transform 0.4s ease; }
+.team-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--forest); margin-bottom: 4px; }
+.team-title { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-soft); }
+.team-teaser-cta { text-align: center; }
+.btn-primary { background: var(--forest-mid); color: white; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px; padding: 13px 30px; border-radius: 4px; text-decoration: none; transition: background 0.2s; display: inline-block; }
+.btn-primary:hover { background: #3a6f50; }
+
+/* URGENTIE STRIP */
+.urgentie-strip { background: #B8401A; padding: 18px 24px; text-align: center; }
+.urgentie-strip p { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; color: white; }
+.urgentie-strip a { color: white; text-decoration: underline; }
+
+/* FOOTER */
+footer { background: var(--ink); color: rgba(248,244,236,0.65); padding: 72px 24px 32px; }
+.footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+footer img.footer-logo { height: 36px; filter: brightness(0) invert(1); margin-bottom: 14px; }
+.footer-tagline { font-size: 14px; line-height: 1.65; margin-bottom: 20px; }
+footer img.footer-mederi { height: 48px; border-radius: 4px; }
+.footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,244,236,0.35); margin-bottom: 16px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { font-size: 14px; margin-bottom: 10px; }
+.footer-col ul li a { color: rgba(248,244,236,0.65); text-decoration: none; transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--cream); }
+.footer-hours-row { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-hours-row:last-child { border-bottom: none; }
+.footer-hours-row span:last-child { color: rgba(248,244,236,0.85); }
+.footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: rgba(248,244,236,0.35); }
+.footer-bottom a { color: rgba(248,244,236,0.35); text-decoration: none; }
+.footer-bottom a:hover { color: rgba(248,244,236,0.65); }
+
+/* WHATSAPP FAB */
+.whatsapp-fab { position: fixed; bottom: 28px; right: 28px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; text-decoration: none; z-index: 200; animation: pulse-whatsapp 2.5s infinite; box-shadow: 0 4px 16px rgba(37,211,102,0.4); }
+@keyframes pulse-whatsapp { 0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 24px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.1); } }
+
+@media (max-width: 900px) {
+  .verhaal-grid { grid-template-columns: 1fr; gap: 48px; }
+  .verhaal-pull { position: static; margin-top: 16px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .steps-grid::before { display: none; }
+  .team-teaser-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .page-hero h1 { font-size: 38px; }
+}
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .team-teaser-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">DEMO — Pakket B: Modern &nbsp;·&nbsp; Scroll-animaties, reviews, WhatsApp &nbsp;·&nbsp; €1.490</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../images/logo.webp" alt="CuraKempen"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="over.html" class="active">Over ons</a></li>
+      <li><a href="diensten.html">Diensten</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu openen"><i class="fas fa-bars"></i></button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="over.html">Over ons</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-badge"><i class="fas fa-leaf" style="margin-right:6px"></i> Ons verhaal</span>
+    <h1>Zorg die begint bij <em>de mens</em></h1>
+    <p class="page-hero-sub">CuraKempen is geboren uit de overtuiging dat kwalitatieve thuiszorg iedereen verdient — thuis, in vertrouwde omgeving, door verpleegkundigen die u kennen bij naam.</p>
+  </div>
+</section>
+
+<div class="gold-rule-divider"></div>
+
+<!-- VERHAAL -->
+<section class="verhaal-section">
+  <div class="verhaal-grid container">
+    <div class="verhaal-img-wrap reveal">
+      <div class="gold-frame"></div>
+      <img src="https://images.unsplash.com/photo-1765896387387-0538bc9f997e?auto=format&fit=crop&w=1200&q=80" alt="Verpleegkundige bij patiënt thuis" loading="lazy">
+      <div class="verhaal-pull">"Thuis is de beste plek om te herstellen — en wij zorgen dat u er niet alleen voor staat."</div>
+    </div>
+    <div class="reveal">
+      <span class="section-eyebrow">Ons verhaal</span>
+      <h2>Geworteld in de Kempen</h2>
+      <p>CuraKempen Thuisverpleging is opgericht vanuit een diepe betrokkenheid bij de mensen in de Kempenregio. Wij geloven dat zorg thuis — in de vertrouwde omgeving van de patiënt — de meest menswaardige vorm van verzorging is.</p>
+      <p>Ons team van zeven gediplomeerde verpleegkundigen en zorgkundigen staat elke dag klaar voor patiënten in Turnhout en omliggende gemeenten. Wij werken nauw samen met huisartsen, specialisten en mantelzorgers om continuïteit en veiligheid te garanderen.</p>
+      <p>Van dagelijkse hygiënische zorgen tot complexe medische handelingen aan huis — bij CuraKempen weet u zeker dat u in goede, vertrouwde handen bent.</p>
+      <div class="riziv-badge">
+        <i class="fas fa-shield-alt" style="color:var(--gold);font-size:18px"></i>
+        <span>RIZIV-erkenningsnummer: 000000-00-00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="reveal">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Verpleegkundigen</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">Patiënten</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Bereikbaar bij urgentie</div>
+    </div>
+  </div>
+</section>
+
+<hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Onze kernwaarden</span>
+      <h2>Waarop u ons kunt aanspreken</h2>
+      <p>Drie pijlers vormen de basis van alles wat wij doen.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-card-icon"><i class="fas fa-award"></i></div>
+        <h3>Vakmanschap</h3>
+        <p>Al onze verpleegkundigen zijn gediplomeerd en erkend. Wij werken volgens de nieuwste protocollen en bijscholen ons continu. Technische perfectie en medische nauwkeurigheid staan nooit ter discussie.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-card-icon"><i class="fas fa-handshake"></i></div>
+        <h3>Vertrouwen</h3>
+        <p>Zorg thuis vereist vertrouwen. Wij zijn punctueel, transparant en betrouwbaar. U krijgt telkens dezelfde verpleegkundige, zodat een echte vertrouwensband kan groeien. Geen verrassingen, geen onzekerheid.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-card-icon"><i class="fas fa-heart"></i></div>
+        <h3>Verbinding</h3>
+        <p>Voor ons stopt zorg niet bij de medische handeling. Wij nemen de tijd voor een gesprek, voor een luisterend oor. De mens achter de patiënt zien — dat is wat ons onderscheidt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+<!-- TERUGBETALING -->
+<section class="terugbetaling-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Eenvoudig en gratis</span>
+      <h2>Hoe werkt terugbetaling?</h2>
+      <p>Van voorschrift tot zorg aan huis — wij regelen alles voor u. U betaalt niets.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <span class="step-num">1</span>
+        <div class="step-icon"><i class="fas fa-file-medical"></i></div>
+        <h3>Huisarts schrijft voor</h3>
+        <p>Uw huisarts of specialist schrijft een voorschrift voor thuisverpleging. Wij aanvaarden alle mutualiteiten.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">2</span>
+        <div class="step-icon"><i class="fas fa-handshake"></i></div>
+        <h3>Wij regelen mutualiteit</h3>
+        <p>CuraKempen regelt de volledige administratie: aanvraag, facturatie en opvolging bij uw ziekenfonds.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">3</span>
+        <div class="step-icon"><i class="fas fa-heart"></i></div>
+        <h3>U betaalt niets</h3>
+        <p>Dankzij het derdebetalerssysteem betaalt u niets. Onze verpleegkundige staat gewoon aan uw deur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+<!-- TALEN -->
+<section class="talen-section">
+  <div class="talen-inner reveal">
+    <span class="section-eyebrow" style="display:block;text-align:center">Meertalig team</span>
+    <p>Ons team spreekt meerdere talen, zodat elke patiënt zich volledig begrepen voelt.</p>
+    <div class="talen-pills">
+      <span class="talen-pill"><i class="fas fa-comments" style="margin-right:6px;color:var(--gold)"></i> Nederlands</span>
+      <span class="talen-pill"><i class="fas fa-comments" style="margin-right:6px;color:var(--gold)"></i> Arabisch</span>
+      <span class="talen-pill"><i class="fas fa-comments" style="margin-right:6px;color:var(--gold)"></i> Roemeens</span>
+    </div>
+    <p style="margin-top:14px;font-size:14px;font-style:italic">Ons team spreekt: NL · AR · RO</p>
+  </div>
+</section>
+
+<hr style="border:none;border-top:1px solid var(--rule);margin:0">
+
+<!-- TEAM TEASER -->
+<section class="team-teaser-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Maak kennis</span>
+      <h2>De gezichten achter de zorg</h2>
+      <p>Gediplomeerde verpleegkundigen met een groot hart — leer ons team kennen.</p>
+    </div>
+    <div class="team-teaser-grid">
+      <a href="team/evy-nuyts.html" class="team-card reveal">
+        <div class="team-img-wrap"><img src="../images/Evy-Nuyts.jpg" alt="Evy Nuyts" class="team-img" loading="lazy"></div>
+        <div class="team-name">Evy Nuyts</div>
+        <div class="team-title">Verpleegkundige</div>
+      </a>
+      <a href="team/hanane-oubali.html" class="team-card reveal">
+        <div class="team-img-wrap"><img src="../images/Hanane-Oubali.png" alt="Hanane Oubali" class="team-img" loading="lazy"></div>
+        <div class="team-name">Hanane Oubali</div>
+        <div class="team-title">Verpleegkundige</div>
+      </a>
+      <a href="team/martine-jacobs.html" class="team-card reveal">
+        <div class="team-img-wrap"><img src="../images/Martine-Jacobs.jpg" alt="Martine Jacobs" class="team-img" loading="lazy"></div>
+        <div class="team-name">Martine Jacobs</div>
+        <div class="team-title">Verpleegkundige</div>
+      </a>
+      <a href="team/leen-van-gorp.html" class="team-card reveal">
+        <div class="team-img-wrap"><img src="../images/Leen-van-Gorp.png" alt="Leen van Gorp" class="team-img" loading="lazy"></div>
+        <div class="team-name">Leen van Gorp</div>
+        <div class="team-title">Verpleegkundige</div>
+      </a>
+    </div>
+    <div class="team-teaser-cta reveal">
+      <a href="team.html" class="btn-primary"><i class="fas fa-users" style="margin-right:8px"></i> Bekijk het volledige team</a>
+    </div>
+  </div>
+</section>
+
+<!-- URGENTIE STRIP -->
+<div class="urgentie-strip">
+  <p><i class="fas fa-phone-alt" style="margin-right:8px"></i> Dringende zorg? Bel ons 24/7: <a href="tel:+32479921888">+32 479 92 18 88</a></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="../images/logo.webp" alt="CuraKempen" class="footer-logo">
+      <p class="footer-tagline">Kwaliteitsvolle thuisverpleging in de Kempen — warme, professionele zorg bij u thuis.</p>
+      <img src="../images/mederi.jpg" alt="Mederi kwaliteitslabel" class="footer-mederi" loading="lazy">
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><i class="fas fa-map-marker-alt" style="margin-right:8px;color:var(--gold)"></i> Hendrik Consciencestraat 20, 2300 Turnhout</li>
+        <li><a href="tel:+32479921888"><i class="fas fa-phone" style="margin-right:8px;color:var(--gold)"></i> +32 479 92 18 88</a></li>
+        <li><a href="tel:+32488455417"><i class="fas fa-phone" style="margin-right:8px;color:var(--gold)"></i> +32 488 45 54 17</a></li>
+        <li><a href="mailto:info@curakempenthuisverpleging.be"><i class="fas fa-envelope" style="margin-right:8px;color:var(--gold)"></i> info@curakempenthuisverpleging.be</a></li>
+        <li><a href="https://wa.me/32479921888" target="_blank"><i class="fab fa-whatsapp" style="margin-right:8px;color:#25D366"></i> WhatsApp</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Navigatie</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacybeleid</a></li>
+      </ul>
+      <div style="margin-top:20px">
+        <h4>Openingsuren</h4>
+        <div class="footer-hours-row"><span>Ma – Vr</span><span>07:00 – 20:00</span></div>
+        <div class="footer-hours-row"><span>Zaterdag</span><span>08:00 – 14:00</span></div>
+        <div class="footer-hours-row"><span>Urgentie</span><span style="color:var(--gold)">24/7</span></div>
+      </div>
+      <div style="margin-top:20px;font-size:13px;color:rgba(248,244,236,0.45)">RIZIV-erkenningsnummer: 000000-00-00</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="footer-year"></span> Cura Kempen Thuisverpleging · Hendrik Consciencestraat 20, 2300 Turnhout</span>
+    <a href="privacy.html">Privacybeleid</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/32479921888" target="_blank" rel="noopener" class="whatsapp-fab" title="WhatsApp CuraKempen">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+document.getElementById('nav-hamburger').addEventListener('click', function() {
+  document.getElementById('nav-mobile').classList.toggle('open');
+});
+document.querySelectorAll('#nav-mobile a').forEach(function(a) {
+  a.addEventListener('click', function() { document.getElementById('nav-mobile').classList.remove('open'); });
+});
+const observer = new IntersectionObserver(function(els) {
+  els.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+</script>
+</body>
+</html>
