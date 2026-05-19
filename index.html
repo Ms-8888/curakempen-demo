@@ -16,10 +16,7 @@ body {
   padding: 60px 20px 80px;
 }
 
-.wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-}
+.wrapper { max-width: 1100px; margin: 0 auto; }
 
 /* Header */
 .label {
@@ -27,7 +24,7 @@ body {
   font-weight: 700;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: #555;
+  color: #444;
   text-align: center;
   margin-bottom: 14px;
 }
@@ -43,24 +40,25 @@ h1 {
 
 .subtitle {
   text-align: center;
-  color: #666;
-  font-size: 1rem;
-  max-width: 540px;
-  margin: 0 auto 60px;
-  line-height: 1.6;
+  color: #555;
+  font-size: .975rem;
+  max-width: 560px;
+  margin: 0 auto 64px;
+  line-height: 1.7;
 }
 
 /* Cards grid */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin-bottom: 80px;
+  gap: 20px;
+  margin-bottom: 56px;
+  align-items: start;
 }
 
 .card {
-  background: #0f1117;
-  border: 1px solid #1e2030;
+  background: #0d0f1a;
+  border: 1px solid #1a1c2e;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -68,73 +66,76 @@ h1 {
   transition: border-color .2s, transform .2s;
 }
 
-.card:hover {
-  border-color: #333;
-  transform: translateY(-3px);
-}
+.card:hover { transform: translateY(-3px); }
+.tier-a:hover { border-color: #5E8B6355; }
+.tier-b:hover { border-color: #C8A45A55; }
+.tier-c:hover { border-color: #0BA88855; }
 
-/* Tier identity stripes */
-.card-stripe {
-  height: 5px;
-  width: 100%;
-}
+/* Color stripes */
+.card-stripe { height: 4px; width: 100%; }
 .tier-a .card-stripe { background: linear-gradient(90deg, #5E8B63, #B8401A); }
 .tier-b .card-stripe { background: linear-gradient(90deg, #1E3D2F, #C8A45A); }
-.tier-c .card-stripe { background: linear-gradient(90deg, #0BA888, #0D1B2A 120%); }
+.tier-c .card-stripe { background: linear-gradient(90deg, #0BA888 40%, #0D1B2A); }
 
-/* Tier-b highlight */
-.tier-b {
-  border-color: #C8A45A44;
-  position: relative;
+/* Tier C elevated treatment */
+.tier-c {
+  border-color: #0BA88830;
+  background: #090e14;
 }
-.popular-badge {
-  position: absolute;
-  top: -1px;
-  right: 24px;
-  background: #C8A45A;
-  color: #1E3D2F;
+
+/* Badges */
+.badge-row {
+  padding: 14px 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tier-label {
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 0 0 8px 8px;
 }
+.tier-a .tier-label { color: #5E8B63; }
+.tier-b .tier-label { color: #C8A45A; }
+.tier-c .tier-label { color: #0BA888; }
 
-.card-body {
-  padding: 28px 28px 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Design style preview */
-.design-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .12em;
+.popular-pill {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
 }
-.tier-a .design-label { color: #5E8B63; }
-.tier-b .design-label { color: #C8A45A; }
-.tier-c .design-label { color: #0BA888; }
+.tier-b .popular-pill { background: #C8A45A20; color: #C8A45A; border: 1px solid #C8A45A44; }
+.tier-c .platform-pill { background: #0BA88820; color: #0BA888; border: 1px solid #0BA88844;
+  font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 20px; }
 
-/* Font previews */
-.font-preview {
-  font-size: 1.6rem;
-  line-height: 1.2;
-  margin-bottom: 6px;
+/* Card body */
+.card-body { padding: 16px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+
+/* Outcome headline */
+.outcome {
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.25;
   color: #f0ede8;
+  margin-bottom: 8px;
 }
-.tier-a .font-preview { font-family: 'DM Serif Display', serif; }
-.tier-b .font-preview { font-family: 'Playfair Display', serif; }
-.tier-c .font-preview { font-family: 'Fraunces', serif; }
 
-.card-tagline {
-  font-size: .85rem;
-  color: #555;
-  margin-bottom: 20px;
+.tier-c .outcome {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  color: #e8f8f5;
+}
+
+.card-sub {
+  font-size: .82rem;
+  color: #444;
+  margin-bottom: 18px;
   line-height: 1.5;
 }
 
@@ -143,225 +144,271 @@ h1 {
   display: flex;
   align-items: baseline;
   gap: 6px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .price {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 800;
+  letter-spacing: -.03em;
   color: #f0ede8;
-  letter-spacing: -.02em;
 }
-.price-note {
-  font-size: .8rem;
-  color: #444;
-}
+.price-note { font-size: .78rem; color: #3a3a3a; }
 
 /* Ideal for */
 .ideal-for {
   font-size: .8rem;
-  color: #666;
-  margin-bottom: 22px;
-  padding: 8px 12px;
-  background: #13151f;
+  color: #555;
+  margin-bottom: 20px;
+  padding: 9px 12px;
+  background: #0a0b14;
   border-radius: 8px;
   border-left: 3px solid;
-  line-height: 1.5;
+  line-height: 1.55;
 }
-.tier-a .ideal-for { border-color: #5E8B63; }
-.tier-b .ideal-for { border-color: #C8A45A; }
-.tier-c .ideal-for { border-color: #0BA888; }
+.tier-a .ideal-for { border-color: #5E8B6366; }
+.tier-b .ideal-for { border-color: #C8A45A55; }
+.tier-c .ideal-for { border-color: #0BA88866; color: #6aada0; }
 
-.ideal-label { font-weight: 700; color: #888; }
+.ideal-label { font-weight: 700; color: #666; }
+.tier-c .ideal-label { color: #0BA88899; }
 
-/* Page count badge */
+/* Page count */
 .page-badge {
   display: inline-block;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: .06em;
+  letter-spacing: .08em;
   padding: 3px 10px;
   border-radius: 20px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
-.tier-a .page-badge { background: #5E8B6322; color: #5E8B63; }
-.tier-b .page-badge { background: #C8A45A22; color: #C8A45A; }
-.tier-c .page-badge { background: #0BA88822; color: #0BA888; }
+.tier-a .page-badge { background: #5E8B6318; color: #5E8B63; }
+.tier-b .page-badge { background: #C8A45A18; color: #C8A45A; }
+.tier-c .page-badge { background: #0BA88818; color: #0BA888; }
 
 /* Features */
-.features {
-  list-style: none;
-  space-y: 8px;
-  flex: 1;
-  margin-bottom: 24px;
-}
-
+.features { list-style: none; flex: 1; margin-bottom: 20px; }
 .features li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: .875rem;
-  color: #aaa;
+  gap: 9px;
+  font-size: .845rem;
+  color: #888;
   padding: 5px 0;
-  border-bottom: 1px solid #0f1117;
+  border-bottom: 1px solid #0d0f18;
 }
-
 .features li:last-child { border-bottom: none; }
 
-.feature-icon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  margin-top: 1px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9px;
-  font-weight: 700;
+.fi {
+  width: 15px; height: 15px; flex-shrink: 0; margin-top: 1px;
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; font-size: 8px; font-weight: 800;
+}
+.chk { background: #1a3320; color: #4ade80; }
+.chk::after { content: '✓'; }
+.x { background: #111; color: #222; }
+.x::after { content: '✕'; }
+.feature-off { color: #252525; }
+
+/* Tier C feature highlight */
+.tier-c .features li.highlight {
+  color: #0BA888cc;
+  background: #0BA88808;
+  border-radius: 6px;
+  padding: 5px 8px;
+  margin: 2px -8px;
 }
 
-.check { background: #1a3320; color: #4ade80; }
-.cross { background: #1a1a1a; color: #333; }
-.check::after { content: '✓'; }
-.cross::after { content: '✕'; }
-
-.feature-cross { color: #2a2a2a; }
-
-/* CTA button */
+/* CTA */
 .cta {
   display: block;
   text-align: center;
-  padding: 14px;
+  padding: 13px;
   border-radius: 10px;
-  font-size: .9rem;
+  font-size: .875rem;
   font-weight: 700;
   text-decoration: none;
   transition: opacity .15s, transform .1s;
+  letter-spacing: .02em;
 }
 .cta:hover { opacity: .85; transform: translateY(-1px); }
 .tier-a .cta { background: #5E8B63; color: #fff; }
 .tier-b .cta { background: #C8A45A; color: #1E3D2F; }
 .tier-c .cta { background: #0BA888; color: #fff; }
 
-/* ── Comparison table ── */
-.compare-section {
-  margin-top: 0;
+/* ── Platform callout ── */
+.platform-callout {
+  background: linear-gradient(135deg, #080e14 0%, #0a1a16 100%);
+  border: 1px solid #0BA88830;
+  border-radius: 14px;
+  padding: 32px 40px;
+  margin-bottom: 64px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
 }
 
+.callout-left h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e8f8f5;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.callout-left p {
+  font-size: .875rem;
+  color: #4a8a80;
+  line-height: 1.6;
+}
+
+.callout-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 220px;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .82rem;
+  color: #5a9a90;
+}
+
+.benefit-icon {
+  width: 28px; height: 28px;
+  background: #0BA88818;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .platform-callout { grid-template-columns: 1fr; }
+}
+
+/* ── Comparison table ── */
 .compare-title {
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #f0ede8;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .compare-sub {
   text-align: center;
-  color: #555;
-  font-size: .875rem;
-  margin-bottom: 32px;
+  color: #444;
+  font-size: .85rem;
+  margin-bottom: 28px;
 }
 
 .compare-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: .875rem;
+  font-size: .855rem;
 }
 
 .compare-table th {
   padding: 12px 16px;
   text-align: center;
   font-weight: 700;
-  font-size: .8rem;
+  font-size: .78rem;
   letter-spacing: .06em;
   text-transform: uppercase;
-  border-bottom: 1px solid #1e2030;
+  border-bottom: 1px solid #141622;
+  color: #333;
 }
-
-.compare-table th:first-child { text-align: left; color: #444; }
-.col-a { color: #5E8B63; }
-.col-b { color: #C8A45A; }
-.col-c { color: #0BA888; }
+.compare-table th:first-child { text-align: left; }
+.col-a { color: #5E8B63 !important; }
+.col-b { color: #C8A45A !important; }
+.col-c { color: #0BA888 !important; }
 
 .compare-table td {
-  padding: 11px 16px;
+  padding: 10px 16px;
   text-align: center;
-  border-bottom: 1px solid #0d0f18;
-  color: #777;
+  border-bottom: 1px solid #0c0e18;
+  color: #555;
 }
-
-.compare-table td:first-child {
-  text-align: left;
-  color: #ccc;
-  font-weight: 500;
-}
-
+.compare-table td:first-child { text-align: left; color: #bbb; font-weight: 500; }
+.compare-table tr:hover td { background: #0a0c15; }
 .compare-table tr:last-child td { border-bottom: none; }
 
-.compare-table tr:hover td { background: #0a0c14; }
-
 .yes { color: #4ade80; font-weight: 700; }
-.no { color: #252525; }
+.no { color: #1e1e1e; }
 
 .section-row td {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: #333 !important;
-  padding-top: 24px;
-  padding-bottom: 6px;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  color: #272730 !important;
+  padding-top: 22px !important;
+  padding-bottom: 4px !important;
 }
 
-/* Footer note */
+/* Footer */
 .footer-note {
   text-align: center;
-  color: #333;
+  color: #2a2a2a;
   font-size: .8rem;
   margin-top: 48px;
-  line-height: 1.8;
+  line-height: 1.9;
+}
+
+.divider {
+  height: 1px;
+  background: #12141f;
+  margin: 56px 0;
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
 
-  <div class="label">Website Voorstel — Cura Kempen Thuisverpleging</div>
+  <div class="label">Persoonlijk voorstel — Cura Kempen Thuisverpleging</div>
   <h1>Kies uw website</h1>
-  <p class="subtitle">Drie versies, elk met een eigen stijl en functieset. Alle versies zijn volledig op maat gebouwd — geen templates, geen Wix — en meteen klaar voor gebruik.</p>
+  <p class="subtitle">Drie versies, elk volledig op maat gebouwd — geen templates, geen Wix. U kiest de ambitie, wij leveren het resultaat.</p>
 
   <div class="cards">
 
     <!-- Tier A -->
     <div class="card tier-a">
       <div class="card-stripe"></div>
+      <div class="badge-row">
+        <span class="tier-label">Pakket 1 — Starter</span>
+      </div>
       <div class="card-body">
-        <div class="design-label">Pakket 1 — Basis</div>
-        <div class="font-preview">Warm &amp; Editoriaal</div>
-        <div class="card-tagline">Warme Vlaamse stijl — DM Serif + Nunito — zacht groen en terracotta</div>
+        <div class="outcome">Uw praktijk online.</div>
+        <div class="card-sub">Patiënten kunnen u vinden — dat is het fundament van alles.</div>
 
         <div class="price-row">
-          <span class="price">€490</span>
+          <span class="price">€499</span>
           <span class="price-note">eenmalig</span>
         </div>
 
         <div class="ideal-for">
-          <span class="ideal-label">Ideaal voor:</span> een nieuwe praktijk die snel en betaalbaar online wil met een professionele uitstraling
+          <span class="ideal-label">Ideaal voor:</span> een startende praktijk of verpleegkundige die snel en betaalbaar online wil gaan met een professionele uitstraling
         </div>
 
         <span class="page-badge">13 pagina's</span>
 
         <ul class="features">
-          <li><span class="feature-icon check"></span> Aparte pagina per dienst</li>
-          <li><span class="feature-icon check"></span> 7 persoonlijke teamprofielen</li>
-          <li><span class="feature-icon check"></span> Contactformulier + Google Maps</li>
-          <li><span class="feature-icon check"></span> Urgentiebalk (24/7 bereikbaar)</li>
-          <li><span class="feature-icon check"></span> GDPR / cookiebanner</li>
-          <li><span class="feature-icon check"></span> Mobiel-vriendelijk</li>
-          <li><span class="feature-icon cross"></span> <span class="feature-cross">Scroll-animaties</span></li>
-          <li><span class="feature-icon cross"></span> <span class="feature-cross">Google Reviews sectie</span></li>
-          <li><span class="feature-icon cross"></span> <span class="feature-cross">Online afspraken</span></li>
+          <li><span class="fi chk"></span> Aparte pagina per dienst</li>
+          <li><span class="fi chk"></span> 7 persoonlijke teamprofielen</li>
+          <li><span class="fi chk"></span> Contactformulier + Google Maps</li>
+          <li><span class="fi chk"></span> Urgentiebalk (24/7 bereikbaar)</li>
+          <li><span class="fi chk"></span> GDPR cookiebanner + privacy pagina</li>
+          <li><span class="fi chk"></span> Volledig mobiel-vriendelijk</li>
+          <li><span class="fi x"></span> <span class="feature-off">Scroll-animaties</span></li>
+          <li><span class="fi x"></span> <span class="feature-off">Reviews &amp; statistieken</span></li>
+          <li><span class="fi x"></span> <span class="feature-off">WhatsApp directknop</span></li>
+          <li><span class="fi x"></span> <span class="feature-off">Online afspraken</span></li>
         </ul>
 
         <a href="tier-a/index.html" class="cta">Demo bekijken →</a>
@@ -370,34 +417,37 @@ h1 {
 
     <!-- Tier B -->
     <div class="card tier-b">
-      <div class="popular-badge">Aanbevolen</div>
       <div class="card-stripe"></div>
+      <div class="badge-row">
+        <span class="tier-label">Pakket 2 — Prestige</span>
+        <span class="popular-pill">Populairste keuze</span>
+      </div>
       <div class="card-body">
-        <div class="design-label">Pakket 2 — Premium</div>
-        <div class="font-preview">Klassiek &amp; Prestige</div>
-        <div class="card-tagline">Belgische kliniekstijl — Playfair Display + DM Sans — donkergroen en goud</div>
+        <div class="outcome">De meest betrouwbare praktijk in uw regio.</div>
+        <div class="card-sub">Patiënten kiezen altijd de praktijk die er het meest professioneel en vertrouwd uitziet.</div>
 
         <div class="price-row">
-          <span class="price">€1.490</span>
+          <span class="price">€1.499</span>
           <span class="price-note">eenmalig</span>
         </div>
 
         <div class="ideal-for">
-          <span class="ideal-label">Ideaal voor:</span> een gevestigde praktijk die vertrouwen en professionaliteit wil uitstralen naar nieuwe patiënten
+          <span class="ideal-label">Ideaal voor:</span> een gevestigde praktijk die meer patiënten wil aantrekken en zichzelf wil onderscheiden van concurrenten in de regio
         </div>
 
         <span class="page-badge">13 pagina's</span>
 
         <ul class="features">
-          <li><span class="feature-icon check"></span> Alles van Basis</li>
-          <li><span class="feature-icon check"></span> Scroll-animaties bij elke sectie</li>
-          <li><span class="feature-icon check"></span> Geanimeerde statistieken (jaren, patiënten)</li>
-          <li><span class="feature-icon check"></span> Google Reviews sectie</li>
-          <li><span class="feature-icon check"></span> WhatsApp directknop</li>
-          <li><span class="feature-icon check"></span> Goud-frame hero design</li>
-          <li><span class="feature-icon check"></span> Zorgintake contactformulier</li>
-          <li><span class="feature-icon cross"></span> <span class="feature-cross">Online afspraken</span></li>
-          <li><span class="feature-icon cross"></span> <span class="feature-cross">Zorgenplan pagina</span></li>
+          <li><span class="fi chk"></span> Alles van Starter</li>
+          <li><span class="fi chk"></span> Prestige gold design (Playfair serif)</li>
+          <li><span class="fi chk"></span> Scroll-animaties bij elke sectie</li>
+          <li><span class="fi chk"></span> Google Reviews sectie met sterren</li>
+          <li><span class="fi chk"></span> Statistieken (jaren ervaring, patiënten)</li>
+          <li><span class="fi chk"></span> WhatsApp directknop</li>
+          <li><span class="fi chk"></span> Zorgintake contactformulier</li>
+          <li><span class="fi chk"></span> SEO metatags per pagina</li>
+          <li><span class="fi x"></span> <span class="feature-off">Online afspraken boeken</span></li>
+          <li><span class="fi x"></span> <span class="feature-off">Nieuwsbrief / patiëntenbinding</span></li>
         </ul>
 
         <a href="tier-b/index.html" class="cta">Demo bekijken →</a>
@@ -407,32 +457,35 @@ h1 {
     <!-- Tier C -->
     <div class="card tier-c">
       <div class="card-stripe"></div>
+      <div class="badge-row">
+        <span class="tier-label">Pakket 3 — Platform</span>
+        <span class="platform-pill">Meeste waarde</span>
+      </div>
       <div class="card-body">
-        <div class="design-label">Pakket 3 — Volledig Platform</div>
-        <div class="font-preview">Scandinavisch &amp; Digitaal</div>
-        <div class="card-tagline">Nordic Care stijl — Fraunces + Plus Jakarta Sans — leisteen en teal</div>
+        <div class="outcome">Terwijl u slaapt, boeken patiënten online een afspraak.</div>
+        <div class="card-sub">Groei zonder extra administratie — uw digitale praktijkassistent werkt 24/7.</div>
 
         <div class="price-row">
-          <span class="price">€2.490</span>
+          <span class="price">€2.499</span>
           <span class="price-note">eenmalig</span>
         </div>
 
         <div class="ideal-for">
-          <span class="ideal-label">Ideaal voor:</span> een ambitieuze praktijk die patiënten online wil laten boeken en digitaal wil groeien
+          <span class="ideal-label">Ideaal voor:</span> een ambitieuze praktijk klaar om te schalen — meer patiënten aantrekken, minder telefoon- en administratiewerk
         </div>
 
         <span class="page-badge">16 pagina's</span>
 
         <ul class="features">
-          <li><span class="feature-icon check"></span> Alles van Premium</li>
-          <li><span class="feature-icon check"></span> 4-staps online boekingsflow</li>
-          <li><span class="feature-icon check"></span> Beschikbaarheidsdots per verpleegkundige</li>
-          <li><span class="feature-icon check"></span> FAQ sectie (accordeon)</li>
-          <li><span class="feature-icon check"></span> Nieuwsbrief inschrijfpagina</li>
-          <li><span class="feature-icon check"></span> Zorgplan voorbeeldpagina</li>
-          <li><span class="feature-icon check"></span> Tabblad-filter op diensten</li>
-          <li><span class="feature-icon check"></span> GDPR healthcare cookie flow</li>
-          <li><span class="feature-icon check"></span> WhatsApp FAB (zwevende knop)</li>
+          <li><span class="fi chk"></span> Alles van Prestige</li>
+          <li class="highlight"><span class="fi chk"></span> 4-staps online boekingsflow</li>
+          <li class="highlight"><span class="fi chk"></span> Beschikbaarheidsdots per verpleegkundige</li>
+          <li class="highlight"><span class="fi chk"></span> FAQ accordeon (minder telefoontjes)</li>
+          <li class="highlight"><span class="fi chk"></span> Nieuwsbrief inschrijfpagina</li>
+          <li class="highlight"><span class="fi chk"></span> Zorgenplan voorbeeldpagina</li>
+          <li><span class="fi chk"></span> Tabblad-filter op diensten</li>
+          <li><span class="fi chk"></span> Healthcare GDPR cookie flow</li>
+          <li><span class="fi chk"></span> WhatsApp zwevende knop</li>
         </ul>
 
         <a href="tier-c/index.html" class="cta">Demo bekijken →</a>
@@ -441,60 +494,86 @@ h1 {
 
   </div>
 
-  <!-- Comparison table -->
-  <div class="compare-section">
-    <h2 class="compare-title">Vergelijking op een rij</h2>
-    <p class="compare-sub">Wat zit er in welk pakket?</p>
-
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th class="col-a">Basis<br>€490</th>
-          <th class="col-b">Premium<br>€1.490</th>
-          <th class="col-c">Platform<br>€2.490</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        <tr class="section-row"><td colspan="4">Pagina's &amp; Structuur</td></tr>
-        <tr><td>Aantal pagina's</td><td>13</td><td>13</td><td>16</td></tr>
-        <tr><td>Aparte pagina per dienst</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Persoonlijke teamprofielen (7)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Zorgenplan voorbeeldpagina</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-        <tr><td>Nieuwsbrief inschrijfpagina</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-
-        <tr class="section-row"><td colspan="4">Design &amp; Beleving</td></tr>
-        <tr><td>Eigen lettertypecombinatie</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Mobiel-vriendelijk (responsive)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Scroll-animaties</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Geanimeerde statistieken</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Goud / prestige frame-stijl</td><td class="no">—</td><td class="yes">✓</td><td class="no">—</td></tr>
-        <tr><td>WhatsApp zwevende knop</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-
-        <tr class="section-row"><td colspan="4">Functionaliteit</td></tr>
-        <tr><td>Contactformulier</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Google Maps integratie</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Urgentiebalk (24/7)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Google Reviews sectie</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Online afspraken (4-staps)</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-        <tr><td>Beschikbaarheidsdots team</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-        <tr><td>Diensten met tabblad-filter</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-        <tr><td>FAQ accordeon</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-
-        <tr class="section-row"><td colspan="4">Naleving &amp; SEO</td></tr>
-        <tr><td>GDPR cookiebanner</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Privacypagina</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>SEO metatags</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Healthcare GDPR cookie flow</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-
-      </tbody>
-    </table>
+  <!-- Platform callout -->
+  <div class="platform-callout">
+    <div class="callout-left">
+      <h3>Dit is geen website — het is een digitale praktijkassistent.</h3>
+      <p>Pakket 3 is de enige optie waarmee uw praktijk automatisch groeit. Patiënten boeken zichzelf in, vragen worden beantwoord via de FAQ, en uw nieuwsbrief houdt bestaande patiënten betrokken — zonder dat u de telefoon hoeft op te nemen.</p>
+    </div>
+    <div class="callout-benefits">
+      <div class="benefit">
+        <div class="benefit-icon">📞</div>
+        <span>Minder inkomende telefoontjes — patiënten boeken zelf online</span>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">📋</div>
+        <span>Zorgenplan toont professionaliteit aan huisartsen &amp; doorverwijzers</span>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">📧</div>
+        <span>Nieuwsbrief bouwt een loyale patiëntengroep op</span>
+      </div>
+    </div>
   </div>
+
+  <div class="divider"></div>
+
+  <!-- Comparison table -->
+  <h2 class="compare-title">Vergelijking op een rij</h2>
+  <p class="compare-sub">Alle pakketten bevatten maatwerk HTML — geen CMS, geen Wix, geen abonnement.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="col-a">Starter<br>€499</th>
+        <th class="col-b">Prestige<br>€1.499</th>
+        <th class="col-c">Platform<br>€2.499</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="section-row"><td colspan="4">Pagina's &amp; Structuur</td></tr>
+      <tr><td>Aantal pagina's</td><td>13</td><td>13</td><td>16</td></tr>
+      <tr><td>Aparte pagina per dienst</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>7 persoonlijke teamprofielen</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>Zorgenplan voorbeeldpagina</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+      <tr><td>Nieuwsbrief inschrijfpagina</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+
+      <tr class="section-row"><td colspan="4">Design &amp; Beleving</td></tr>
+      <tr><td>Maatwerk typografie + kleurpalet</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>Mobiel-vriendelijk (responsive)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>Scroll-animaties</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>Prestige gold frame-design</td><td class="no">—</td><td class="yes">✓</td><td class="no">—</td></tr>
+      <tr><td>Nordic platform-design</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+
+      <tr class="section-row"><td colspan="4">Vertrouwen &amp; Conversie</td></tr>
+      <tr><td>Contactformulier + Google Maps</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>Urgentiebalk (24/7)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>Google Reviews sectie</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>Statistieken (jaren, patiënten)</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>WhatsApp directknop</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+
+      <tr class="section-row"><td colspan="4">Platform Functies</td></tr>
+      <tr><td>Online afspraken (4-staps wizard)</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+      <tr><td>Beschikbaarheidsdots per verpleegkundige</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+      <tr><td>FAQ accordeon</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+      <tr><td>Diensten met tabblad-filter</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+      <tr><td>Nieuwsbrief &amp; patiëntenbinding</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+      <tr><td>Zorgenplan &amp; documenten</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+
+      <tr class="section-row"><td colspan="4">Naleving &amp; SEO</td></tr>
+      <tr><td>GDPR cookiebanner</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>Privacypagina</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>SEO metatags per pagina</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td>Healthcare GDPR cookie flow</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+
+    </tbody>
+  </table>
 
   <p class="footer-note">
     Alle prijzen zijn eenmalige tarieven. Hosting &amp; domein zijn niet inbegrepen.<br>
-    Onderhoud en aanpassingen na oplevering op aanvraag.
+    Onderhoud en aanpassingen na oplevering beschikbaar op aanvraag.
   </p>
 
 </div>
